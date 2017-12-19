@@ -1,0 +1,17 @@
+{
+    "name": "gosh/justgivingi-api",
+    "description": "A JustGiving API client in PHP",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JustGivingApi\\": "src/"
+        }
+    }
+}
