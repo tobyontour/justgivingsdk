@@ -1,0 +1,40 @@
+{
+    "eventId": 1234,
+    "fundraisingPages": [
+        {
+            "companyAppealId": 0,
+            "createdDate": "\/Date(-62135596800000+0000)\/",
+            "currencyCode": null,
+            "currencySymbol": null,
+            "designId": 1,
+            "domain": "www.justgiving.com",
+            "eventId": 12345,
+            "eventName": "My Awesome Event",
+            "giftAidPlusSupplement": 1.25,
+            "images": [
+                 
+            ],
+            "inMemoryPerson": {
+                "FirstName": "Georg",
+                "LastName": "Hegel",
+                "dateOfBirth": "\/Date(-6290784000000+0000)\/",
+                "dateOfDeath": "\/Date(-4359052800000+0000)\/"
+            },
+            "offlineDonations": 10,
+            "pageId": 1457423,
+            "pageImages": [
+                "42010\/65f56cc6-3535-436e-927d-eb9c24b82a6e.jpg"
+            ],
+            "pageShortName": "myJustGivingShortName",
+            "pageStatus": "Active",
+            "pageTitle": "My Fundraising Page!",
+            "raisedAmount": 20.0,
+            "targetAmount": 1000.0,
+            "totalRaisedOnline": 50.00,
+            "smsCode": "PEJN76",
+            "charityId": 1
+        }
+    ],
+    "totalFundraisingPages": 1,
+    "totalPages": 1
+}

@@ -34,7 +34,7 @@ class JustGivingApi
     private function getClient()
     {
         return new Client([
-            'base_uri' => $this->baseUrl . '/' . $this->apiKey . '/v' . $this->version,
+            'base_uri' => $this->baseUrl . '/' . $this->apiKey . '/v' . $this->version . '/',
             'timeout' => 2.0,
             'handler' => $this->stack
         ]);
