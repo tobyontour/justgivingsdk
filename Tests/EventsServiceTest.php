@@ -9,7 +9,7 @@ use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
 
-class JustGivingApiTest extends TestCase
+class EventsServiceTest extends TestCase
 {
     protected function getMockHandlerStack(&$container, array $responses = [])
     {
@@ -157,7 +157,6 @@ class JustGivingApiTest extends TestCase
         );
     }
 
-
     public function testGetPagesForEventInvalidId()
     {
         $api = new JustGivingApi('API_KEY', 'http://example.com/abc/def');
@@ -294,4 +293,5 @@ class JustGivingApiTest extends TestCase
             (string)$uri
         );
     }
+
 }
