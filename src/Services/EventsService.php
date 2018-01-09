@@ -2,6 +2,8 @@
 
 namespace JustGivingApi\Services;
 
+use JustGivingApi\Models\Event;
+
 class EventsService extends Service
 {
     public function getTypes()
@@ -15,8 +17,9 @@ class EventsService extends Service
         if (!is_numeric($id)) {
             throw new \InvalidArgumentException('ID should be numeric.');
         }
-        $data = $this->get('event/' . intval($id));
-        return $data;
+        $data = $this->get('event/' . intval($id), true);
+
+        return new Event($data);
     }
 
     public function getPagesForEvent($id, $pageNumber = null, $pageSize = null)
@@ -52,6 +55,19 @@ class EventsService extends Service
         }
 
         $data = $this->get($path);
+        return $data;
+    }
+
+    /**
+     * @param  Event The event to create.
+     * @return object Contains
+     */
+    public function createEvent(Event $event)
+    {
+        $path = 'event';
+
+        $data = $this->post($path, $event->toArray());
+
         return $data;
     }
 }

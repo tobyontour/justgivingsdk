@@ -4,6 +4,7 @@ namespace JustGivingApi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use JustGivingApi\JustGivingApi;
+use JustGivingApi\Models\Event;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Middleware;
@@ -88,8 +89,8 @@ class EventsServiceTest extends TestCase
         $event = $events->getEventById(0);
 
         $this->assertTrue(
-            is_object($event),
-            'GetEventById REST call returns an object'
+            is_a($event, 'JustGivingApi\Models\Event'),
+            'GetEventById REST call returns an Event'
         );
 
         $uri = $container[0]['request']->getUri();
@@ -294,4 +295,28 @@ class EventsServiceTest extends TestCase
         );
     }
 
+    public function testRegisterEvent()
+    {
+        $api = new JustGivingApi('API_KEY', 'http://example.com/abc/def');
+
+        $handlerStack = $this->getMockHandlerStack($container, [new Response(200, [], file_get_contents(__DIR__ . '/mockdata/RegisterEvent.json'))]);
+        $api->setHandlerStack($handlerStack);
+
+        $newEvent = new Event(
+            array(
+                'name' => 'Test event name',
+                'description' => 'Event description',
+                'id' => 123
+            )
+        );
+
+        $event = $api->getEventsService()->createEvent($newEvent);
+
+        $this->assertTrue(is_object($event));
+        $this->assertTrue(isset($event->id) && is_numeric($event->id), 'Event ID is set and valid.');
+        $this->assertTrue(
+            isset($event->next->uri) && filter_var($event->next->uri, FILTER_VALIDATE_URL),
+            'Returned URI is valid'
+        );
+    }
 }
