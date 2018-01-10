@@ -3,6 +3,7 @@
 namespace JustGivingApi;
 
 use JustGivingApi\Services\EventsService;
+use JustGivingApi\Services\AccountsService;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Handler\CurlHandler;
@@ -71,5 +72,10 @@ class JustGivingApi
     public function getEventsService()
     {
         return new EventsService($this->getClient());
+    }
+
+    public function getAccountsService()
+    {
+        return new AccountsService($this->getClient());
     }
 }
