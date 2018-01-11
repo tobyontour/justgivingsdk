@@ -35,7 +35,6 @@ class EventTest extends TestCase
         $this->assertEquals('2018-01-09T10:36:12.338Z', $event->startDate);
         $this->assertEquals('running', $event->eventType);
         $this->assertEquals('London', $event->location);
-
     }
 
     public function testCreateEvent()

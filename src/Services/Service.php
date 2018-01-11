@@ -48,19 +48,28 @@ class Service
      * HTTP POST request.
      *
      * @param  string $path The path to send the request to.
-     * @param  array The body of the POST. It will be encoded into JSON for you.
-     * @param  boolean If true will return an associative array, the default is false to return an object.
+     * @param  array $body The body of the POST. It will be encoded into JSON for you.
+     * @param  boolean $assoc If true will return an associative array, the default is false to return an object.
+     * @param  boolean $sendAsFormEncoded If true the $body array will be sent as form elements instead.
      * @return mixed object or array depending on the value of $assoc
      */
-    protected function post($path, $body = array(), $assoc = false)
+    protected function post($path, $body = array(), $assoc = false, $sendAsFormEncoded = false)
     {
         try {
-            $response = $this->client->request('POST', $path, [
-               'headers' => [
-                   'Accept'     => 'application/json'
-               ],
-               'body' => json_encode($body)
-            ]);
+            $headers = array(
+                'Accept' => 'application/json'
+            );
+            if ($sendAsFormEncoded) {
+                $response = $this->client->request('POST', $path, [
+                    'headers' => $headers,
+                    'form_params' => $body
+                ]);
+            } else {
+                $response = $this->client->request('POST', $path, [
+                    'headers' => $headers,
+                    'body' => json_encode($body)
+                ]);
+            }
         } catch (\Exception $e) {
             throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
         }

@@ -4,7 +4,6 @@ namespace JustGivingApi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use JustGivingApi\JustGivingApi;
-//use JustGivingApi\Models\Account;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Middleware;
@@ -25,7 +24,7 @@ class AccountServiceTest extends TestCase
 
     public function testAccountExistsReturnsFalseIfAccountDoesNotExist()
     {
-        $api = new JustGivingApi('API_KEY', 'http://example.com/abc/def');
+        $api = new JustGivingApi('API_KEY', null, true);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(404, [], '{"accountType":"None"}')
@@ -45,7 +44,7 @@ class AccountServiceTest extends TestCase
         $uri = $container[0]['request']->getUri();
 
         $this->assertEquals(
-            'http://example.com/abc/def/API_KEY/v1/account/john.doe%40example.com',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/john.doe%40example.com',
             (string)$uri
         );
 
@@ -54,7 +53,7 @@ class AccountServiceTest extends TestCase
 
     public function testAccountExistsResturnsTrueIfAccountExists()
     {
-        $api = new JustGivingApi('API_KEY', 'http://example.com/abc/def');
+        $api = new JustGivingApi('API_KEY', null, true);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"accountType":"None"}') // Need actual content from a call.
@@ -74,7 +73,36 @@ class AccountServiceTest extends TestCase
         $uri = $container[0]['request']->getUri();
 
         $this->assertEquals(
-            'http://example.com/abc/def/API_KEY/v1/account/john.doe%40example.com',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/john.doe%40example.com',
+            (string)$uri
+        );
+
+        $this->assertTrue($result, 'Account does exist.');
+    }
+
+    public function testAccountValidation()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], '{"accountType":"None"}') // Need actual content from a call.
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $accountsService = $api->getAccountsService();
+
+        $this->assertEquals(
+            'JustGivingApi\Services\AccountsService',
+            get_class($accountsService)
+        );
+
+        $result = $accountsService->accountExists('john.doe@example.com');
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/john.doe%40example.com',
             (string)$uri
         );
 

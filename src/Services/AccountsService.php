@@ -2,7 +2,6 @@
 
 namespace JustGivingApi\Services;
 
-use JustGivingApi\Models\Event;
 use JustGivingApi\Exceptions\ApiException;
 
 class AccountsService extends Service
