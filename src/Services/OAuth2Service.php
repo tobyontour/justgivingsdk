@@ -87,11 +87,12 @@ class OAuth2Service extends Service
         $this->validateRedirectUrl($redirectUrl);
 
         try {
+            $this->setBasicAuth($this->apiKey, $this->secret);
             $data = $this->post('connect/token', [
                 'code' => $code,
                 'redirect_uri' => $redirectUrl,
                 'grant_type' => 'authorization_code'
-            ]);
+            ], false, true);
         } catch (ApiException $e) {
             if ($e->getCode() == 404) {
                 return false;

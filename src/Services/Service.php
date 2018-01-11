@@ -8,10 +8,24 @@ use GuzzleHttp\Exception\ClientException;
 class Service
 {
     protected $client;
+    protected $basicAuth = null;
 
     public function __construct($client)
     {
         $this->client = $client;
+    }
+
+    public function setBasicAuth($username, $password)
+    {
+        $this->basicAuth = [
+            'username' => $user,
+            'password' => $password
+        ];
+    }
+
+    public function disableBasicAuth()
+    {
+        $this->basicAuth = null;
     }
 
     /**
@@ -24,11 +38,13 @@ class Service
     protected function get($path, $assoc = false)
     {
         try {
-            $response = $this->client->request('GET', $path, [
-               'headers' => [
+            $options = array(
+                'headers' => [
                    'Accept'     => 'application/json'
-               ]
-            ]);
+                ]
+            );
+
+            $response = $this->client->request('GET', $path, $options);
         } catch (ClientException $e) {
             if ($e->hasResponse()) {
                 $response = $e->getResponse();
@@ -56,20 +72,24 @@ class Service
     protected function post($path, $body = array(), $assoc = false, $sendAsFormEncoded = false)
     {
         try {
-            $headers = array(
-                'Accept' => 'application/json'
+            $options = array(
+                'headers' => [
+                   'Accept'     => 'application/json'
+                ]
             );
-            if ($sendAsFormEncoded) {
-                $response = $this->client->request('POST', $path, [
-                    'headers' => $headers,
-                    'form_params' => $body
-                ]);
-            } else {
-                $response = $this->client->request('POST', $path, [
-                    'headers' => $headers,
-                    'body' => json_encode($body)
-                ]);
+
+            if (!is_null($this->basicAuth)) {
+                $options['auth'] = array($this->basicAuth['username'], $this->basicAuth['password']);
             }
+
+            if ($sendAsFormEncoded) {
+                $options['headers']['Content-Type'] = 'application/x-www-form-urlencoded';
+                $options['form_params'] = $body;
+            } else {
+                $options['body'] = json_encode($body);
+            }
+
+            $response = $this->client->request('POST', $path, $options);
         } catch (\Exception $e) {
             throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
         }
@@ -92,12 +112,14 @@ class Service
     protected function put($path, $body = array(), $assoc = false)
     {
         try {
-            $response = $this->client->request('PUT', $path, [
+            $options = [
                'headers' => [
                    'Accept'     => 'application/json'
                ],
                'body' => json_encode($body)
-            ]);
+            ];
+
+            $response = $this->client->request('PUT', $path, $options);
         } catch (\Exception $e) {
             throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
         }

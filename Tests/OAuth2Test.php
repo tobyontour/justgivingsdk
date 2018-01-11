@@ -100,10 +100,21 @@ __EOD__;
             (string)$request->getUri()
         );
 
-        $bodyData = json_decode((string)$request->getBody());
+        parse_str((string)$request->getBody(), $bodyData);
 
-        $this->assertEquals('A1B2C3D4', $bodyData->code);
-        $this->assertEquals('https://www.example.com/auth', $bodyData->redirect_uri);
-        $this->assertEquals('authorization_code', $bodyData->grant_type);
+        $this->assertEquals('A1B2C3D4', $bodyData['code']);
+        $this->assertEquals('https://www.example.com/auth', $bodyData['redirect_uri']);
+        $this->assertEquals('authorization_code', $bodyData['grant_type']);
+
+        $headers = $request->getHeaders();
+
+        $this->assertEquals(
+            'Basic Ok9BVVRIX1NFQ1JFVA==',
+            $headers['Authorization'][0]
+        );
+        $this->assertEquals(
+            'application/x-www-form-urlencoded',
+            $headers['Content-Type'][0]
+        );
     }
 }
