@@ -5,6 +5,7 @@ namespace JustGivingApi;
 use JustGivingApi\Services\EventsService;
 use JustGivingApi\Services\AccountsService;
 use JustGivingApi\Services\OAuth2Service;
+use JustGivingApi\Transport\Transport;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Handler\CurlHandler;
@@ -72,17 +73,17 @@ class JustGivingApi
     }
 
     /**
-     * Sets up the client for performing API calls.
+     * Sets up the transport for performing API calls.
      *
      * @return GuzzleHttp\Client The client for making REST calls.
      */
-    private function getClient()
+    private function getTransport()
     {
-        return new Client([
+        return new Transport(new Client([
             'base_uri' => $this->baseUrl . '/' . $this->apiKey . '/v' . $this->version . '/',
             'timeout' => 2.0,
             'handler' => $this->stack
-        ]);
+        ]));
     }
 
     /**
@@ -94,7 +95,7 @@ class JustGivingApi
      */
     public function getEventsService()
     {
-        return new EventsService($this->getClient());
+        return new EventsService($this->getTransport());
     }
 
     /**
@@ -102,7 +103,7 @@ class JustGivingApi
      */
     public function getAccountsService()
     {
-        return new AccountsService($this->getClient());
+        return new AccountsService($this->getTransport());
     }
 
 
@@ -117,11 +118,11 @@ class JustGivingApi
      */
     private function getAuthClient()
     {
-        return new Client([
+        return new Transport(new Client([
             'base_uri' => $this->authBaseUrl . '/',
             'timeout' => 2.0,
             'handler' => $this->stack
-        ]);
+        ]));
     }
 
     /**

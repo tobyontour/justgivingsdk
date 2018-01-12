@@ -10,9 +10,9 @@ class OAuth2Service extends Service
     protected $apiKey;
     protected $secret;
 
-    public function __construct($client, $apiKey, $secret)
+    public function __construct($transport, $apiKey, $secret)
     {
-        parent::__construct($client);
+        parent::__construct($transport);
         $this->apiKey = $apiKey;
         $this->secret = $secret;
     }
@@ -75,7 +75,7 @@ class OAuth2Service extends Service
             $params['state'] = $state;
         }
 
-        return $this->client->getConfig('base_uri') . 'connect/authorize?' . http_build_query($params);
+        return $this->transport->getBaseUrl() . 'connect/authorize?' . http_build_query($params);
     }
 
     /**
@@ -92,8 +92,8 @@ class OAuth2Service extends Service
         }
 
         try {
-            $this->setBasicAuth($this->apiKey, $this->secret);
-            $data = $this->post('connect/token', [
+            $this->transport->setBasicAuth($this->apiKey, $this->secret);
+            $data = $this->transport->post('connect/token', [
                 'code' => $code,
                 'redirect_uri' => $redirectUrl,
                 'grant_type' => 'authorization_code'
@@ -116,8 +116,8 @@ class OAuth2Service extends Service
         }
 
         try {
-            $this->setBasicAuth($this->apiKey, $this->secret);
-            $data = $this->post('connect/token', [
+            $this->transport->setBasicAuth($this->apiKey, $this->secret);
+            $data = $this->transport->post('connect/token', [
                 'refresh_token' => $refreshToken,
                 'redirect_uri' => $redirectUrl,
                 'grant_type' => 'refresh_token'

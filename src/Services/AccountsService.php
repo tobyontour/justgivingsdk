@@ -9,7 +9,7 @@ class AccountsService extends Service
     public function accountExists($emailAddress)
     {
         try {
-            $data = $this->get('account/' . urlencode($emailAddress));
+            $data = $this->transport->get('account/' . urlencode($emailAddress));
         } catch (ApiException $e) {
             if ($e->getCode() == 404) {
                 return false;

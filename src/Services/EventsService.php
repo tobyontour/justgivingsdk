@@ -8,7 +8,7 @@ class EventsService extends Service
 {
     public function getTypes()
     {
-        $data = $this->get('event/types');
+        $data = $this->transport->get('event/types');
         return $data->eventTypes;
     }
 
@@ -17,7 +17,7 @@ class EventsService extends Service
         if (!is_numeric($id)) {
             throw new \InvalidArgumentException('ID should be numeric.');
         }
-        $data = $this->get('event/' . intval($id), true);
+        $data = $this->transport->get('event/' . intval($id), true);
 
         return new Event($data);
     }
@@ -54,7 +54,7 @@ class EventsService extends Service
             $path .= '?' . http_build_query($params);
         }
 
-        $data = $this->get($path);
+        $data = $this->transport->get($path);
         return $data;
     }
 
@@ -66,7 +66,7 @@ class EventsService extends Service
     {
         $path = 'event';
 
-        $data = $this->post($path, $event->toArray());
+        $data = $this->transport->post($path, $event->toArray());
 
         return $data;
     }
