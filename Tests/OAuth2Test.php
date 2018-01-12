@@ -88,7 +88,7 @@ __EOD__;
 
         $this->assertEquals(
             'a8dfad6cfe559ae0d6e37426b3e0d078',
-            $token,
+            $token->access_token,
             'Token is parsed from response correctly.'
         );
 
@@ -105,6 +105,58 @@ __EOD__;
         $this->assertEquals('A1B2C3D4', $bodyData['code']);
         $this->assertEquals('https://www.example.com/auth', $bodyData['redirect_uri']);
         $this->assertEquals('authorization_code', $bodyData['grant_type']);
+
+        $headers = $request->getHeaders();
+
+        $this->assertEquals(
+            'Basic Ok9BVVRIX1NFQ1JFVA==',
+            $headers['Authorization'][0]
+        );
+        $this->assertEquals(
+            'application/x-www-form-urlencoded',
+            $headers['Content-Type'][0]
+        );
+    }
+
+    public function testRefreshToken()
+    {
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', true);
+
+        $data = <<<__EOD__
+{"id_token":"eyJ0eXAxxxgAfm_2w", "access_token":"f110416c611f55befb7fcc9d113484ec", "expires_in":3600,"token_type":"Bearer", "refresh_token":"4ef125dedc4728b2cac194b4648ccbd0"}
+__EOD__;
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], $data)
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $tokens = $api->refreshAuthenticationToken('REFRESH_TOKEN', 'https://www.example.com/auth');
+
+        $this->assertEquals(
+            'f110416c611f55befb7fcc9d113484ec',
+            $tokens->access_token
+        );
+
+        $this->assertEquals(
+            '4ef125dedc4728b2cac194b4648ccbd0',
+            $tokens->refresh_token
+        );
+
+        // Now verify we sent the request correctly.
+        $request = $container[0]['request'];
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_AUTH_BASE_URL . '/connect/token',
+            (string)$request->getUri()
+        );
+
+        parse_str((string)$request->getBody(), $bodyData);
+
+        $this->assertEquals('REFRESH_TOKEN', $bodyData['refresh_token']);
+        $this->assertEquals('https://www.example.com/auth', $bodyData['redirect_uri']);
+        $this->assertEquals('refresh_token', $bodyData['grant_type']);
 
         $headers = $request->getHeaders();
 

@@ -18,20 +18,18 @@ class OAuth2Service extends Service
     }
 
     /**
-     * Throws exception is the redirect URL is invalid.
+     * Returns false if the redirect URL is invalid.
      *
-     * @param  string $url Validates that the redirect URL has all the parts we need.
+     * @param  string $redirectUrl Validates that the redirect URL has all the parts we need.
+     * @return  boolean True if it's valid.
      */
     private function validateRedirectUrl($redirectUrl)
     {
-        if (false === filter_var(
+        return false !== filter_var(
             $redirectUrl,
             FILTER_VALIDATE_URL,
             FILTER_FLAG_SCHEME_REQUIRED | FILTER_FLAG_HOST_REQUIRED | FILTER_FLAG_PATH_REQUIRED
-        )
-        ) {
-            throw new \InvalidArgumentException('Redirect URL needs to have a scheme, host, and path.');
-        }
+        );
     }
 
     /**
@@ -56,7 +54,10 @@ class OAuth2Service extends Service
      */
     public function getLoginFormUrl(array $scope, $redirectUrl, $guid, $state = '')
     {
-        $this->validateRedirectUrl($redirectUrl);
+        if (!$this->validateRedirectUrl($redirectUrl)) {
+            throw new \InvalidArgumentException('Redirect URL needs to have a scheme, host, and path.');
+        }
+
 
         // Ensure the scope contains manditory elements.
         $scope = array_unique(array_merge($scope, ['openid', 'profile']));
@@ -80,11 +81,15 @@ class OAuth2Service extends Service
     /**
      * @param  string $code The code from the response to a request to the URL returned from getLoginFromUrl
      * @param  string $redirectUrl Exactly the same URL used in the call to getLoginFromUrl
-     * @return string The authentication token.
+     * @return object An object with properties of access_token and, optionally, refresh_token.
+     *  The refresh token will only be present if the original authentication request asked for the offline_access
+     *  scope.
      */
     public function getAuthenticationToken($code, $redirectUrl)
     {
-        $this->validateRedirectUrl($redirectUrl);
+        if (!$this->validateRedirectUrl($redirectUrl)) {
+            throw new \InvalidArgumentException('Redirect URL needs to have a scheme, host, and path.');
+        }
 
         try {
             $this->setBasicAuth($this->apiKey, $this->secret);
@@ -100,6 +105,30 @@ class OAuth2Service extends Service
             throw $e;
         }
 
-        return $data->access_token;
+        return $data;
+    }
+
+    public function refreshAuthenticationToken($refreshToken, $redirectUrl)
+    {
+        if (!$this->validateRedirectUrl($redirectUrl)) {
+            var_dump($redirectUrl);
+            throw new \InvalidArgumentException('Redirect URL needs to have a scheme, host, and path.');
+        }
+
+        try {
+            $this->setBasicAuth($this->apiKey, $this->secret);
+            $data = $this->post('connect/token', [
+                'refresh_token' => $refreshToken,
+                'redirect_uri' => $redirectUrl,
+                'grant_type' => 'refresh_token'
+            ], false, true);
+        } catch (ApiException $e) {
+            if ($e->getCode() == 404) {
+                return false;
+            }
+            throw $e;
+        }
+
+        return $data;
     }
 }

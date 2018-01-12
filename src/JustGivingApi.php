@@ -97,6 +97,9 @@ class JustGivingApi
         return new EventsService($this->getClient());
     }
 
+    /**
+     * @return JustGivingApi\Services\AccountsService The accounts service.
+     */
     public function getAccountsService()
     {
         return new AccountsService($this->getClient());
@@ -125,9 +128,11 @@ class JustGivingApi
      * Starts the authentication process by providing the URL to redirect the user to.
      *
      * @param  array $scope
-     *  Array of scopes. These include openid, profile, fundraise, account, social, crowdfunding.
+     *  Array of scopes. These include openid, profile, fundraise, account, social, crowdfunding, and offline_access.
      *  The first two are manditory (so the function ensures this). The last two are labelled as
      *  'coming soon' in the API docs.
+     *  You *must* include the scope 'offline_access' if you want to be able to use the token beyond the normal timeout
+     *  which is about an hour.
      * @param string $redirectUrl
      *  This is the full URL that the user will be redirected to after authenticating with JustGiving.
      *  It must match the “Home page for your application” property in 3scale app details exactly, as this is used
@@ -149,6 +154,11 @@ class JustGivingApi
     public function getAuthenticationToken($code, $redirectUrl)
     {
         return $this->getAuthenticationService()->getAuthenticationToken($code, $redirectUrl);
+    }
+
+    public function refreshAuthenticationToken($refreshToken, $redirectUrl)
+    {
+        return $this->getAuthenticationService()->refreshAuthenticationToken($refreshToken, $redirectUrl);
     }
 
     protected function getAuthenticationService()

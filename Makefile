@@ -16,3 +16,5 @@ coverage:
 standards:                                
 	$(PHPCS) --standard=PSR2 
 
+docs:
+	phpdoc -d ./src -t Docs/
