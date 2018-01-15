@@ -34,7 +34,7 @@ class Transport
      *
      * @var array
      */
-    protected $headers = ['Accept' => 'application/json'];
+    public $headers = ['Accept' => 'application/json'];
 
     /**
      * Constructor.

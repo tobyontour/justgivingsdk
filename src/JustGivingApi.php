@@ -21,6 +21,8 @@ class JustGivingApi
     private $handler;
     private $secret;
 
+    private $transport;
+
     const SANDBOX_BASE_URL = 'https://api.sandbox.justgiving.com';
     const PRODUCTION_BASE_URL = 'https://api.justgiving.com';
     const SANDBOX_AUTH_BASE_URL = 'https://identity.sandbox.justgiving.com';
@@ -75,15 +77,18 @@ class JustGivingApi
     /**
      * Sets up the transport for performing API calls.
      *
-     * @return GuzzleHttp\Client The client for making REST calls.
+     * @return JustGivingApi\Transport\Transport The client for making REST calls.
      */
     private function getTransport()
     {
-        return new Transport(new Client([
-            'base_uri' => $this->baseUrl . '/' . $this->apiKey . '/v' . $this->version . '/',
-            'timeout' => 2.0,
-            'handler' => $this->stack
-        ]));
+        if (is_null($this->transport)) {
+            $this->transport = new Transport(new Client([
+                'base_uri' => $this->baseUrl . '/' . $this->apiKey . '/v' . $this->version . '/',
+                'timeout' => 2.0,
+                'handler' => $this->stack
+            ]));
+        }
+        return $this->transport;
     }
 
     /**
@@ -114,9 +119,9 @@ class JustGivingApi
     /**
      * Sets up the client for performing API calls.
      *
-     * @return GuzzleHttp\Client The client for making REST calls.
+     * @return JustGivingApi\Transport\Transport The client for making REST calls.
      */
-    private function getAuthClient()
+    private function getAuthTransport()
     {
         return new Transport(new Client([
             'base_uri' => $this->authBaseUrl . '/',
@@ -167,6 +172,6 @@ class JustGivingApi
         if (is_null($this->secret)) {
             throw new \RuntimeException('No OAuth secret set in JustGivingApi instance');
         }
-        return new OAuth2Service($this->getAuthClient(), $this->apiKey, $this->secret);
+        return new OAuth2Service($this->getAuthTransport(), $this->apiKey, $this->secret);
     }
 }
