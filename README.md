@@ -3,6 +3,8 @@ JustGivingAPI
 
 This is a PHP wrapper around the JustGiving REST API which can be found here: https://developer.justgiving.com/apidocs/documentation
 
+Documentation for this library can be found in the Docs directory: [Documentation](Docs/index.html)
+
 The API is a simple wrapper that uses Guzzle for transport and breaks the API into sections based on the endpoint. So for instance
 to get the pages for an event:
 
