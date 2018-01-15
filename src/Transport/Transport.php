@@ -123,9 +123,7 @@ class Transport
     {
         try {
             $options = array(
-                'headers' => [
-                   'Accept'     => 'application/json'
-                ]
+                'headers' => $this->headers
             );
 
             if (!is_null($this->basicAuth)) {

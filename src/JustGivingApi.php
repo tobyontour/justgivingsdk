@@ -65,12 +65,19 @@ class JustGivingApi
     /**
      * Allows overriding of the transport mechanism.
      *
+     * This must be called before getting any services.
+     *
      * @param GuzzleHttp\HandlerStack Allows overriding of the handler stack.
      *   We probably won't use this in production, but it allows for mocking
      *   the HTTP transport in testing which is incredibly useful.
      */
     public function setHandlerStack($stack)
     {
+        if (!is_null($this->transport)) {
+            // Fail if we already have a transport as we can't safely reconfigure an existing one
+            // or recreate it.
+            throw new \RuntimeException('setHandlerStack must be called before getTransport.');
+        }
         $this->stack = $stack;
     }
 
@@ -89,6 +96,13 @@ class JustGivingApi
             ]));
         }
         return $this->transport;
+    }
+
+    public function setAccessToken($accessToken)
+    {
+        $transport = $this->getTransport();
+        $transport->headers['x-application-key'] = $this->secret;
+        $transport->headers['Authorization'] = 'Bearer ' . $accessToken;
     }
 
     /**
@@ -110,7 +124,6 @@ class JustGivingApi
     {
         return new AccountsService($this->getTransport());
     }
-
 
     /**
      * Authentication

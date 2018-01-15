@@ -4,6 +4,7 @@ namespace JustGivingApi\Tests;
 
 use PHPUnit\Framework\TestCase;
 use JustGivingApi\JustGivingApi;
+use JustGivingApi\Models\Event;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Middleware;
@@ -167,6 +168,44 @@ __EOD__;
         $this->assertEquals(
             'application/x-www-form-urlencoded',
             $headers['Content-Type'][0]
+        );
+    }
+
+    public function testCallMadeWithAuthCredentials()
+    {
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [new Response(201, [], file_get_contents(__DIR__ . '/mockdata/RegisterEvent.json'))]);
+        $api->setHandlerStack($handlerStack);
+
+        $api->setAccessToken('ACCESS_TOKEN');
+
+        $newEvent = new Event(
+            array(
+                'name' => 'Test event name',
+                'description' => 'Event description',
+                'id' => 123
+            )
+        );
+
+        $event = $api->getEventsService()->createEvent($newEvent);
+
+        $this->assertTrue(is_object($event));
+        $this->assertTrue(isset($event->id) && is_numeric($event->id), 'Event ID is set and valid.');
+
+        // Now verify we sent the request correctly.
+        $request = $container[0]['request'];
+
+        $headers = $request->getHeaders();
+
+        $this->assertEquals(
+            'Bearer ' . 'ACCESS_TOKEN',
+            $headers['Authorization'][0]
+        );
+
+        $this->assertEquals(
+            'OAUTH_SECRET',
+            $headers['x-application-key'][0]
         );
     }
 }
