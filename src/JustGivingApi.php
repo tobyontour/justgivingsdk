@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Main class for making requests to the JustGiving API.
+ */
+
 namespace JustGivingApi;
 
 use JustGivingApi\Services\EventsService;
@@ -10,17 +14,56 @@ use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Handler\CurlHandler;
 
+/**
+ * The format of dates in JustGiving.
+ */
 const JUSTGIVINGAPI_DATE_FORMAT = 'Y-m-d\TH:i:s.000\Z';
 
+/**
+ * Main class for making requests to the JustGiving API.
+ */
 class JustGivingApi
 {
+    /**
+     * The API key from JustGiving. This is specific to your app.
+     * @var string
+     */
     private $apiKey;
-    private $baseUrl;
-    private $authBaseUrl;
-    private $version;
-    private $handler;
+
+    /**
+     * The OAuth secret for your app. Only needed for authenticated requests.
+     * @var [type]
+     */
     private $secret;
 
+    /**
+     * The base URL of all normal endpoint requests.
+     * @var string
+     */
+    private $baseUrl;
+
+    /**
+     * The base URL of authentication requests.
+     * @var string
+     */
+    private $authBaseUrl;
+
+    /**
+     * The API version to use.
+     * @var int
+     */
+    private $version;
+
+    /**
+     * The handler that is used to make requests.
+     * @var CurlHandler
+     */
+    private $handler;
+
+    /**
+     * Instance of the Transport class that makes REST calls.
+     * @var Transport
+     */
     private $transport;
 
     const SANDBOX_BASE_URL = 'https://api.sandbox.justgiving.com';
@@ -32,6 +75,7 @@ class JustGivingApi
      * Creates an instance of the API.
      *
      * @param string $apiKey The JustGiving API key. Register as a developer on the website to get this.
+     * @param string $secret The API secret. Needed for authenticated requests on behalf of the user.
      * @param bool $testMode If true it uses the sandbox environment. Defaults to false (production).
      * @param integer $version API version.
      */
@@ -50,13 +94,19 @@ class JustGivingApi
         $this->secret = $secret;
     }
 
-    public function testMode()
+    /**
+     * Uses the test endpoints.
+     */
+    private function testMode()
     {
         $this->baseUrl = JustGivingApi::SANDBOX_BASE_URL;
         $this->authBaseUrl = JustGivingApi::SANDBOX_AUTH_BASE_URL;
     }
 
-    public function liveMode()
+    /**
+     * Uses the live endpoints.
+     */
+    private function liveMode()
     {
         $this->baseUrl = JustGivingApi::PRODUCTION_BASE_URL;
         $this->authBaseUrl = JustGivingApi::PRODUCTION_AUTH_BASE_URL;
@@ -98,6 +148,11 @@ class JustGivingApi
         return $this->transport;
     }
 
+    /**
+     * Sets the access token to use to authenticate as a user.
+     *
+     * @param string $accessToken The access token retrieved via getAuthenticationToken().
+     */
     public function setAccessToken($accessToken)
     {
         $transport = $this->getTransport();
@@ -118,6 +173,8 @@ class JustGivingApi
     }
 
     /**
+     * Gets and instance of the AccountsService.
+     *
      * @return JustGivingApi\Services\AccountsService The accounts service.
      */
     public function getAccountsService()
@@ -170,16 +227,35 @@ class JustGivingApi
         return $this->getAuthenticationService()->getLoginFormUrl($scope, $redirectUrl, $guid, $state);
     }
 
+    /**
+     * Retrieves an authentication token to act on bhalf of a user.
+     *
+     * @param string $code The code returned as a parameter to the redirect URL. See getLoginFormUrl().
+     * @param string $redirectUrl The redirect URL. See docs for getLoginFormUrl().
+     * @return object Object containing access_token and (optionally) refresh_token
+     */
     public function getAuthenticationToken($code, $redirectUrl)
     {
         return $this->getAuthenticationService()->getAuthenticationToken($code, $redirectUrl);
     }
 
+    /**
+     * Refreshes the authentication token if it has expired.
+     *
+     * @param string $refreshToken The refresh token. This will have come from the getAuthenticationToken() call.
+     * @param string $redirectUrl The redirect URL. See docs for getLoginFormUrl().
+     * @return object Object containing access_token and refresh_token
+     */
     public function refreshAuthenticationToken($refreshToken, $redirectUrl)
     {
         return $this->getAuthenticationService()->refreshAuthenticationToken($refreshToken, $redirectUrl);
     }
 
+    /**
+     * Gets an instance of the OAuth2Service.
+     *
+     * @return OAuth2Service An instance of the OAuth2Service.
+     */
     protected function getAuthenticationService()
     {
         if (is_null($this->secret)) {

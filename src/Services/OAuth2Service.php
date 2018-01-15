@@ -1,15 +1,38 @@
 <?php
 
+/**
+ * The OAuth2Service class.
+ */
+
 namespace JustGivingApi\Services;
 
 use JustGivingApi\Exceptions\ApiException;
 use JustGivingApi\JustGivingApi;
 
+/**
+ * The OAuth2Service class.
+ */
 class OAuth2Service extends Service
 {
+    /**
+     * The app's Api key
+     * @var string
+     */
     protected $apiKey;
+
+    /**
+     * The OAuth2 Secret for the app.
+     * @var string
+     */
     protected $secret;
 
+    /**
+     * Constructor.
+     *
+     * @param \JustGivingApi\Transport\transport $transport The transport that makes requests.
+     * @param string $apiKey The API key for the app.
+     * @param string $secret The OAuth2 secret for the app.
+     */
     public function __construct($transport, $apiKey, $secret)
     {
         parent::__construct($transport);
@@ -79,6 +102,8 @@ class OAuth2Service extends Service
     }
 
     /**
+     * Gets the authentication token needed to nake requests on behalf of the user.
+     *
      * @param  string $code The code from the response to a request to the URL returned from getLoginFromUrl
      * @param  string $redirectUrl Exactly the same URL used in the call to getLoginFromUrl
      * @return object An object with properties of access_token and, optionally, refresh_token.
@@ -108,6 +133,13 @@ class OAuth2Service extends Service
         return $data;
     }
 
+    /**
+     * Refreshes an expired access token and returns a new access token and refresh token.
+     *
+     * @param string The refresh token.
+     * @param string $redirectUrl Exactly the same URL used in the call to getLoginFromUrl
+     * @return object An object with properties of access_token and, optionally, refresh_token.
+     */
     public function refreshAuthenticationToken($refreshToken, $redirectUrl)
     {
         if (!$this->validateRedirectUrl($redirectUrl)) {

@@ -16,5 +16,6 @@ coverage:
 standards:                                
 	$(PHPCS) --standard=PSR2 
 
+.PHONY: docs
 docs:
 	phpdoc -d ./src -t Docs/
