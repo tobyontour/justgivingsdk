@@ -72,6 +72,7 @@ class JustGivingApi
     const PRODUCTION_BASE_URL = 'https://api.justgiving.com';
     const SANDBOX_AUTH_BASE_URL = 'https://identity.sandbox.justgiving.com';
     const PRODUCTION_AUTH_BASE_URL = 'https://identity.justgiving.com';
+    const TIMEOUT = 4.0;
 
     /**
      * Creates an instance of the API.
@@ -143,7 +144,7 @@ class JustGivingApi
         if (is_null($this->transport)) {
             $this->transport = new Transport(new Client([
                 'base_uri' => $this->baseUrl . '/' . $this->apiKey . '/v' . $this->version . '/',
-                'timeout' => 2.0,
+                'timeout' => self::TIMEOUT,
                 'handler' => $this->stack
             ]));
         }
@@ -217,7 +218,7 @@ class JustGivingApi
     {
         return new Transport(new Client([
             'base_uri' => $this->authBaseUrl . '/',
-            'timeout' => 2.0,
+            'timeout' => self::TIMEOUT,
             'handler' => $this->stack
         ]));
     }

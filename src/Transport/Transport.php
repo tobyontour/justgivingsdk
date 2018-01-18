@@ -139,12 +139,16 @@ class Transport
             }
 
             $response = $this->client->request('POST', $path, $options);
-        } catch (\Exception $e) {
-            throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+        } catch (ClientException $e) {
+            if ($e->hasResponse()) {
+                $response = $e->getResponse();
+            } else {
+                throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+            }
         }
 
         if ($response->getStatusCode() >= 300) {
-            throw new \ApiException($response, $path);
+            throw new ApiException($response, $path);
         }
 
         return json_decode($response->getBody(), $assoc);
@@ -167,12 +171,16 @@ class Transport
             ];
 
             $response = $this->client->request('PUT', $path, $options);
-        } catch (\Exception $e) {
-            throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+        } catch (ClientException $e) {
+            if ($e->hasResponse()) {
+                $response = $e->getResponse();
+            } else {
+                throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+            }
         }
 
         if ($response->getStatusCode() >= 300) {
-            throw new \ApiException($response, $path);
+            throw new ApiException($response, $path);
         }
 
         return json_decode($response->getBody(), $assoc);
