@@ -8,6 +8,8 @@ namespace JustGivingApi;
 
 use JustGivingApi\Services\EventsService;
 use JustGivingApi\Services\AccountsService;
+use JustGivingApi\Services\FundraisingService;
+use JustGivingApi\Services\TeamService;
 use JustGivingApi\Services\OAuth2Service;
 use JustGivingApi\Transport\Transport;
 use GuzzleHttp\Client;
@@ -136,7 +138,7 @@ class JustGivingApi
      *
      * @return JustGivingApi\Transport\Transport The client for making REST calls.
      */
-    private function getTransport()
+    public function getTransport()
     {
         if (is_null($this->transport)) {
             $this->transport = new Transport(new Client([
@@ -180,6 +182,26 @@ class JustGivingApi
     public function getAccountsService()
     {
         return new AccountsService($this->getTransport());
+    }
+
+    /**
+     * Gets the fundraising service.
+     *
+     * @return JustGivingApi\Services\FundraisingService The fundraising service.
+     */
+    public function getFundraisingService()
+    {
+        return new FundraisingService($this->getTransport());
+    }
+
+    /**
+     * Gets the team service.
+     *
+     * @return JustGivingApi\Services\TeamService The team service.
+     */
+    public function getTeamService()
+    {
+        return new TeamService($this->getTransport());
     }
 
     /**

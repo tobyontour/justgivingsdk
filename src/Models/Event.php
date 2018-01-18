@@ -9,7 +9,7 @@ namespace JustGivingApi\Models;
 /**
  * Event class that encapsulates what makes an event in JustGiving.
  */
-class Event
+class Event extends Model
 {
     /**
      * The name of the event.
@@ -79,49 +79,4 @@ class Event
      * @var string
      */
     public $errorMessage;
-
-    /**
-     * Constructor.
-     *
-     * @param array An array to prepopulate the event with, often from a JSON decode response.
-     */
-    public function __construct(array $data = [])
-    {
-        $this->name = isset($data['name']) ? $data['name'] : '';
-        $this->description = isset($data['description']) ? $data['description'] : '';
-        $this->id = isset($data['id']) ? $data['id'] : null;
-        $this->completionDate = isset($data['completionDate']) ? $data['completionDate'] : null;
-        $this->expiryDate = isset($data['expiryDate']) ? $data['expiryDate'] : null;
-        $this->startDate = isset($data['startDate']) ? $data['startDate'] : null;
-        $this->eventType = isset($data['eventType']) ? $data['eventType'] : null;
-        $this->location = isset($data['location']) ? $data['location'] : null;
-        $this->charityId = isset($data['charityId']) ? $data['charityId'] : null;
-    }
-
-    /**
-     * Convert the object to an array.
-     *
-     * @return array The array to send as part of a REST request.
-     */
-    public function toArray()
-    {
-        $arr = array(
-            'name' => $this->name,
-            'description' => $this->description,
-            'id' => $this->id,
-            'completionDate' => $this->completionDate,
-            'expiryDate' => $this->expiryDate,
-            'startDate' => $this->startDate,
-            'eventType' => $this->eventType,
-            'location' => $this->location
-        );
-
-        foreach ($arr as $key => $value) {
-            if (is_null($value)) {
-                unset($arr[$key]);
-            }
-        }
-
-        return $arr;
-    }
 }

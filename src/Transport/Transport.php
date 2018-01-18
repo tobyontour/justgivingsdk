@@ -34,7 +34,10 @@ class Transport
      *
      * @var array
      */
-    public $headers = ['Accept' => 'application/json'];
+    public $headers = [
+        'Accept' => 'application/json',
+        'Content-Type' => 'application/json'
+    ];
 
     /**
      * Constructor.
@@ -89,9 +92,7 @@ class Transport
     {
         try {
             $options = array(
-                'headers' => [
-                   'Accept'     => 'application/json'
-                ]
+                'headers' => $this->headers
             );
 
             $response = $this->client->request('GET', $path, $options);
@@ -161,9 +162,7 @@ class Transport
     {
         try {
             $options = [
-               'headers' => [
-                   'Accept'     => 'application/json'
-               ],
+               'headers' => $this->headers,
                'body' => json_encode($body)
             ];
 

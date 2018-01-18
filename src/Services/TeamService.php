@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Deals wioth calls to the /team endpoint and child endpoints.
+ */
+
+namespace JustGivingApi\Services;
+
+use JustGivingApi\Models\Team;
+
+/**
+ * Deals wioth calls to the /team endpoint and child endpoints.
+ */
+class TeamService extends Service
+{
+    /**
+     * Create a team.
+     *
+     * @param  Team The team to create.
+     * @return object Contains
+     *
+     */
+    public function createTeam(Team $team)
+    {
+        $path = 'team';
+
+        $data = $this->transport->put($path, $team->toArray());
+
+        return $data;
+    }
+}
