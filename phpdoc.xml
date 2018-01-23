@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>JustGivingSdk Documentation</title>
+    <parser>
+        <target>build</target>
+    </parser>
+    <transformer>
+        <target>Docs</target>
+    </transformer>
+    <transformations>
+        <template name="vendor/cvuorinen/phpdoc-markdown-public/data/templates/markdown-public" />
+        <template name="clean" />
+    </transformations>
+    <files>
+        <directory>src</directory>
+        <ignore>Test/*</ignore>
+    </files>
+</phpdoc>

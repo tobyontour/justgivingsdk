@@ -18,4 +18,4 @@ standards:
 
 .PHONY: docs
 docs:
-	phpdoc -d ./src -t Docs/
+	vendor/bin/phpdoc
