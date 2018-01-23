@@ -8,6 +8,8 @@ namespace JustGivingApi;
 
 use JustGivingApi\Services\EventsService;
 use JustGivingApi\Services\AccountsService;
+use JustGivingApi\Services\FundraisingService;
+use JustGivingApi\Services\TeamService;
 use JustGivingApi\Services\OAuth2Service;
 use JustGivingApi\Transport\Transport;
 use GuzzleHttp\Client;
@@ -66,10 +68,17 @@ class JustGivingApi
      */
     private $transport;
 
+    /**
+     * The array of instantiated services.
+     * @var array
+     */
+    private $services = [];
+
     const SANDBOX_BASE_URL = 'https://api.sandbox.justgiving.com';
     const PRODUCTION_BASE_URL = 'https://api.justgiving.com';
     const SANDBOX_AUTH_BASE_URL = 'https://identity.sandbox.justgiving.com';
     const PRODUCTION_AUTH_BASE_URL = 'https://identity.justgiving.com';
+    const TIMEOUT = 4.0;
 
     /**
      * Creates an instance of the API.
@@ -136,12 +145,12 @@ class JustGivingApi
      *
      * @return JustGivingApi\Transport\Transport The client for making REST calls.
      */
-    private function getTransport()
+    public function getTransport()
     {
         if (is_null($this->transport)) {
             $this->transport = new Transport(new Client([
                 'base_uri' => $this->baseUrl . '/' . $this->apiKey . '/v' . $this->version . '/',
-                'timeout' => 2.0,
+                'timeout' => self::TIMEOUT,
                 'handler' => $this->stack
             ]));
         }
@@ -169,7 +178,10 @@ class JustGivingApi
      */
     public function getEventsService()
     {
-        return new EventsService($this->getTransport());
+        if (!in_array('events', $this->services)) {
+            $this->services['events'] = new EventsService($this->getTransport());
+        }
+        return $this->services['events'];
     }
 
     /**
@@ -179,7 +191,36 @@ class JustGivingApi
      */
     public function getAccountsService()
     {
-        return new AccountsService($this->getTransport());
+        if (!in_array('accounts', $this->services)) {
+            $this->services['accounts'] = new AccountsService($this->getTransport());
+        }
+        return $this->services['accounts'];
+    }
+
+    /**
+     * Gets the fundraising service.
+     *
+     * @return JustGivingApi\Services\FundraisingService The fundraising service.
+     */
+    public function getFundraisingService()
+    {
+        if (!in_array('fundraising', $this->services)) {
+            $this->services['fundraising'] = new FundraisingService($this->getTransport());
+        }
+        return $this->services['fundraising'];
+    }
+
+    /**
+     * Gets the team service.
+     *
+     * @return JustGivingApi\Services\TeamService The team service.
+     */
+    public function getTeamService()
+    {
+        if (!in_array('team', $this->services)) {
+            $this->services['team'] = new TeamService($this->getTransport());
+        }
+        return $this->services['team'];
     }
 
     /**
@@ -195,7 +236,7 @@ class JustGivingApi
     {
         return new Transport(new Client([
             'base_uri' => $this->authBaseUrl . '/',
-            'timeout' => 2.0,
+            'timeout' => self::TIMEOUT,
             'handler' => $this->stack
         ]));
     }

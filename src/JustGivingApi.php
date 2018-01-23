@@ -68,6 +68,12 @@ class JustGivingApi
      */
     private $transport;
 
+    /**
+     * The array of instantiated services.
+     * @var array
+     */
+    private $services = [];
+
     const SANDBOX_BASE_URL = 'https://api.sandbox.justgiving.com';
     const PRODUCTION_BASE_URL = 'https://api.justgiving.com';
     const SANDBOX_AUTH_BASE_URL = 'https://identity.sandbox.justgiving.com';
@@ -172,7 +178,10 @@ class JustGivingApi
      */
     public function getEventsService()
     {
-        return new EventsService($this->getTransport());
+        if (!in_array('events', $this->services)) {
+            $this->services['events'] = new EventsService($this->getTransport());
+        }
+        return $this->services['events'];
     }
 
     /**
@@ -182,7 +191,10 @@ class JustGivingApi
      */
     public function getAccountsService()
     {
-        return new AccountsService($this->getTransport());
+        if (!in_array('accounts', $this->services)) {
+            $this->services['accounts'] = new AccountsService($this->getTransport());
+        }
+        return $this->services['accounts'];
     }
 
     /**
@@ -192,7 +204,10 @@ class JustGivingApi
      */
     public function getFundraisingService()
     {
-        return new FundraisingService($this->getTransport());
+        if (!in_array('fundraising', $this->services)) {
+            $this->services['fundraising'] = new FundraisingService($this->getTransport());
+        }
+        return $this->services['fundraising'];
     }
 
     /**
@@ -202,7 +217,10 @@ class JustGivingApi
      */
     public function getTeamService()
     {
-        return new TeamService($this->getTransport());
+        if (!in_array('team', $this->services)) {
+            $this->services['team'] = new TeamService($this->getTransport());
+        }
+        return $this->services['team'];
     }
 
     /**

@@ -16,7 +16,13 @@ class EventsService extends Service
     /**
      * Get the types of event that Just Giving recognise.
      *
-     * @return array List of types of events.
+     * @return array List of types of events in the form of and array of objects.
+     *  {
+     *    ["description"]=> string(0) ""
+     *    ["eventType"]=> string(13) "PersonalTreks"
+     *    ["id"]=> int(22)
+     *    ["name"]=> string(14) "Personal treks"
+     * }
      */
     public function getTypes()
     {

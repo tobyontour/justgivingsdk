@@ -9,18 +9,18 @@ namespace JustGivingApi\Models;
 /**
  * Class representing a JustGiving account
  */
-class Account
+class Account extends Model
 {
     public $reference;
     public $title;
     public $firstName;
     public $lastName;
-    public $addressLine1;
-    public $addressLine2;
-    public $addressTownOrCity;
-    public $addressCountyOrState;
-    public $addressCountry;
-    public $addressPostcodeOrZipcode;
+    public $Address_Line1;
+    public $Address_Line2;
+    public $Address_TownOrCity;
+    public $Address_CountyOrState;
+    public $Address_Country;
+    public $Address_PostcodeOrZipcode;
     public $email;
     public $password;
     public $acceptTermsAndConditions = false;
@@ -33,37 +33,5 @@ class Account
     public $totalRaised;
     public $joinDate;
     public $userId;
-
-    /**
-     * Constructor.
-     *
-     * @param array An array to prepopulate the event with, often from a JSON decode response.
-     */
-    public function __construct(array $data = [])
-    {
-        foreach ($data as $key => $value) {
-            $key = preg_replace('/^Address\./', 'address', $key);
-            if (property_exists($this, $key)) {
-                $this->$key = $value;
-            }
-        }
-    }
-
-    /**
-     * Convert the object to an array.
-     *
-     * @return array The array to send as part of a REST request.
-     */
-    public function toArray()
-    {
-        $arr = array();
-        foreach (array_keys(get_class_vars('JustGivingApi\Models\Account')) as $var) {
-            $key = preg_replace('/^address/', 'Address.', $var);
-            if (!is_null($this->$key)) {
-                $arr[$key] = $this->$var;
-            }
-        }
-        return $arr;
-    }
 }
 
