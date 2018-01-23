@@ -67,7 +67,12 @@
 
 Class representing a JustGiving account
 
+The Model class contains methods for loading an array into a class's properties and
+exporting the properties to an array. This just makes it easier to program with the
+different structures the REST API needs whilst making it easy for the Services to convert
+the arrays from REST calls to objects easily.
 
+Each child class is basically just a data structure
 
 * Full name: \JustGivingApi\Models\Account
 * Parent class: \JustGivingApi\Models\Model
@@ -119,7 +124,11 @@ The array to send as part of a REST request.
 
 Service that wraps up JustGiving API endpoints starting with /account.
 
-
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
 
 * Full name: \JustGivingApi\Services\AccountsService
 * Parent class: \JustGivingApi\Services\Service
@@ -210,7 +219,14 @@ containing the response data:
 
 Exception for API calls that nicely formats them and sets the status code.
 
-
+This exception is there to be thrown in the case of an error that comes back
+from the API with regards to a call. So, for example, if you tried to create
+a user that was already there or made a call that required authentication but
+hadn't provided it then you'll get an ApiException. It's a child of the
+RuntimeException and adds a public property called $body that contains the
+body of the response if any (the JustGIving API docs show what the content of
+an error would be - it's specific to call that's been made). It also sets the
+error code of the exception to the HTTP response code.
 
 * Full name: \JustGivingApi\Exceptions\ApiException
 * Parent class: 
@@ -243,7 +259,12 @@ ApiException::__construct( \GuzzleHttp\Psr7\Response $response, string $url )
 
 Event class that encapsulates what makes an event in JustGiving.
 
+The Model class contains methods for loading an array into a class's properties and
+exporting the properties to an array. This just makes it easier to program with the
+different structures the REST API needs whilst making it easy for the Services to convert
+the arrays from REST calls to objects easily.
 
+Each child class is basically just a data structure
 
 * Full name: \JustGivingApi\Models\Event
 * Parent class: \JustGivingApi\Models\Model
@@ -295,7 +316,11 @@ The array to send as part of a REST request.
 
 Deals wioth calls to the /event endpoint and child endpoints.
 
-
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
 
 * Full name: \JustGivingApi\Services\EventsService
 * Parent class: \JustGivingApi\Services\Service
@@ -433,7 +458,12 @@ Contains
 
 Class that encapsulates a fundraising page in JustGiving.
 
+The Model class contains methods for loading an array into a class's properties and
+exporting the properties to an array. This just makes it easier to program with the
+different structures the REST API needs whilst making it easy for the Services to convert
+the arrays from REST calls to objects easily.
 
+Each child class is basically just a data structure
 
 * Full name: \JustGivingApi\Models\FundraisingPage
 * Parent class: \JustGivingApi\Models\Model
@@ -485,7 +515,11 @@ The array to send as part of a REST request.
 
 Service that wraps up JustGiving API endpoints starting with /fundraising.
 
-
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
 
 * Full name: \JustGivingApi\Services\FundraisingService
 * Parent class: \JustGivingApi\Services\Service
@@ -823,9 +857,14 @@ Object containing access_token and refresh_token
 
 ## Model
 
+Base model class.
 
+The Model class contains methods for loading an array into a class's properties and
+exporting the properties to an array. This just makes it easier to program with the
+different structures the REST API needs whilst making it easy for the Services to convert
+the arrays from REST calls to objects easily.
 
-
+Each child class is basically just a data structure
 
 * Full name: \JustGivingApi\Models\Model
 
@@ -876,7 +915,11 @@ The array to send as part of a REST request.
 
 The OAuth2Service class.
 
-
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
 
 * Full name: \JustGivingApi\Services\OAuth2Service
 * Parent class: \JustGivingApi\Services\Service
@@ -1002,7 +1045,11 @@ An object with properties of access_token and, optionally, refresh_token.
 
 Base class for services.
 
-
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
 
 * Full name: \JustGivingApi\Services\Service
 
@@ -1033,7 +1080,12 @@ Service::__construct( \JustGivingApi\Transport\Transport $transport )
 
 Class that encapsulates what makes a team in JustGiving.
 
+The Model class contains methods for loading an array into a class's properties and
+exporting the properties to an array. This just makes it easier to program with the
+different structures the REST API needs whilst making it easy for the Services to convert
+the arrays from REST calls to objects easily.
 
+Each child class is basically just a data structure
 
 * Full name: \JustGivingApi\Models\Team
 * Parent class: \JustGivingApi\Models\Model
@@ -1085,7 +1137,11 @@ The array to send as part of a REST request.
 
 Deals wioth calls to the /team endpoint and child endpoints.
 
-
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
 
 * Full name: \JustGivingApi\Services\TeamService
 * Parent class: \JustGivingApi\Services\Service

@@ -11,10 +11,10 @@ test:
 	$(PHPUNIT)
 
 coverage:                                 
-	$(PHPUNIT) -c  --coverage-html code_coverage                             
+	$(PHPUNIT) --coverage-html code_coverage
 
 standards:                                
-	$(PHPCS) --standard=PSR2 
+	$(PHPCS) --standard=PSR2 src
 
 .PHONY: docs
 docs:

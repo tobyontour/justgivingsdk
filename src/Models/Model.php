@@ -9,6 +9,16 @@
 
 namespace JustGivingApi\Models;
 
+/**
+ * Base model class.
+ *
+ * The Model class contains methods for loading an array into a class's properties and
+ * exporting the properties to an array. This just makes it easier to program with the
+ * different structures the REST API needs whilst making it easy for the Services to convert
+ * the arrays from REST calls to objects easily.
+ *
+ * Each child class is basically just a data structure
+ */
 class Model
 {
     /**

@@ -114,7 +114,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">73</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">72</span>
                                 </a>
                             </li>
                             <li>
@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2024569012"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2145097155"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-2024569012" class="accordion-body collapse in">
+            <div id="namespace-2145097155" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1222345234"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-931172115"></a>
                                 <a href="../namespaces/JustGivingApi.html" style="margin-left: 30px; padding-left: 0">JustGivingApi</a>
             </div>
-            <div id="namespace-1222345234" class="accordion-body collapse ">
+            <div id="namespace-931172115" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-552859035"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-167143073"></a>
                                 <a href="../namespaces/JustGivingApi.Exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
             </div>
-            <div id="namespace-552859035" class="accordion-body collapse ">
+            <div id="namespace-167143073" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -180,10 +180,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1408672702"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-328422074"></a>
                                 <a href="../namespaces/JustGivingApi.Models.html" style="margin-left: 30px; padding-left: 0">Models</a>
             </div>
-            <div id="namespace-1408672702" class="accordion-body collapse ">
+            <div id="namespace-328422074" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -202,10 +202,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-155676877"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1761702395"></a>
                                 <a href="../namespaces/JustGivingApi.Services.html" style="margin-left: 30px; padding-left: 0">Services</a>
             </div>
-            <div id="namespace-155676877" class="accordion-body collapse ">
+            <div id="namespace-1761702395" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -225,10 +225,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-116772777"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-11864086"></a>
                                 <a href="../namespaces/JustGivingApi.Transport.html" style="margin-left: 30px; padding-left: 0">Transport</a>
             </div>
-            <div id="namespace-116772777" class="accordion-body collapse ">
+            <div id="namespace-11864086" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -270,7 +270,11 @@
 
                     <h1><small>\JustGivingApi\Services</small>FundraisingService</h1>
                     <p><em>Service that wraps up JustGiving API endpoints starting with /fundraising.</em></p>
-                    
+                    <p>The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.</p>
                     
                                         
                     <section id="summary">
@@ -524,7 +528,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on January 23rd, 2018 at 15:27.
+                    on January 23rd, 2018 at 18:08.
                 </section>
             </section>
         </section>
