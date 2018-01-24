@@ -140,7 +140,7 @@ class JustGivingApi
      * During testing it may be necessary to override the base URL for OAuth2
      * calls.
      *
-     * @param string $newBaseUrl The URL to override the main REST API URL.
+     * @param string $newAuthenticationBaseUrl The URL to override the main REST API URL.
      */
     public function setAuthenticationBaseApiUrl($newAuthenticationBaseUrl)
     {

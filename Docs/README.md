@@ -28,6 +28,8 @@
     * [pageCreate](#pagecreate)
 * [JustGivingApi](#justgivingapi)
     * [__construct](#__construct-7)
+    * [setBaseApiUrl](#setbaseapiurl)
+    * [setAuthenticationBaseApiUrl](#setauthenticationbaseapiurl)
     * [setHandlerStack](#sethandlerstack)
     * [getTransport](#gettransport)
     * [setAccessToken](#setaccesstoken)
@@ -611,6 +613,52 @@ JustGivingApi::__construct( string $apiKey, string $secret = null, boolean $test
 | `$secret` | **string** | The API secret. Needed for authenticated requests on behalf of the user. |
 | `$testMode` | **boolean** | If true it uses the sandbox environment. Defaults to false (production). |
 | `$version` | **integer** | API version. |
+
+
+
+
+---
+
+### setBaseApiUrl
+
+Set the base URL for REST calls.
+
+```php
+JustGivingApi::setBaseApiUrl( string $newBaseUrl )
+```
+
+During testing it may be necessary to override the base URL for REST
+calls.
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$newBaseUrl` | **string** | The URL to override the main REST API URL. |
+
+
+
+
+---
+
+### setAuthenticationBaseApiUrl
+
+Set the base URL for OAuth2 calls.
+
+```php
+JustGivingApi::setAuthenticationBaseApiUrl( string $newAuthenticationBaseUrl )
+```
+
+During testing it may be necessary to override the base URL for OAuth2
+calls.
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$newAuthenticationBaseUrl` | **string** | The URL to override the main REST API URL. |
 
 
 
