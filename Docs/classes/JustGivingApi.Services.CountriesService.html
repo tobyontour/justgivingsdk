@@ -21,7 +21,55 @@
     <script src="../js/jquery.smooth-scroll.js"></script>
     <script src="../js/prism.min.js"></script>
     <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
-    
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
     <link rel="shortcut icon" href="../images/favicon.ico"/>
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
     <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
@@ -96,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1919987622"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1073575927"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1919987622" class="accordion-body collapse in">
+            <div id="namespace-1073575927" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-119361150"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1606662960"></a>
                                 <a href="../namespaces/JustGivingApi.html" style="margin-left: 30px; padding-left: 0">JustGivingApi</a>
             </div>
-            <div id="namespace-119361150" class="accordion-body collapse ">
+            <div id="namespace-1606662960" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1949635775"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2135549336"></a>
                                 <a href="../namespaces/JustGivingApi.Exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
             </div>
-            <div id="namespace-1949635775" class="accordion-body collapse ">
+            <div id="namespace-2135549336" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -132,10 +180,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2031640856"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-330781821"></a>
                                 <a href="../namespaces/JustGivingApi.Models.html" style="margin-left: 30px; padding-left: 0">Models</a>
             </div>
-            <div id="namespace-2031640856" class="accordion-body collapse ">
+            <div id="namespace-330781821" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -154,10 +202,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-695670665"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1211632905"></a>
                                 <a href="../namespaces/JustGivingApi.Services.html" style="margin-left: 30px; padding-left: 0">Services</a>
             </div>
-            <div id="namespace-695670665" class="accordion-body collapse ">
+            <div id="namespace-1211632905" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -178,10 +226,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2039063201"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-667561815"></a>
                                 <a href="../namespaces/JustGivingApi.Transport.html" style="margin-left: 30px; padding-left: 0">Transport</a>
             </div>
-            <div id="namespace-2039063201" class="accordion-body collapse ">
+            <div id="namespace-667561815" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -215,66 +263,221 @@
     <section class="row-fluid">
         <div class="span10 offset2">
             <div class="row-fluid">
-                <div class="span8 content namespace">
+                <div class="span8 content class">
                     <nav>
-                                                <a href="../namespaces/JustGivingApi.html">\JustGivingApi</a>
+                                                <a href="../namespaces/JustGivingApi.Services.html">\JustGivingApi\Services</a> <i class="icon-level-up"></i>
                                             </nav>
-                    <h1><small>\JustGivingApi</small>Services</h1>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
 
+                    <h1><small>\JustGivingApi\Services</small>CountriesService</h1>
+                    <p><em>Deals with calls to the /countries endpoint and child endpoints.</em></p>
+                    <p>The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.</p>
                     
-                    
-                    
-                                        <h2>Classes</h2>
-                    <table class="table table-hover">
-                                            <tr>
-                            <td><a href="../classes/JustGivingApi.Services.AccountsService.html">AccountsService</a></td>
-                            <td><em>Service that wraps up JustGiving API endpoints starting with /account.</em></td>
-                        </tr>
-                                            <tr>
-                            <td><a href="../classes/JustGivingApi.Services.CountriesService.html">CountriesService</a></td>
-                            <td><em>Deals with calls to the /countries endpoint and child endpoints.</em></td>
-                        </tr>
-                                            <tr>
-                            <td><a href="../classes/JustGivingApi.Services.EventsService.html">EventsService</a></td>
-                            <td><em>Deals wioth calls to the /event endpoint and child endpoints.</em></td>
-                        </tr>
-                                            <tr>
-                            <td><a href="../classes/JustGivingApi.Services.FundraisingService.html">FundraisingService</a></td>
-                            <td><em>Service that wraps up JustGiving API endpoints starting with /fundraising.</em></td>
-                        </tr>
-                                            <tr>
-                            <td><a href="../classes/JustGivingApi.Services.OAuth2Service.html">OAuth2Service</a></td>
-                            <td><em>The OAuth2Service class.</em></td>
-                        </tr>
-                                            <tr>
-                            <td><a href="../classes/JustGivingApi.Services.Service.html">Service</a></td>
-                            <td><em>Base class for services.</em></td>
-                        </tr>
-                                            <tr>
-                            <td><a href="../classes/JustGivingApi.Services.TeamService.html">TeamService</a></td>
-                            <td><em>Deals wioth calls to the /team endpoint and child endpoints.</em></td>
-                        </tr>
-                                        </table>
-                                    </div>
-
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/JustGivingApi.Services.Service.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/JustGivingApi.Services.CountriesService.html#method_listCountries" class="">listCountries()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/JustGivingApi.Services.Service.html#property_transport" class="">$transport</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
                 <aside class="span4 detailsbar">
+                                        
+                    
                     <dl>
-                        <dt>Namespace hierarchy</dt>
-                        <dd class="hierarchy">
-                                                                                                                                                                                                                                                                                                                                                                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
-                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/JustGivingApi.html">\JustGivingApi</a></div>
-                                                                                        <div class="namespace-wrapper">\JustGivingApi\Services</div>
-                        </dd>
-                    </dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Services.CountriesService.html"><div class="path-wrapper">Services/CountriesService.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/JustGivingApi.Services.Service.html">\JustGivingApi\Services\Service</a></div>
+                                                                                                    <div class="namespace-wrapper">\JustGivingApi\Services\CountriesService</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
                 </aside>
             </div>
 
-            
-            
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_transport" name="property_transport" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$transport</h3>
+                <pre class="signature">$transport : \JustGivingApi\Transport\Transport</pre>
+                <p><em>The class that allows for performing HTTP requests such as GET, POST, PUT etc.</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/JustGivingApi.Transport.Transport.html">\JustGivingApi\Transport\Transport</a>
+                                            </article>
         </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/JustGivingApi.Services.Service.html"><div class="path-wrapper">\JustGivingApi\Services\Service</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\JustGivingApi\Transport\Transport  <span class="argument">$transport</span>) </pre>
+                <p><em>Constructor.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/JustGivingApi.Transport.Transport.html">\JustGivingApi\Transport\Transport</a></td>
+                                <td>$transport </td>
+                                <td><p>The transport that performs HTTP requests.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/JustGivingApi.Services.Service.html"><div class="path-wrapper">\JustGivingApi\Services\Service</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_listCountries" name="method_listCountries" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">listCountries()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">listCountries() : array</pre>
+                <p><em>GA list of allowable countries for use when registering a new user account. You can use either the country
+name or its corresponding ISO 3166-1 two-letter country code.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>List of types of countries in the form of and array of objects.
+{
+&quot;countryCode&quot;: &quot;AF&quot;,
+&quot;name&quot;: &quot;Afghanistan&quot;
+}</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
     </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">CountriesService.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Services/CountriesService.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
 
     <footer class="row-fluid">
         <section class="span10 offset2">

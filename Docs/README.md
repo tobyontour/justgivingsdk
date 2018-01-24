@@ -11,23 +11,26 @@
     * [accountCreate](#accountcreate)
 * [ApiException](#apiexception)
     * [__construct](#__construct-2)
-* [Event](#event)
+* [CountriesService](#countriesservice)
     * [__construct](#__construct-3)
+    * [listCountries](#listcountries)
+* [Event](#event)
+    * [__construct](#__construct-4)
     * [toArray](#toarray-1)
 * [EventsService](#eventsservice)
-    * [__construct](#__construct-4)
+    * [__construct](#__construct-5)
     * [getTypes](#gettypes)
     * [getEventById](#geteventbyid)
     * [getPagesForEvent](#getpagesforevent)
     * [createEvent](#createevent)
 * [FundraisingPage](#fundraisingpage)
-    * [__construct](#__construct-5)
+    * [__construct](#__construct-6)
     * [toArray](#toarray-2)
 * [FundraisingService](#fundraisingservice)
-    * [__construct](#__construct-6)
+    * [__construct](#__construct-7)
     * [pageCreate](#pagecreate)
 * [JustGivingApi](#justgivingapi)
-    * [__construct](#__construct-7)
+    * [__construct](#__construct-8)
     * [setBaseApiUrl](#setbaseapiurl)
     * [setAuthenticationBaseApiUrl](#setauthenticationbaseapiurl)
     * [setHandlerStack](#sethandlerstack)
@@ -37,27 +40,28 @@
     * [getAccountsService](#getaccountsservice)
     * [getFundraisingService](#getfundraisingservice)
     * [getTeamService](#getteamservice)
+    * [getCountriesService](#getcountriesservice)
     * [getLoginFormUrl](#getloginformurl)
     * [getAuthenticationToken](#getauthenticationtoken)
     * [refreshAuthenticationToken](#refreshauthenticationtoken)
 * [Model](#model)
-    * [__construct](#__construct-8)
+    * [__construct](#__construct-9)
     * [toArray](#toarray-3)
 * [OAuth2Service](#oauth2service)
-    * [__construct](#__construct-9)
+    * [__construct](#__construct-10)
     * [getLoginFormUrl](#getloginformurl-1)
     * [getAuthenticationToken](#getauthenticationtoken-1)
     * [refreshAuthenticationToken](#refreshauthenticationtoken-1)
 * [Service](#service)
-    * [__construct](#__construct-10)
-* [Team](#team)
     * [__construct](#__construct-11)
+* [Team](#team)
+    * [__construct](#__construct-12)
     * [toArray](#toarray-4)
 * [TeamService](#teamservice)
-    * [__construct](#__construct-12)
+    * [__construct](#__construct-13)
     * [createTeam](#createteam)
 * [Transport](#transport)
-    * [__construct](#__construct-13)
+    * [__construct](#__construct-14)
     * [getBaseUrl](#getbaseurl)
     * [setBasicAuth](#setbasicauth)
     * [disableBasicAuth](#disablebasicauth)
@@ -252,6 +256,67 @@ ApiException::__construct( \GuzzleHttp\Psr7\Response $response, string $url )
 | `$response` | **\GuzzleHttp\Psr7\Response** | The response from the Guzzle call. |
 | `$url` | **string** | The URL that was called. |
 
+
+
+
+---
+
+## CountriesService
+
+Deals with calls to the /countries endpoint and child endpoints.
+
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
+
+* Full name: \JustGivingApi\Services\CountriesService
+* Parent class: \JustGivingApi\Services\Service
+
+
+### __construct
+
+Constructor.
+
+```php
+CountriesService::__construct( \JustGivingApi\Transport\Transport $transport )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$transport` | **\JustGivingApi\Transport\Transport** | The transport that performs HTTP requests. |
+
+
+
+
+---
+
+### listCountries
+
+GA list of allowable countries for use when registering a new user account. You can use either the country
+name or its corresponding ISO 3166-1 two-letter country code.
+
+```php
+CountriesService::listCountries(  ): array
+```
+
+
+
+
+
+**Return Value:**
+
+List of types of countries in the form of and array of objects.
+ {
+   "countryCode": "AF",
+   "name": "Afghanistan"
+ }
 
 
 
@@ -806,6 +871,26 @@ JustGivingApi::getTeamService(  ): \JustGivingApi\JustGivingApi\Services\TeamSer
 **Return Value:**
 
 The team service.
+
+
+
+---
+
+### getCountriesService
+
+Gets the countries service.
+
+```php
+JustGivingApi::getCountriesService(  ): \JustGivingApi\JustGivingApi\Services\CountriesService
+```
+
+
+
+
+
+**Return Value:**
+
+The service.
 
 
 
