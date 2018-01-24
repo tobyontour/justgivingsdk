@@ -122,6 +122,32 @@ class JustGivingApi
     }
 
     /**
+     * Set the base URL for REST calls.
+     *
+     * During testing it may be necessary to override the base URL for REST
+     * calls.
+     *
+     * @param string $newBaseUrl The URL to override the main REST API URL.
+     */
+    public function setBaseApiUrl($newBaseUrl)
+    {
+        $this->baseUrl = $newBaseUrl;
+    }
+
+    /**
+     * Set the base URL for OAuth2 calls.
+     *
+     * During testing it may be necessary to override the base URL for OAuth2
+     * calls.
+     *
+     * @param string $newBaseUrl The URL to override the main REST API URL.
+     */
+    public function setAuthenticationBaseApiUrl($newAuthenticationBaseUrl)
+    {
+        $this->authBaseUrl = $newAuthenticationBaseUrl;
+    }
+
+    /**
      * Allows overriding of the transport mechanism.
      *
      * This must be called before getting any services.
