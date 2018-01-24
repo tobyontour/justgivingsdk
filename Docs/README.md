@@ -549,7 +549,7 @@ FundraisingService::__construct( \JustGivingApi\Transport\Transport $transport )
 
 ### pageCreate
 
-
+Creates a fundraising page.
 
 ```php
 FundraisingService::pageCreate( \JustGivingApi\Models\FundraisingPage $page ): Object
@@ -1372,4 +1372,4 @@ object or array depending on the value of $assoc
 
 
 --------
-> This document was automatically generated from source code comments on 2018-01-23 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-01-24 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)

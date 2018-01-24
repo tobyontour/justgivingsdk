@@ -15,6 +15,8 @@ use JustGivingApi\Models\FundraisingPage;
 class FundraisingService extends Service
 {
     /**
+     * Creates a fundraising page.
+     *
      * @param  FundraisingPage $page The page data to be used to create the page
      * @return Object containing the response data:
      *  {
