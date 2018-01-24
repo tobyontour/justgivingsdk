@@ -11,12 +11,39 @@ namespace JustGivingApi\Models;
  */
 class Team extends Model
 {
+    // Common to set and get.
     public $name;
     public $teamShortName;
     public $story;
     public $teamTarget;
     public $targetCurrency;
-    public $TeamImages_TeamLogo_url;
-    public $TeamImages_TeamPhoto_url;
+    public $teamImages;
     public $errorMessage;
+
+    // Get only.
+    public $dateCreated;
+    public $id;
+    public $localCurrencySymbol;
+    public $targetType;
+    public $teamMembers;
+    public $teamType;
+
+    /**
+     * Convert the object to an array.
+     *
+     * @param  array $omitList List of properties to omit.
+     * @return array The array to send as part of a REST request.
+     */
+    public function toArray($omitList = [])
+    {
+        $omitList = array_merge($omitList, [
+            'dateCreated',
+            'id',
+            'localCurrencySymbol',
+            'targetType',
+            'teamMembers',
+            'teamType'
+        ]);
+        return parent::toArray($omitList);
+    }
 }

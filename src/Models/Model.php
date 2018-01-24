@@ -29,7 +29,6 @@ class Model
     public function __construct(array $data = [])
     {
         foreach ($data as $key => $value) {
-            $key = str_replace('.', '_', $key);
             if (property_exists($this, $key)) {
                 $this->$key = $value;
             }
@@ -39,14 +38,15 @@ class Model
     /**
      * Convert the object to an array.
      *
+     * @param  array $omitList List of properties to omit.
      * @return array The array to send as part of a REST request.
      */
-    public function toArray()
+    public function toArray($omitList = [])
     {
         $arr = array();
         foreach (array_keys(get_class_vars(get_class($this))) as $var) {
             $key = str_replace('_', '.', $var);
-            if (!is_null($this->$var)) {
+            if (!is_null($this->$var) && !in_array($var, $omitList)) {
                 $arr[$key] = $this->$var;
             }
         }

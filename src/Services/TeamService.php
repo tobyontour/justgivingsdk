@@ -28,4 +28,16 @@ class TeamService extends Service
 
         return $data;
     }
+
+    /**
+     * Retrieve the details of an existing team.
+     *
+     * @param string $teamName The short name of the team.
+     */
+    public function getTeam($teamName)
+    {
+        $data = $this->transport->get('team/' . $teamName, true);
+
+        return new Team((array)$data);
+    }
 }

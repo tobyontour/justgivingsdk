@@ -81,4 +81,60 @@ class TeamServiceTest extends TestCase
             $headers['Content-Type'][0]
         );
     }
+
+    public function testGetTeam()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetTeam.json'))
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $teamService = $api->getTeamService();
+
+        $team = $teamService->getTeam('test');
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/team/test',
+            (string)$uri
+        );
+
+        $this->assertEquals(
+            'GET',
+            $container[0]['request']->getMethod()
+        );
+
+        $this->assertEquals(
+            'JustGivingApi\Models\Team',
+            get_class($team)
+        );
+
+        //var_dump($team);
+
+        $this->assertEquals('Test', $team->name);
+        $this->assertEquals(611, $team->id);
+        $this->assertEquals('£', $team->localCurrencySymbol);
+        $this->assertEquals(0, $team->raisedSoFar);
+        $this->assertEquals(890, strlen($team->story));
+        $this->assertEquals(0, $team->targetType);
+
+        $this->assertEquals(
+            "https://images.justgiving.com/image/default-team-logo.jpg",
+            $team->teamImages['teamLogo']['url']
+        );
+        $this->assertEquals(
+            "https://images.justgiving.com/image/default-team-image.jpg",
+            $team->teamImages['teamPhoto']['url']
+        );
+        $this->assertEquals(2, count($team->teamMembers));
+        $this->assertEquals("M W for H2Only", $team->teamMembers[1]['pageTitle']);
+        $this->assertEquals('Test', $team->teamShortName);
+        $this->assertEquals(182.3786, $team->teamTarget);
+        $this->assertEquals(1, $team->teamType);
+
+    }
 }

@@ -60,6 +60,7 @@
 * [TeamService](#teamservice)
     * [__construct](#__construct-13)
     * [createTeam](#createteam)
+    * [getTeam](#getteam)
 * [Transport](#transport)
     * [__construct](#__construct-14)
     * [getBaseUrl](#getbaseurl)
@@ -111,11 +112,17 @@ Account::__construct( array $data = array() )
 Convert the object to an array.
 
 ```php
-Account::toArray(  ): array
+Account::toArray( array $omitList = array() ): array
 ```
 
 
 
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$omitList` | **array** | List of properties to omit. |
 
 
 **Return Value:**
@@ -364,11 +371,17 @@ Event::__construct( array $data = array() )
 Convert the object to an array.
 
 ```php
-Event::toArray(  ): array
+Event::toArray( array $omitList = array() ): array
 ```
 
 
 
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$omitList` | **array** | List of properties to omit. |
 
 
 **Return Value:**
@@ -563,11 +576,17 @@ FundraisingPage::__construct( array $data = array() )
 Convert the object to an array.
 
 ```php
-FundraisingPage::toArray(  ): array
+FundraisingPage::toArray( array $omitList = array() ): array
 ```
 
 
 
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$omitList` | **array** | List of properties to omit. |
 
 
 **Return Value:**
@@ -1029,11 +1048,17 @@ Model::__construct( array $data = array() )
 Convert the object to an array.
 
 ```php
-Model::toArray(  ): array
+Model::toArray( array $omitList = array() ): array
 ```
 
 
 
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$omitList` | **array** | List of properties to omit. |
 
 
 **Return Value:**
@@ -1251,11 +1276,17 @@ Team::__construct( array $data = array() )
 Convert the object to an array.
 
 ```php
-Team::toArray(  ): array
+Team::toArray( array $omitList = array() ): array
 ```
 
 
 
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$omitList` | **array** | List of properties to omit. |
 
 
 **Return Value:**
@@ -1323,6 +1354,28 @@ TeamService::createTeam( \JustGivingApi\Models\Team $team ): object
 **Return Value:**
 
 Contains
+
+
+
+---
+
+### getTeam
+
+Retrieve the details of an existing team.
+
+```php
+TeamService::getTeam( string $teamName )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$teamName` | **string** | The short name of the team. |
+
 
 
 
