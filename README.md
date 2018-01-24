@@ -8,7 +8,7 @@ Documentation for this library can be found in the Docs directory: [Documentatio
 The API is a simple wrapper that uses Guzzle for transport and breaks the API into sections based on the endpoint. So for instance
 to get the pages for an event:
 
-```
+```php
 $api = new JustGivingApi('API_KEY');
 
 $events = $api->getEventsService();
@@ -23,7 +23,7 @@ The best way to explore how to use the API is to look at the tests.
 A user of the SDK will mostly deal with the JustGivingApi class - requesting services from it (each one representing one of the dozen or so endpoints) and then calling methods on those services to send and receive data often in the form of instances of model classes.
 So, for instance, to get a list of the event types that are available you could use this code (with API_KEY replaced with an actual API key):
 
-```
+```php
 $api = new JustGivingApi('API_KEY');
 $eventService = $api->getEventsService();
 $pages = $events->getTypes();
@@ -31,7 +31,7 @@ $pages = $events->getTypes();
 
 That will return a list of event types in the form of an array of objects.
 
-```
+```json
 {
   "description": "",
   "eventType": "PersonalTreks",
@@ -42,7 +42,7 @@ That will return a list of event types in the form of an array of objects.
 
 In practice you can chain the calls like this:
 
-```
+```php
 $pages = $api->getEventsService()->getPagesForEvent(246);
 ```
 
@@ -50,13 +50,13 @@ $pages = $api->getEventsService()->getPagesForEvent(246);
 
 Breaking that down a bit: we first get an instance of the JustGivingApi class, passing it the API_KEY and optionally an OAuth secret if we were using an endpoint that was specific to a user (getting event types would be the same regardless of who you were).
 
-```
+```php
 $api = new JustGivingApi('API_KEY');
 ```
 
 So now we have an instance from which we can get the service for dealing with Events. EventsService is a child of the Service class.
 
-```
+```php
 $eventService = $api->getEventsService();
 ```
 
@@ -64,7 +64,7 @@ The reason for splitting the API into several classes, one for each endpoint, is
 
 So now we have an instance of the EventsService and that has several methods for dealing with events. getTypes() returns an array of objects. The parameter types and return types are all documented in the code like this (for another function that takes a parameter):
 
-```
+```php
 /**
  * Get an Event by its ID.
  *
@@ -84,7 +84,7 @@ The Model class contains methods for loading an array into a class's properties 
 
 Each child class is basically just a data structure:
 
-```
+```php
 /**
  * Class that encapsulates what makes a team in JustGiving.
  */
