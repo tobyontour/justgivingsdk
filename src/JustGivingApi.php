@@ -10,6 +10,7 @@ use JustGivingApi\Services\EventsService;
 use JustGivingApi\Services\AccountsService;
 use JustGivingApi\Services\FundraisingService;
 use JustGivingApi\Services\TeamService;
+use JustGivingApi\Services\CountriesService;
 use JustGivingApi\Services\OAuth2Service;
 use JustGivingApi\Transport\Transport;
 use GuzzleHttp\Client;
@@ -248,6 +249,20 @@ class JustGivingApi
         }
         return $this->services['team'];
     }
+
+    /**
+     * Gets the countries service.
+     *
+     * @return JustGivingApi\Services\CountriesService The service.
+     */
+    public function getCountriesService()
+    {
+        if (!in_array('countries', $this->services)) {
+            $this->services['countries'] = new CountriesService($this->getTransport());
+        }
+        return $this->services['countries'];
+    }
+
 
     /**
      * Authentication
