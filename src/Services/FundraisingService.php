@@ -42,4 +42,27 @@ class FundraisingService extends Service
         }
         return $data;
     }
+
+    /**
+     * Get a page update by its ID.
+     *
+     * @param  string $pageShortName The page name
+     * @param  int $updateId The ID of the update
+     * @return object Containing the Id, Video, CreatedDate, and Message
+     */
+    public function getPageUpdateById($pageShortName, $updateId)
+    {
+        return $this->transport->get('fundraising/pages/' . $pageShortName . '/updates/' . $updateId);
+    }
+
+    /**
+     * Get a page's updates.
+     *
+     * @param  string $pageShortName The page name
+     * @return object Containing the Id, Video, CreatedDate, and Message
+     */
+    public function getPageUpdates($pageShortName)
+    {
+        return $this->transport->get('fundraising/pages/' . $pageShortName . '/updates');
+    }
 }

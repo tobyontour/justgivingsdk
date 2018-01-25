@@ -32,6 +32,8 @@
 * [FundraisingService](#fundraisingservice)
     * [__construct](#__construct-8)
     * [pageCreate](#pagecreate)
+    * [getPageUpdateById](#getpageupdatebyid)
+    * [getPageUpdates](#getpageupdates)
 * [JustGivingApi](#justgivingapi)
     * [__construct](#__construct-9)
     * [setBaseApiUrl](#setbaseapiurl)
@@ -727,6 +729,59 @@ containing the response data:
      "signOnUrl": "string",
      "errorMessage": "string"
  }
+
+
+
+---
+
+### getPageUpdateById
+
+Get a page update by its ID.
+
+```php
+FundraisingService::getPageUpdateById( string $pageShortName, integer $updateId ): object
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$pageShortName` | **string** | The page name |
+| `$updateId` | **integer** | The ID of the update |
+
+
+**Return Value:**
+
+Containing the Id, Video, CreatedDate, and Message
+
+
+
+---
+
+### getPageUpdates
+
+Get a page's updates.
+
+```php
+FundraisingService::getPageUpdates( string $pageShortName ): object
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$pageShortName` | **string** | The page name |
+
+
+**Return Value:**
+
+Containing the Id, Video, CreatedDate, and Message
 
 
 

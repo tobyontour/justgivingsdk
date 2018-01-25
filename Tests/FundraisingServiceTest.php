@@ -23,6 +23,42 @@ class FundraisingServiceTest extends TestCase
         return $handlerStack;
     }
 
+    /**
+     * @param  Request $request The Guzzle request
+     * @param  string $method The expected method
+     * @param  string $url The expected url
+     * @param  string &$body Populated with the body
+     * @param  bool $assoc Return the body parsed as an associative array.
+     * @return bool True if the request had the correct method and url
+     */
+    protected function validateMethodAndUrl($request, $method, $url, &$body, $assoc = true)
+    {
+        if ($request->getUri() != $url) {
+            return false;
+        }
+
+        if ($request->getMethod() != $method) {
+            return false;
+        }
+
+        $body = json_decode($request->getBody(), $assoc);
+
+        return true;
+    }
+
+    protected function initApi(&$container, $body = '', $statusCode = 200)
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response($statusCode, [], $body)
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        return $api;
+    }
+
     public function testRegisterFundraisingPage()
     {
         $api = new JustGivingApi('API_KEY', null, true);
@@ -100,24 +136,71 @@ class FundraisingServiceTest extends TestCase
 
         $result = $fundraisingService->pageCreate($page);
 
-        $uri = $container[0]['request']->getUri();
-
-        $this->assertEquals(
-            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages',
-            (string)$uri
-        );
-
-        $this->assertEquals(
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
             'PUT',
-            $container[0]['request']->getMethod()
-        );
-
-        $body = json_decode($container[0]['request']->getBody(), true);
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages',
+            $body
+        ), 'Method and URL are correct.');
 
         $this->assertEquals(
             0,
             count(array_diff_assoc($body, $pageArray)),
             'The array sent to the register fundraising page endpoint is the same one we defined.'
+        );
+    }
+
+    public function testGetPageUpdateById()
+    {
+        $api = $this->initApi(
+            $container,
+            '{
+            "Id": 123,
+            "Video": "string",
+            "CreatedDate": "2018-01-24T15:19:24.859Z",
+            "Message": "Ipsum lorem"
+            }',
+            200
+        );
+
+        $fundraisingService = $api->getFundraisingService();
+
+        $update = $fundraisingService->getPageUpdateById('test-page', 123);
+
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
+            'GET',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages/test-page/updates/' . 123,
+            $body
+        ), 'Method and URL are correct.');
+
+        $this->assertEquals(
+            'Ipsum lorem',
+            $update->Message
+        );
+    }
+
+    public function testGetPageUpdates()
+    {
+        $api = $this->initApi(
+            $container,
+            '[]', // Need actual data.
+            200
+        );
+
+        $fundraisingService = $api->getFundraisingService();
+
+        $updates = $fundraisingService->getPageUpdates('test-page');
+
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
+            'GET',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages/test-page/updates',
+            $body
+        ), 'Method and URL are correct.');
+
+        $this->assertTrue(
+            is_array($updates)
         );
     }
 }
