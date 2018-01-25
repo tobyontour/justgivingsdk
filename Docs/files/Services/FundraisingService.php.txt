@@ -30,7 +30,7 @@ class FundraisingService extends Service
      *      "errorMessage": "string"
      *  }
      */
-    public function pageCreate(FundraisingPage $page)
+    public function createPage(FundraisingPage $page)
     {
         try {
             $data = $this->transport->put('fundraising/pages', $page->toArray());

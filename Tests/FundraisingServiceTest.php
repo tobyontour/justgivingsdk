@@ -134,7 +134,7 @@ class FundraisingServiceTest extends TestCase
 
         $page = new FundraisingPage($pageArray);
 
-        $result = $fundraisingService->pageCreate($page);
+        $result = $fundraisingService->createPage($page);
 
         $this->assertTrue($this->validateMethodAndUrl(
             $container[0]['request'],

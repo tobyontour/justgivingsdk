@@ -31,7 +31,7 @@
     * [toArray](#toarray-2)
 * [FundraisingService](#fundraisingservice)
     * [__construct](#__construct-8)
-    * [pageCreate](#pagecreate)
+    * [createPage](#createpage)
     * [getPageUpdateById](#getpageupdatebyid)
     * [getPageUpdates](#getpageupdates)
 * [JustGivingApi](#justgivingapi)
@@ -698,12 +698,12 @@ FundraisingService::__construct( \JustGivingApi\Transport\Transport $transport )
 
 ---
 
-### pageCreate
+### createPage
 
 Creates a fundraising page.
 
 ```php
-FundraisingService::pageCreate( \JustGivingApi\Models\FundraisingPage $page ): Object
+FundraisingService::createPage( \JustGivingApi\Models\FundraisingPage $page ): Object
 ```
 
 
