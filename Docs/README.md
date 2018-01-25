@@ -61,6 +61,8 @@
     * [__construct](#__construct-13)
     * [createTeam](#createteam)
     * [getTeam](#getteam)
+    * [updateTeam](#updateteam)
+    * [joinTeam](#jointeam)
 * [Transport](#transport)
     * [__construct](#__construct-14)
     * [getBaseUrl](#getbaseurl)
@@ -1381,6 +1383,55 @@ TeamService::getTeam( string $teamName )
 
 ---
 
+### updateTeam
+
+Update a team
+
+```php
+TeamService::updateTeam( \JustGivingApi\Models\Team $team ): object
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$team` | **\JustGivingApi\Models\Team** | The team object to be updated. It must have a teamShortName. |
+
+
+**Return Value:**
+
+...
+
+
+
+---
+
+### joinTeam
+
+Join a team.
+
+```php
+TeamService::joinTeam( string $teamShortName, string $pageShortName )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$teamShortName` | **string** | The team to join. |
+| `$pageShortName` | **string** | The fundraising page to join to the team. |
+
+
+
+
+---
+
 ## Transport
 
 A class allowing for REST requests.
@@ -1558,4 +1609,4 @@ object or array depending on the value of $assoc
 
 
 --------
-> This document was automatically generated from source code comments on 2018-01-24 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-01-25 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)

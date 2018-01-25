@@ -30,7 +30,15 @@ class Model
     {
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
-                $this->$key = $value;
+                if (!empty($this->$key) && is_array($this->$key)) {
+                    if (is_array($value)) {
+                        $this->$key = array_merge($this->$key, $value);
+                    } else {
+                        $this->{$key}[] = $value;
+                    }
+                } else {
+                    $this->$key = $value;
+                }
             }
         }
     }
@@ -45,9 +53,8 @@ class Model
     {
         $arr = array();
         foreach (array_keys(get_class_vars(get_class($this))) as $var) {
-            $key = str_replace('_', '.', $var);
             if (!is_null($this->$var) && !in_array($var, $omitList)) {
-                $arr[$key] = $this->$var;
+                $arr[$var] = $this->$var;
             }
         }
         return $arr;
