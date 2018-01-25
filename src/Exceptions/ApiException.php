@@ -35,7 +35,7 @@ class ApiException extends \RuntimeException
     public function __construct($response, $url)
     {
         $statusCode = $response->getStatusCode();
-        $this->body = $response->getBody();
+        $this->body = $response->getBody()->getContents();
 
         parent::__construct("Call to $url failed with status code $statusCode.", $statusCode);
     }

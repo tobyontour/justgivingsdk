@@ -40,4 +40,35 @@ class TeamService extends Service
 
         return new Team((array)$data);
     }
+
+    /**
+     * Update a team
+     *
+     * @param Team $team The team object to be updated. It must have a teamShortName.
+     *
+     * @return object ...
+     */
+    public function updateTeam(Team $team)
+    {
+        if (empty($team->teamShortName)) {
+            throw new \InvalidArgumentException('Missing teamShortName in Team that is being updated');
+        }
+
+        return $this->transport->put('team/' . $team->teamShortName, $team->toArray(['teamShortName']));
+    }
+
+    /**
+     * Join a team.
+     *
+     * @param string $teamShortName The team to join.
+     * @param string $pageShortName The fundraising page to join to the team.
+     */
+    public function joinTeam($teamShortName, $pageShortName)
+    {
+        return $this->transport->put('team/join/' . $teamShortName, ['pageShortName' => $pageShortName]);
+    }
+
+    /*
+     * createOrUpdateTeam - This may not be required.
+     */
 }

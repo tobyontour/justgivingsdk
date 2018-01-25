@@ -113,8 +113,6 @@ class TeamServiceTest extends TestCase
             get_class($team)
         );
 
-        //var_dump($team);
-
         $this->assertEquals('Test', $team->name);
         $this->assertEquals(611, $team->id);
         $this->assertEquals('£', $team->localCurrencySymbol);
@@ -135,6 +133,127 @@ class TeamServiceTest extends TestCase
         $this->assertEquals('Test', $team->teamShortName);
         $this->assertEquals(182.3786, $team->teamTarget);
         $this->assertEquals(1, $team->teamType);
+    }
 
+    public function testBadUpdateTeam()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $teamService = $api->getTeamService();
+
+        // Note the lack of a teamShortName
+        $teamArray = [
+            'name' => 'The A-Team',
+            'story' => 'This is the story of how my life got flipped turned upside-down.',
+            'teamTarget' => 3500,
+            'targetCurrency' => 'GBP',
+            'teamImages.TeamLogo.url' => 'http://example.com/1.jpg',
+            'teamImages.TeamPhoto.url' => 'http://example.com/2.jpg'
+        ];
+
+        $team = new Team($teamArray);
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $result = $teamService->updateTeam($team);
+    }
+
+    public function testUpdateTeam()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], '{
+              "Next.rel": "string",
+              "Next.uri": "string",
+              "Next.type": "string",
+              "teamShortName": "a-team",
+              "errorMessage": "string"
+            }') // Need actual content from a call.
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $teamService = $api->getTeamService();
+
+        $this->assertEquals(
+            'JustGivingApi\Services\TeamService',
+            get_class($teamService)
+        );
+
+        $teamArray = [
+            'name' => 'The A-Team',
+            'teamShortName' => 'a-team',
+            'story' => 'This is the story of how my life got flipped turned upside-down.',
+            'teamTarget' => 3500,
+            'targetCurrency' => 'GBP',
+            'teamImages' => [
+                'teamLogo' => ['url' => 'http://example.com/1.jpg'],
+                'teamPhoto' => ['url' => 'http://example.com/2.jpg']
+            ]
+        ];
+
+        $team = new Team($teamArray);
+
+        $result = $teamService->updateTeam($team);
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/team/a-team',
+            (string)$container[0]['request']->getUri()
+        );
+
+        $this->assertEquals(
+            'PUT',
+            $container[0]['request']->getMethod()
+        );
+
+        $body = json_decode($container[0]['request']->getBody(), true);
+
+        $this->assertEquals($teamArray['name'], $body['name']);
+        $this->assertEquals($teamArray['teamTarget'], $body['teamTarget']);
+        $this->assertEquals($teamArray['story'], $body['story']);
+
+        $this->assertNotNull($body['teamImages']['teamLogo']['url']);
+        $this->assertEquals($teamArray['teamImages']['teamLogo']['url'], $body['teamImages']['teamLogo']['url']);
+        $this->assertNotNull($body['teamImages']['teamPhoto']['url']);
+        $this->assertEquals($teamArray['teamImages']['teamPhoto']['url'], $body['teamImages']['teamPhoto']['url']);
+
+        // Check that the other elements have been stripped.
+        $this->assertEquals(5, count($body));
+
+        $this->assertTrue(is_object($result));
+        $this->assertEquals('a-team', $result->teamShortName);
+    }
+
+    public function testJoinTeam()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], '') // Need actual content from a call.
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $teamService = $api->getTeamService();
+
+        $teamShortName = 'a-team';
+        $pageShortName = 'test-page';
+
+        $result = $teamService->joinTeam($teamShortName, $pageShortName);
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/team/join/a-team',
+            (string)$container[0]['request']->getUri()
+        );
+
+        $this->assertEquals(
+            'PUT',
+            $container[0]['request']->getMethod()
+        );
+
+        $body = json_decode($container[0]['request']->getBody(), true);
+
+        $this->assertEquals('test-page', $body['pageShortName']);
     }
 }
