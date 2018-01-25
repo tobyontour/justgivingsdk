@@ -29,6 +29,11 @@ class FundraisingPage extends Model
     public $pageStory;
     public $pageSummaryWhat;
     public $pageSummaryWhy;
+    public $consistentErrorResponses;
+    public $teamId;
+    public $currency;
+
+    // These may well be arrays.
     public $CustomCodes_customCode1;
     public $CustomCodes_customCode2;
     public $CustomCodes_customCode3;
@@ -50,8 +55,5 @@ class FundraisingPage extends Model
     public $RememberedPersonReference_RememberedPerson_dateOfDeath;
     public $RememberedPersonReference_RememberedPerson_errorMessage;
     public $RememberedPersonReference_errorMessage;
-    public $consistentErrorResponses;
-    public $teamId;
-    public $currency;
 }
 

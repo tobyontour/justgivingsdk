@@ -11,6 +11,7 @@ use JustGivingApi\Services\AccountsService;
 use JustGivingApi\Services\FundraisingService;
 use JustGivingApi\Services\TeamService;
 use JustGivingApi\Services\CountriesService;
+use JustGivingApi\Services\CurrencyService;
 use JustGivingApi\Services\OAuth2Service;
 use JustGivingApi\Transport\Transport;
 use GuzzleHttp\Client;
@@ -263,6 +264,18 @@ class JustGivingApi
         return $this->services['countries'];
     }
 
+    /**
+     * Gets the currency service.
+     *
+     * @return JustGivingApi\Services\CurrencyService The service.
+     */
+    public function getCurrencyService()
+    {
+        if (!in_array('currency', $this->services)) {
+            $this->services['currency'] = new CurrencyService($this->getTransport());
+        }
+        return $this->services['currency'];
+    }
 
     /**
      * Authentication

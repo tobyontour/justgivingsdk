@@ -14,23 +14,26 @@
 * [CountriesService](#countriesservice)
     * [__construct](#__construct-3)
     * [listCountries](#listcountries)
-* [Event](#event)
+* [CurrencyService](#currencyservice)
     * [__construct](#__construct-4)
+    * [getCurrencies](#getcurrencies)
+* [Event](#event)
+    * [__construct](#__construct-5)
     * [toArray](#toarray-1)
 * [EventsService](#eventsservice)
-    * [__construct](#__construct-5)
+    * [__construct](#__construct-6)
     * [getTypes](#gettypes)
     * [getEventById](#geteventbyid)
     * [getPagesForEvent](#getpagesforevent)
     * [createEvent](#createevent)
 * [FundraisingPage](#fundraisingpage)
-    * [__construct](#__construct-6)
+    * [__construct](#__construct-7)
     * [toArray](#toarray-2)
 * [FundraisingService](#fundraisingservice)
-    * [__construct](#__construct-7)
+    * [__construct](#__construct-8)
     * [pageCreate](#pagecreate)
 * [JustGivingApi](#justgivingapi)
-    * [__construct](#__construct-8)
+    * [__construct](#__construct-9)
     * [setBaseApiUrl](#setbaseapiurl)
     * [setAuthenticationBaseApiUrl](#setauthenticationbaseapiurl)
     * [setHandlerStack](#sethandlerstack)
@@ -41,30 +44,31 @@
     * [getFundraisingService](#getfundraisingservice)
     * [getTeamService](#getteamservice)
     * [getCountriesService](#getcountriesservice)
+    * [getCurrencyService](#getcurrencyservice)
     * [getLoginFormUrl](#getloginformurl)
     * [getAuthenticationToken](#getauthenticationtoken)
     * [refreshAuthenticationToken](#refreshauthenticationtoken)
 * [Model](#model)
-    * [__construct](#__construct-9)
+    * [__construct](#__construct-10)
     * [toArray](#toarray-3)
 * [OAuth2Service](#oauth2service)
-    * [__construct](#__construct-10)
+    * [__construct](#__construct-11)
     * [getLoginFormUrl](#getloginformurl-1)
     * [getAuthenticationToken](#getauthenticationtoken-1)
     * [refreshAuthenticationToken](#refreshauthenticationtoken-1)
 * [Service](#service)
-    * [__construct](#__construct-11)
-* [Team](#team)
     * [__construct](#__construct-12)
+* [Team](#team)
+    * [__construct](#__construct-13)
     * [toArray](#toarray-4)
 * [TeamService](#teamservice)
-    * [__construct](#__construct-13)
+    * [__construct](#__construct-14)
     * [createTeam](#createteam)
     * [getTeam](#getteam)
     * [updateTeam](#updateteam)
     * [joinTeam](#jointeam)
 * [Transport](#transport)
-    * [__construct](#__construct-14)
+    * [__construct](#__construct-15)
     * [getBaseUrl](#getbaseurl)
     * [setBasicAuth](#setbasicauth)
     * [disableBasicAuth](#disablebasicauth)
@@ -326,6 +330,63 @@ List of types of countries in the form of and array of objects.
    "countryCode": "AF",
    "name": "Afghanistan"
  }
+
+
+
+---
+
+## CurrencyService
+
+Deals with calls to the /countries endpoint and child endpoints.
+
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
+
+* Full name: \JustGivingApi\Services\CurrencyService
+* Parent class: \JustGivingApi\Services\Service
+
+
+### __construct
+
+Constructor.
+
+```php
+CurrencyService::__construct( \JustGivingApi\Transport\Transport $transport )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$transport` | **\JustGivingApi\Transport\Transport** | The transport that performs HTTP requests. |
+
+
+
+
+---
+
+### getCurrencies
+
+Returns a list of allowable currency codes for use in page creation.
+
+```php
+CurrencyService::getCurrencies(  ): array
+```
+
+
+
+
+
+**Return Value:**
+
+List of types of countries in the form of and array of objects.
+ {"currencyCode":"GBP","currencySymbol":"£","description":"British Pounds"}
 
 
 
@@ -903,6 +964,26 @@ Gets the countries service.
 
 ```php
 JustGivingApi::getCountriesService(  ): \JustGivingApi\JustGivingApi\Services\CountriesService
+```
+
+
+
+
+
+**Return Value:**
+
+The service.
+
+
+
+---
+
+### getCurrencyService
+
+Gets the currency service.
+
+```php
+JustGivingApi::getCurrencyService(  ): \JustGivingApi\JustGivingApi\Services\CurrencyService
 ```
 
 
