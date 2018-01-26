@@ -203,4 +203,28 @@ class FundraisingServiceTest extends TestCase
             is_array($updates)
         );
     }
+
+    public function testSuggestPageShortNames()
+    {
+        $api = $this->initApi(
+            $container,
+            file_get_contents(__DIR__ . '/Mockdata/SuggestPageShortNames.json'),
+            200
+        );
+
+        $fundraisingService = $api->getFundraisingService();
+
+        $suggestions = $fundraisingService->getShortNameSuggestions('jon');
+
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
+            'GET',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages/suggest?preferredName=jon',
+            $body
+        ), 'Method and URL are correct.');
+
+        $this->assertTrue(
+            is_array($suggestions)
+        );
+    }
 }

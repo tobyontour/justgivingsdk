@@ -34,6 +34,7 @@
     * [createPage](#createpage)
     * [getPageUpdateById](#getpageupdatebyid)
     * [getPageUpdates](#getpageupdates)
+    * [getShortNameSuggestions](#getshortnamesuggestions)
 * [JustGivingApi](#justgivingapi)
     * [__construct](#__construct-9)
     * [setBaseApiUrl](#setbaseapiurl)
@@ -58,19 +59,22 @@
     * [getLoginFormUrl](#getloginformurl-1)
     * [getAuthenticationToken](#getauthenticationtoken-1)
     * [refreshAuthenticationToken](#refreshauthenticationtoken-1)
-* [Service](#service)
+* [OneSearchService](#onesearchservice)
     * [__construct](#__construct-12)
-* [Team](#team)
+    * [getCurrencies](#getcurrencies-1)
+* [Service](#service)
     * [__construct](#__construct-13)
+* [Team](#team)
+    * [__construct](#__construct-14)
     * [toArray](#toarray-4)
 * [TeamService](#teamservice)
-    * [__construct](#__construct-14)
+    * [__construct](#__construct-15)
     * [createTeam](#createteam)
     * [getTeam](#getteam)
     * [updateTeam](#updateteam)
     * [joinTeam](#jointeam)
 * [Transport](#transport)
-    * [__construct](#__construct-15)
+    * [__construct](#__construct-16)
     * [getBaseUrl](#getbaseurl)
     * [setBasicAuth](#setbasicauth)
     * [disableBasicAuth](#disablebasicauth)
@@ -787,6 +791,32 @@ Containing the Id, Video, CreatedDate, and Message
 
 ---
 
+### getShortNameSuggestions
+
+Suggests a few short page names based on user preference.
+
+```php
+FundraisingService::getShortNameSuggestions( string $preferredName ): array
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$preferredName` | **string** | The preferred page short name. |
+
+
+**Return Value:**
+
+Strings containing unused suggestions.
+
+
+
+---
+
 ## JustGivingApi
 
 Main class for making requests to the JustGiving API.
@@ -1337,6 +1367,63 @@ An object with properties of access_token and, optionally, refresh_token.
 
 ---
 
+## OneSearchService
+
+Deals with calls to the /countries endpoint and child endpoints.
+
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
+
+* Full name: \JustGivingApi\Services\OneSearchService
+* Parent class: \JustGivingApi\Services\Service
+
+
+### __construct
+
+Constructor.
+
+```php
+OneSearchService::__construct( \JustGivingApi\Transport\Transport $transport )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$transport` | **\JustGivingApi\Transport\Transport** | The transport that performs HTTP requests. |
+
+
+
+
+---
+
+### getCurrencies
+
+Returns a list of allowable currency codes for use in page creation.
+
+```php
+OneSearchService::getCurrencies(  ): array
+```
+
+
+
+
+
+**Return Value:**
+
+List of types of countries in the form of and array of objects.
+ {"currencyCode":"GBP","currencySymbol":"£","description":"British Pounds"}
+
+
+
+---
+
 ## Service
 
 Base class for services.
@@ -1745,4 +1832,4 @@ object or array depending on the value of $assoc
 
 
 --------
-> This document was automatically generated from source code comments on 2018-01-25 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-01-26 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)

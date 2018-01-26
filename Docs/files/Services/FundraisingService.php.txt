@@ -65,5 +65,20 @@ class FundraisingService extends Service
     {
         return $this->transport->get('fundraising/pages/' . $pageShortName . '/updates');
     }
+
+    /**
+     * Suggests a few short page names based on user preference.
+     *
+     * @param  string $preferredName The preferred page short name.
+     * @return array Strings containing unused suggestions.
+     */
+    public function getShortNameSuggestions($preferredName)
+    {
+        $data = $this->transport->get('fundraising/pages/suggest?preferredName=' . urlencode($preferredName));
+        if (!isset($data->Names) || !is_array($data->Names)) {
+            throw new \RuntimeException('Invalid data returned from REST call to SuggestPageShortNames');
+        }
+        return $data->Names;
+    }
 }
 
