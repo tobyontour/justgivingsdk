@@ -48,6 +48,8 @@
     * [getTeamService](#getteamservice)
     * [getCountriesService](#getcountriesservice)
     * [getCurrencyService](#getcurrencyservice)
+    * [getOneSearchService](#getonesearchservice)
+    * [search](#search)
     * [getLoginFormUrl](#getloginformurl)
     * [getAuthenticationToken](#getauthenticationtoken)
     * [refreshAuthenticationToken](#refreshauthenticationtoken)
@@ -61,20 +63,23 @@
     * [refreshAuthenticationToken](#refreshauthenticationtoken-1)
 * [OneSearchService](#onesearchservice)
     * [__construct](#__construct-12)
-    * [getCurrencies](#getcurrencies-1)
-* [Service](#service)
+    * [search](#search-1)
+* [Query](#query)
     * [__construct](#__construct-13)
-* [Team](#team)
+    * [__toString](#__tostring)
+* [Service](#service)
     * [__construct](#__construct-14)
+* [Team](#team)
+    * [__construct](#__construct-15)
     * [toArray](#toarray-4)
 * [TeamService](#teamservice)
-    * [__construct](#__construct-15)
+    * [__construct](#__construct-16)
     * [createTeam](#createteam)
     * [getTeam](#getteam)
     * [updateTeam](#updateteam)
     * [joinTeam](#jointeam)
 * [Transport](#transport)
-    * [__construct](#__construct-16)
+    * [__construct](#__construct-17)
     * [getBaseUrl](#getbaseurl)
     * [setBasicAuth](#setbasicauth)
     * [disableBasicAuth](#disablebasicauth)
@@ -1083,6 +1088,52 @@ The service.
 
 ---
 
+### getOneSearchService
+
+Gets the currency service.
+
+```php
+JustGivingApi::getOneSearchService(  ): \JustGivingApi\JustGivingApi\Services\CurrencyService
+```
+
+
+
+
+
+**Return Value:**
+
+The service.
+
+
+
+---
+
+### search
+
+Perform a search using the onesearch service.
+
+```php
+JustGivingApi::search( \JustGivingApi\Models\Query $query ): object
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$query` | **\JustGivingApi\Models\Query** | The search query object. |
+
+
+**Return Value:**
+
+The result object.
+
+
+
+---
+
 ### getLoginFormUrl
 
 Starts the authentication process by providing the URL to redirect the user to.
@@ -1403,12 +1454,70 @@ OneSearchService::__construct( \JustGivingApi\Transport\Transport $transport )
 
 ---
 
-### getCurrencies
+### search
 
 Returns a list of allowable currency codes for use in page creation.
 
 ```php
-OneSearchService::getCurrencies(  ): array
+OneSearchService::search( \JustGivingApi\Models\Query $query ): array
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$query` | **\JustGivingApi\Models\Query** | The query object to use for the search. |
+
+
+**Return Value:**
+
+List of types of countries in the form of and array of objects.
+ {"currencyCode":"GBP","currencySymbol":"£","description":"British Pounds"}
+
+
+
+---
+
+## Query
+
+Class that encapsulates a onesearch query.
+
+
+
+* Full name: \JustGivingApi\Models\Query
+
+
+### __construct
+
+Constructor.
+
+```php
+Query::__construct( string $query = &#039;&#039; )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$query` | **string** | The query. |
+
+
+
+
+---
+
+### __toString
+
+Returns the query as a formatted URL query string.
+
+```php
+Query::__toString(  ): string
 ```
 
 
@@ -1417,8 +1526,7 @@ OneSearchService::getCurrencies(  ): array
 
 **Return Value:**
 
-List of types of countries in the form of and array of objects.
- {"currencyCode":"GBP","currencySymbol":"£","description":"British Pounds"}
+The query string. No leading '?''
 
 
 

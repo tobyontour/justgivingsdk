@@ -1,0 +1,65 @@
+{
+    "GroupedResults": [
+        {
+            "Title": "Charities",
+            "Count": 2,
+            "Results": [
+                {
+                    "Subtext": "Registered charity No. 1160024",
+                    "Link": "http://www.justgiving.com/greatormondstreet",
+                    "LinkPath": "/greatormondstreet",
+                    "CountryCode": "United Kingdom",
+                    "Highlight": "",
+                    "Id": 254,
+                    "Name": "Great Ormond Street Hospital Children's Charity",
+                    "Description": "We fundraise to enhance Great Ormond Street Hospital’s ability to transform the health and wellbeing of children and young people. Donations help to fund advanced medical equipment, child and family support services, pioneering research and rebuilding and refurbishment.",
+                    "Logo": "//images.justgiving.com/image/e5a09986-d0cd-4196-a0a6-4d7acb9b8ea4.png?template=size120x120&imagetype=charitybrandinglogo&trymigrate=true",
+                    "Type": "Charity",
+                    "Score": 410.9756,
+                    "OwnerFullName": null,
+                    "Amount": null,
+                    "PitchFor": null,
+                    "ProfileWhat": "help the hospital offer a better future",
+                    "ProfileWhy": "seriously ill children across the UK",
+                    "CreatedDate": "0001-01-01T00:00:00",
+                    "CharityId": 0,
+                    "EventId": 0,
+                    "EventDate": null,
+                    "TargetAmount": 0,
+                    "FundraiserRevenueStreamId": 0
+                },
+                {
+                    "Subtext": "Registered charity No. 1142330",
+                    "Link": "http://www.justgiving.com/smileswithgrace",
+                    "LinkPath": "/smileswithgrace",
+                    "CountryCode": "United Kingdom",
+                    "Highlight": "... a collaboration between <strong>GOSH</strong> and the Institute of Child...",
+                    "Id": 246586,
+                    "Name": "Smiles with Grace",
+                    "Description": "A charity formed by Grace Boxall a teenager in remission from a brain tumour. We are sponsoring a collaboration between GOSH and the Institute of Child Research to develop a bio-market for spinal lipoma. Unfortunately Grace lost her battle against cancer on 26th Sept '13.Thank you for your support.",
+                    "Logo": "//images.justgiving.com/image/ff7f1925-abda-4a83-babf-7e61fa7e5c09.jpg?template=size120x120&imagetype=charitybrandinglogo&trymigrate=true",
+                    "Type": "Charity",
+                    "Score": 4.7591457,
+                    "OwnerFullName": null,
+                    "Amount": null,
+                    "PitchFor": null,
+                    "ProfileWhat": "Project funding, research and education",
+                    "ProfileWhy": "Help all sick young people",
+                    "CreatedDate": "0001-01-01T00:00:00",
+                    "CharityId": 0,
+                    "EventId": 0,
+                    "EventDate": null,
+                    "TargetAmount": 0,
+                    "FundraiserRevenueStreamId": 0
+                }
+            ],
+            "Specific": "charity"
+        }
+    ],
+    "SpecificIndex": "charity",
+    "Country": "GB",
+    "Query": "gosh",
+    "Limit": 3,
+    "Total": 2,
+    "Suggestions": []
+}

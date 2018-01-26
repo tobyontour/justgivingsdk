@@ -1,0 +1,29 @@
+{
+    "activityCharityCreated": false,
+    "ownerProfileImageUrls": null,
+    "branding": {
+        "buttonColour": null,
+        "buttonTextColour": null,
+        "headerTextColour": null,
+        "thermometerBackgroundColour": null,
+        "thermometerFillColour": null,
+        "thermometerTextColour": null
+    },
+    "charity": {
+        "id": 0,
+        "name": null,
+        "description": null,
+        "logoUrl": null,
+        "logoAbsoluteUrl": null,
+        "profilePageUrl": null,
+        "registrationNumber": null
+    },
+    "domain": null,
+    "smsCode": null,
+    "companyAppealId": 0,
+    "rememberedPersonSummary": null,
+    "pageSummaryWhat": null,
+    "pageSummaryWhy": null,
+    "teams": null,
+    "pageSummary": ""
+}

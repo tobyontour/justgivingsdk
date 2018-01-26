@@ -27,4 +27,3 @@ class OneSearchService extends Service
         return $data;
     }
 }
-

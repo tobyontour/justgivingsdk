@@ -14,6 +14,8 @@ use JustGivingApi\Services\CountriesService;
 use JustGivingApi\Services\CurrencyService;
 use JustGivingApi\Services\OAuth2Service;
 use JustGivingApi\Transport\Transport;
+use JustGivingApi\Services\OneSearchService;
+use JustGivingApi\Models\Query;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Handler\CurlHandler;
@@ -275,6 +277,30 @@ class JustGivingApi
             $this->services['currency'] = new CurrencyService($this->getTransport());
         }
         return $this->services['currency'];
+    }
+
+    /**
+     * Gets the currency service.
+     *
+     * @return JustGivingApi\Services\CurrencyService The service.
+     */
+    public function getOneSearchService()
+    {
+        if (!in_array('onesearch', $this->services)) {
+            $this->services['onesearch'] = new OneSearchService($this->getTransport());
+        }
+        return $this->services['onesearch'];
+    }
+
+    /**
+     * Perform a search using the onesearch service.
+     *
+     * @param  Query $query The search query object.
+     * @return object The result object.
+     */
+    public function search(Query $query)
+    {
+        return $this->getOneSearchService()->search($query);
     }
 
     /**

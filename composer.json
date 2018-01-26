@@ -14,5 +14,8 @@
         "psr-4": {
             "JustGivingApi\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": { "JustGivingApi\\Tests\\": "Tests/" }
     }
 }
