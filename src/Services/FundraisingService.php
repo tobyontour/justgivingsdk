@@ -80,4 +80,34 @@ class FundraisingService extends Service
         }
         return $data->Names;
     }
+
+    /**
+     * @todo FundraisingPageUrlCheck
+     *  - SuggestPageShortNames
+     *  - RegisterFundraisingPage
+     * @todo GetFundraisingPageDetails
+     * @todo GetFundraisingPageDetailsById
+     * @todo GetFundraisingPages
+     * @todo GetFundraisingPageDonations
+     * @todo GetFundraisingPageDonationsByReference
+     * @todo UpdateFundraisingPage
+     * - PageUpdates
+     * - PageUpdateById
+     * @todo PageUpdatesAddPost
+     * @todo DeleteFundraisingPageUpdates
+     * @todo DeleteFundraisingPageAttribution
+     * @todo UpdateFundraisingPageAttribution
+     * @todo AppendToFundraisingPageAttribution
+     * @todo GetFundraisingPageAttribution
+     * @todo UploadImage
+     * @todo UploadDefaultImage
+     * @todo AddImageToFundraisingPage
+     * @todo DeleteFundraisingPageImage
+     * @todo GetImagesForFundraisingPage
+     * @todo AddVideoToFundraisingPage
+     * @todo GetVideosForFundraisingPage
+     * @todo CancelFundraisingPage
+     * @todo UpdateNotificationsPreferences
+     * @todo UpdateFundraisingPageSummary
+     */
 }

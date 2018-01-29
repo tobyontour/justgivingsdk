@@ -58,4 +58,15 @@ class AccountsService extends Service
         }
         return $data;
     }
+
+    /**
+     * @todo RetrieveAccount
+     * - AccountRegistration
+     * @todo Validate
+     * @todo GetFundraisingPagesForUser
+     * @todo GetDonationsForUser
+     * - AccountAvailabilityCheck
+     * @todo ChangePassword
+     * @todo RequestPasswordReminder
+     */
 }

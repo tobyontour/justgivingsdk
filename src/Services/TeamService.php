@@ -68,7 +68,8 @@ class TeamService extends Service
         return $this->transport->put('team/join/' . $teamShortName, ['pageShortName' => $pageShortName]);
     }
 
-    /*
-     * createOrUpdateTeam - This may not be required.
+    /**
+     * @todo createOrUpdateTeam - This may not be required.
+     * @todo CheckIfTeamExists
      */
 }
