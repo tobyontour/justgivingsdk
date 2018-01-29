@@ -31,14 +31,15 @@ class Query
 
     /**
      * Maximum number of search results to return
-     * @var string
+     * @var int
      */
-    public $limit = '';
+    public $limit = null;
 
     /**
      * The result paging offset
+     * @var int
      */
-    public $offset = '';
+    public $offset = 0;
 
     /**
      * Two letter ISO country code for localised results
@@ -60,27 +61,29 @@ class Query
 
     /**
      * The event id to filter on (only filters fundraiser results).
-     * @var string
+     * @var int
      */
-    public $eventId = '';
+    public $eventId = null;
 
     /**
      * The campaign id to filter on (only filters fundraiser results).
-     * @var string
+     * @var int
      */
-    public $campaignId = '';
+    public $campaignId = null;
 
     /**
      * The company appeal id to filter on (only filters fundraiser results).
-     * @var string
+     * @var int
      */
-    public $companyAppealId = '';
+    public $companyAppealId = null;
 
     /**
      * The cause id to filter on. Note: if included, this overrides any filtering on
      * campaignId (only filters fundraiser results).
+     *
+     * @var int
      */
-    public $causeId = '';
+    public $causeId = null;
 
     /**
      * Constructor.
