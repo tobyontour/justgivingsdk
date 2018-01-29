@@ -1505,7 +1505,7 @@ Query::__construct( string $query = &#039;&#039; )
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `$query` | **string** | The query. |
+| `$query` | **string** | Your search term or terms. |
 
 
 

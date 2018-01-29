@@ -88,7 +88,7 @@ class Query
     /**
      * Constructor.
      *
-     * @param string $query The query.
+     * @param string $query Your search term or terms.
      */
     public function __construct($query = '')
     {
