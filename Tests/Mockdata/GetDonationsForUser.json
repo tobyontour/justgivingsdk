@@ -1,0 +1,51 @@
+{
+    "charity": {
+        "id": 2050,
+        "logoAbsoluteUrl": "https:\/\/images.justgiving.com\/image\/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg",
+        "logoUrl": "3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg",
+        "name": "The Demo Charity",
+        "registrationNumber": "123456"
+    },
+    "donations": [
+        {
+            "amount": "2.00",
+            "currencyCode": "GBP",
+            "donationDate": "\/Date(1517325267237+0000)\/",
+            "donationRef": "9876",
+            "donorDisplayName": "Peter Queue",
+            "donorLocalAmount": "2.75",
+            "donorLocalCurrencyCode": "EUR",
+            "estimatedTaxReclaim": 0.56,
+            "id": 1234,
+            "image": "https:\/\/images.justgiving.com\/image\/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg",
+            "message": "donor message",
+            "source": "SponsorshipDonations",
+            "status": "Accepted",
+            "thirdPartyReference": "1234-my-sdi-ref",
+            "charityId": 50,
+            "charityName": "The Demo Charity",
+            "logoAbsoluteUrl": "https:\/\/images.justgiving.com\/image\/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg",
+            "ownerProfileImageUrls": [
+                {
+                    "Key": "OriginalSize",
+                    "Value": "http:\\\/\\\/images.dev.justgiving.com\\\/image\\\/e60e776a-e4f4-4e02-95a6-6107fa7d0400.jpg"
+                },
+                {
+                    "Key": "Size150x150Face",
+                    "Value": "http:\\\/\\\/images.dev.justgiving.com\\\/image\\\/e60e776a-e4f4-4e02-95a6-6107fa7d0400.jpg?template=size150x150face"
+                }
+            ],
+            "pageOwnerName": "Joe Bloggs",
+            "pageShortName": "page-name",
+            "pageTitle": "Sample Page Title",
+            "paymentType": "Card"
+        }
+    ],
+    "pagination": {
+        "pageNumber": 1,
+        "pageSizeRequested": 50,
+        "pageSizeReturned": 1,
+        "totalPages": 1,
+        "totalResults": 0
+    }
+}

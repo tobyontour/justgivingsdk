@@ -280,4 +280,158 @@ class AccountServiceTest extends TestCase
             $pages[0]->pageId
         );
     }
+
+    public function testGetDonationsForUser()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetDonationsForUser.json'))
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $donations = $api->getAccountsService()->getDonations(null, 0, null, $pagination);
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/donations',
+            (string)$uri
+        );
+
+        $this->assertEquals(
+            'GET',
+            $container[0]['request']->getMethod()
+        );
+
+        $this->assertTrue(
+            is_array($donations)
+        );
+
+        $this->assertEquals(
+            1234,
+            $donations[0]->id
+        );
+
+        $this->assertEquals(
+            1,
+            $pagination->totalPages
+        );
+    }
+
+    public function testGetDonationsForUserWithArgs()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetDonationsForUser.json'))
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $donations = $api->getAccountsService()->getDonations(10, 2, 123, $pagination);
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/donations?pagesize=10&pagenum=2&charityid=123',
+            (string)$uri
+        );
+
+        $this->assertEquals(
+            'GET',
+            $container[0]['request']->getMethod()
+        );
+
+        $this->assertTrue(
+            is_array($donations)
+        );
+
+        $this->assertEquals(
+            'JustGivingApi\Models\ConsumerDonation',
+            get_class($donations[0])
+        );
+
+        $this->assertEquals(
+            1,
+            $pagination->totalPages
+        );
+    }
+
+    public function testChangePassword()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], '{"success": true}')
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $success = $api->getAccountsService()->changePassword(
+            'email@test.com',
+            'MyCurrentPassword',
+            'MyNewPassword'
+        );
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/password',
+            (string)$uri
+        );
+
+        $this->assertEquals(
+            'POST',
+            $container[0]['request']->getMethod()
+        );
+
+        $body = json_decode($container[0]['request']->getBody());
+
+        $this->assertEquals('MyCurrentPassword', $body->currentPassword);
+        $this->assertEquals('email@test.com', $body->emailAddress);
+        $this->assertEquals('MyNewPassword', $body->newPassword);
+        $this->assertEquals(true, $success);
+    }
+
+    public function testChangePasswordTooShort()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $api->getAccountsService()->changePassword(
+            'email@test.com',
+            'MyCurrentPassword',
+            'MyNew'
+        );
+    }
+
+    public function testRequestPasswordReminder()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], '{"success": true}')
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $status = $api->getAccountsService()->requestPasswordReminder(
+            'email@test.com'
+        );
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/email%40test.com/requestpasswordreminder',
+            (string)$uri
+        );
+
+        $this->assertEquals(
+            'GET',
+            $container[0]['request']->getMethod()
+        );
+    }
 }

@@ -4,7 +4,7 @@
 
 ```
 Endpoint        Completed       Finished
-Account             5/14
+Account             8/ 8
 Campaigns           0/ 5
 Charity             0/12
 Companies           0/ 2
@@ -20,5 +20,5 @@ Project             0/ 2
 OneSearch           1/ 1.       *
 Sms                 0/ 3
 Team                4/ 5        *
-                  20 of 108
+                  23 of 102
 ```

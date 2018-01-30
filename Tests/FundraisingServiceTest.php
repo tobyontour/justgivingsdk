@@ -85,6 +85,8 @@ class FundraisingServiceTest extends TestCase
             get_class($fundraisingService)
         );
 
+        // This data may be incorrect.
+        // See: https://api.justgiving.com/docs/resources/v1/Fundraising/RegisterFundraisingPage
         $pageArray = [
             "reference" => "OUR_REF",
             "charityId" => 123,

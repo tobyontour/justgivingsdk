@@ -8,6 +8,7 @@ namespace JustGivingApi\Services;
 
 use JustGivingApi\Exceptions\ApiException;
 use JustGivingApi\Models\Account;
+use JustGivingApi\Models\ConsumerDonation;
 
 /**
  * Service that wraps up JustGiving API endpoints starting with /account.
@@ -90,7 +91,9 @@ class AccountsService extends Service
         if ($data->isValid !== true) {
             return false;
         } else {
-            $consumerId = $data->consumerId;
+            if (3 == func_num_args()) {
+                $consumerId = $data->consumerId;
+            }
             return true;
         }
     }
@@ -109,13 +112,108 @@ class AccountsService extends Service
     }
 
     /**
-     * - RetrieveAccount
-     * - AccountRegistration
-     * - Validate
-     * - GetFundraisingPagesForUser
-     * @todo GetDonationsForUser
-     * - AccountAvailabilityCheck
-     * @todo ChangePassword
-     * @todo RequestPasswordReminder
+     * Get the donations for the logged in user.
+     *
+     * @param  integer $pageSize Number of results per page
+     * @param  integer $pageNumber Page number
+     * @param  integer $charityId Filter to a specific charity.
+     * @param  reference $pagination Optional. Returns pagination object (totalPages, pageSizeReturned, totalResults).
+     * @return array ConsumerDonation objects.
      */
+    public function getDonations($pageSize = null, $pageNumber = 0, $charityId = null, &$pagination = null)
+    {
+
+        $path = 'account/donations';
+        $params = [];
+
+        if (!is_null($pageSize)) {
+            if (!is_numeric($pageSize) || $pageSize <= 0) {
+                throw new \InvalidArgumentException('Page size should be a positive integer greater than 0.');
+            }
+
+            if ($pageSize > 150) {
+                $pageSize = 150;
+            }
+
+            $params['pagesize'] = $pageSize;
+        }
+
+        if ($pageNumber != 0) {
+            if (!is_numeric($pageNumber) || $pageNumber < 0) {
+                throw new \InvalidArgumentException('Page number should be a positive integer or 0.');
+            }
+            $params['pagenum'] = $pageNumber;
+        }
+
+        if (!is_null($charityId)) {
+            if (!is_numeric($charityId)) {
+                throw new \InvalidArgumentException('ID should be numeric.');
+            }
+            $params['charityid'] = $charityId;
+        }
+
+        if (count($params) != 0) {
+            $path .= '?' . http_build_query($params);
+        }
+
+        $data = $this->transport->get($path);
+
+        if (4 == func_num_args()) {
+            $pagination = $data->pagination;
+        }
+
+        $ret = array();
+
+        foreach ($data->donations as $donation) {
+            $ret[] = new ConsumerDonation((array)$donation);
+        }
+        return $ret;
+    }
+
+    /**
+     * Change a user's password.
+     *
+     * @param  string $email The user's email address.
+     * @param  string $currentPassword The user's current password.
+     * @param  string $newPassword A new password that is at least 6 characters long.
+     * @return boolean Ture if the password was changed.
+     */
+    public function changePassword($email, $currentPassword, $newPassword)
+    {
+        if (strlen($newPassword) < 6) {
+            throw new \InvalidArgumentException(
+                'New password is too short (needs to be six characters at least).'
+            );
+        }
+
+        $data = $this->transport->post(
+            'account/password',
+            [
+                'emailAddress' => $email,
+                'currentPassword' => $currentPassword,
+                'newPassword' => $newPassword
+            ]
+        );
+
+        return $data->success;
+    }
+
+    /**
+     * Request a password reminder email is sent to a user.
+     *
+     * @param  string $email The email of the user to request the reminder for.
+     * @return boolean True if successful. False if account doesn't exist.
+     */
+    public function requestPasswordReminder($email)
+    {
+        try {
+            $this->transport->get('account/' . urlencode($email) . '/requestpasswordreminder');
+        } catch (ApiException $e) {
+            if ($e->getCode() == 404) {
+                return false;
+            }
+            throw $e;
+        }
+        return true;
+    }
 }
