@@ -12,34 +12,40 @@
     * [getAccount](#getaccount)
     * [validateAccount](#validateaccount)
     * [getPagesForUser](#getpagesforuser)
+    * [getDonations](#getdonations)
+    * [changePassword](#changepassword)
+    * [requestPasswordReminder](#requestpasswordreminder)
 * [ApiException](#apiexception)
     * [__construct](#__construct-2)
-* [CountriesService](#countriesservice)
+* [ConsumerDonation](#consumerdonation)
     * [__construct](#__construct-3)
+    * [toArray](#toarray-1)
+* [CountriesService](#countriesservice)
+    * [__construct](#__construct-4)
     * [listCountries](#listcountries)
 * [CurrencyService](#currencyservice)
-    * [__construct](#__construct-4)
+    * [__construct](#__construct-5)
     * [getCurrencies](#getcurrencies)
 * [Event](#event)
-    * [__construct](#__construct-5)
-    * [toArray](#toarray-1)
-* [EventsService](#eventsservice)
     * [__construct](#__construct-6)
+    * [toArray](#toarray-2)
+* [EventsService](#eventsservice)
+    * [__construct](#__construct-7)
     * [getTypes](#gettypes)
     * [getEventById](#geteventbyid)
     * [getPagesForEvent](#getpagesforevent)
     * [createEvent](#createevent)
 * [FundraisingPage](#fundraisingpage)
-    * [__construct](#__construct-7)
-    * [toArray](#toarray-2)
-* [FundraisingService](#fundraisingservice)
     * [__construct](#__construct-8)
+    * [toArray](#toarray-3)
+* [FundraisingService](#fundraisingservice)
+    * [__construct](#__construct-9)
     * [createPage](#createpage)
     * [getPageUpdateById](#getpageupdatebyid)
     * [getPageUpdates](#getpageupdates)
     * [getShortNameSuggestions](#getshortnamesuggestions)
 * [JustGivingApi](#justgivingapi)
-    * [__construct](#__construct-9)
+    * [__construct](#__construct-10)
     * [setBaseApiUrl](#setbaseapiurl)
     * [setAuthenticationBaseApiUrl](#setauthenticationbaseapiurl)
     * [setHandlerStack](#sethandlerstack)
@@ -57,32 +63,32 @@
     * [getAuthenticationToken](#getauthenticationtoken)
     * [refreshAuthenticationToken](#refreshauthenticationtoken)
 * [Model](#model)
-    * [__construct](#__construct-10)
-    * [toArray](#toarray-3)
-* [OAuth2Service](#oauth2service)
     * [__construct](#__construct-11)
+    * [toArray](#toarray-4)
+* [OAuth2Service](#oauth2service)
+    * [__construct](#__construct-12)
     * [getLoginFormUrl](#getloginformurl-1)
     * [getAuthenticationToken](#getauthenticationtoken-1)
     * [refreshAuthenticationToken](#refreshauthenticationtoken-1)
 * [OneSearchService](#onesearchservice)
-    * [__construct](#__construct-12)
+    * [__construct](#__construct-13)
     * [search](#search-1)
 * [Query](#query)
-    * [__construct](#__construct-13)
+    * [__construct](#__construct-14)
     * [__toString](#__tostring)
 * [Service](#service)
-    * [__construct](#__construct-14)
-* [Team](#team)
     * [__construct](#__construct-15)
-    * [toArray](#toarray-4)
-* [TeamService](#teamservice)
+* [Team](#team)
     * [__construct](#__construct-16)
+    * [toArray](#toarray-5)
+* [TeamService](#teamservice)
+    * [__construct](#__construct-17)
     * [createTeam](#createteam)
     * [getTeam](#getteam)
     * [updateTeam](#updateteam)
     * [joinTeam](#jointeam)
 * [Transport](#transport)
-    * [__construct](#__construct-17)
+    * [__construct](#__construct-18)
     * [getBaseUrl](#getbaseurl)
     * [setBasicAuth](#setbasicauth)
     * [disableBasicAuth](#disablebasicauth)
@@ -314,6 +320,89 @@ An array of pages.
 
 ---
 
+### getDonations
+
+Get the donations for the logged in user.
+
+```php
+AccountsService::getDonations( integer $pageSize = null, integer $pageNumber, integer $charityId = null, \JustGivingApi\Services\reference &$pagination = null ): array
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$pageSize` | **integer** | Number of results per page |
+| `$pageNumber` | **integer** | Page number |
+| `$charityId` | **integer** | Filter to a specific charity. |
+| `$pagination` | **\JustGivingApi\Services\reference** | Optional. Returns pagination object (totalPages, pageSizeReturned, totalResults). |
+
+
+**Return Value:**
+
+ConsumerDonation objects.
+
+
+
+---
+
+### changePassword
+
+Change a user's password.
+
+```php
+AccountsService::changePassword( string $email, string $currentPassword, string $newPassword ): boolean
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$email` | **string** | The user's email address. |
+| `$currentPassword` | **string** | The user's current password. |
+| `$newPassword` | **string** | A new password that is at least 6 characters long. |
+
+
+**Return Value:**
+
+Ture if the password was changed.
+
+
+
+---
+
+### requestPasswordReminder
+
+Request a password reminder email is sent to a user.
+
+```php
+AccountsService::requestPasswordReminder( string $email ): boolean
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$email` | **string** | The email of the user to request the reminder for. |
+
+
+**Return Value:**
+
+True if successful. False if account doesn't exist.
+
+
+
+---
+
 ## ApiException
 
 Exception for API calls that nicely formats them and sets the status code.
@@ -349,6 +438,69 @@ ApiException::__construct( \GuzzleHttp\Psr7\Response $response, string $url )
 | `$response` | **\GuzzleHttp\Psr7\Response** | The response from the Guzzle call. |
 | `$url` | **string** | The URL that was called. |
 
+
+
+
+---
+
+## ConsumerDonation
+
+ConsumerDonation class that contains the data from a donation
+
+The Model class contains methods for loading an array into a class's properties and
+exporting the properties to an array. This just makes it easier to program with the
+different structures the REST API needs whilst making it easy for the Services to convert
+the arrays from REST calls to objects easily.
+
+Each child class is basically just a data structure
+
+* Full name: \JustGivingApi\Models\ConsumerDonation
+* Parent class: \JustGivingApi\Models\Model
+
+
+### __construct
+
+Constructor.
+
+```php
+ConsumerDonation::__construct( array $data = array() )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$data` | **array** |  |
+
+
+
+
+---
+
+### toArray
+
+Convert the object to an array.
+
+```php
+ConsumerDonation::toArray( array $omitList = array() ): array
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$omitList` | **array** | List of properties to omit. |
+
+
+**Return Value:**
+
+The array to send as part of a REST request.
 
 
 
