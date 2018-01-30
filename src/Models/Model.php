@@ -40,7 +40,7 @@ class Model
                     $this->$key = $value;
                 }
             } else {
-                // echo "Field missing: $key\n";
+                //echo "Field missing: $key\n";
             }
         }
     }
