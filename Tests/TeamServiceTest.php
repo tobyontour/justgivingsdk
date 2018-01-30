@@ -46,8 +46,10 @@ class TeamServiceTest extends TestCase
             'story' => 'This is the story of how my life got flipped turned upside-down.',
             'teamTarget' => 3500,
             'targetCurrency' => 'GBP',
-            'TeamImages.TeamLogo.url' => 'http://example.com/1.jpg',
-            'TeamImages.TeamPhoto.url' => 'http://example.com/2.jpg'
+            'teamImages' => [
+                'teamLogo' => ['url' => 'http://example.com/1.jpg'],
+                'teamPhoto' => ['url' => 'http://example.com/2.jpg']
+            ]
         ];
 
         $team = new Team($teamArray);
@@ -147,8 +149,10 @@ class TeamServiceTest extends TestCase
             'story' => 'This is the story of how my life got flipped turned upside-down.',
             'teamTarget' => 3500,
             'targetCurrency' => 'GBP',
-            'teamImages.TeamLogo.url' => 'http://example.com/1.jpg',
-            'teamImages.TeamPhoto.url' => 'http://example.com/2.jpg'
+            'teamImages' => [
+                'teamLogo' => ['url' => 'http://example.com/1.jpg'],
+                'teamPhoto' => ['url' => 'http://example.com/2.jpg']
+            ]
         ];
 
         $team = new Team($teamArray);

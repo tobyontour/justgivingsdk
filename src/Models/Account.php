@@ -21,12 +21,20 @@ class Account extends Model
     public $acceptTermsAndConditions = false;
     public $causeId;
 
+    // retrieve only.
     public $activePageCount;
-    public $completedPageCount;
+    public $completedPagesCount;
+    public $accountTypes;
     public $totalDonated;
     public $totalGiftAid;
     public $totalRaised;
     public $joinDate;
     public $userId;
     public $accountId;
+    public $country;
+    public $donationTotalsInSupportedCurrencies;
+    public $profileImageUrls;
+    public $raisedTotalsInSupportedCurrencies;
+    public $totalDonatedGiftAid;
+    public $town;
 }

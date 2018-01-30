@@ -24,9 +24,11 @@ class Team extends Model
     public $dateCreated;
     public $id;
     public $localCurrencySymbol;
+    public $currencySymbol;
     public $targetType;
     public $teamMembers;
     public $teamType;
+    public $raisedSoFar;
 
     /**
      * Convert the object to an array.
@@ -40,9 +42,11 @@ class Team extends Model
             'dateCreated',
             'id',
             'localCurrencySymbol',
+            'currencySymbol',
             'targetType',
             'teamMembers',
-            'teamType'
+            'teamType',
+            'raisedSoFar'
         ]);
         return parent::toArray($omitList);
     }
