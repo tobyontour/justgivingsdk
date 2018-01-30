@@ -132,12 +132,14 @@ class AccountServiceTest extends TestCase
             "title" => "Mr",
             "firstName" => "Bob",
             "lastName" => "Dobalina",
-            "Address.line1" => "22 Acacia Avenue",
-            "Address.line2" => "Little Village",
-            "Address.townOrCity" => "Sometown",
-            "Address.countyOrState" => "Acmetown",
-            "Address.country" => "United Kingdom",
-            "Address.postcodeOrZipcode" => "AB12 CDE",
+            "address" => [
+                "line1" => "22 Acacia Avenue",
+                "line2" => "Little Village",
+                "townOrCity" => "Sometown",
+                "countyOrState" => "Acmetown",
+                "country" => "United Kingdom",
+                "postcodeOrZipcode" => "AB12 CDE"
+            ],
             "email" => "bob.dobalina@example.com",
             "password" => "PassWord",
             "acceptTermsAndConditions" => true,
@@ -166,6 +168,46 @@ class AccountServiceTest extends TestCase
             0,
             count(array_diff_assoc($body, $accountArray)),
             'The array sent to the register user endpoint is the same one we defined.'
+        );
+    }
+
+    /**
+     * Tests the retrieval of the currently logged in account. We can't
+     * really simulate the logging in so we're 'assuming' that the client
+     * is logged in as user 123.
+     */
+    public function testRetrieveAccount()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/RetrieveAccount.json'))
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $account = $api->getAccountsService()->getAccount();
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account',
+            (string)$uri
+        );
+
+        $this->assertEquals(
+            'GET',
+            $container[0]['request']->getMethod()
+        );
+
+        $this->assertEquals(
+            123,
+            $account->accountId
+        );
+
+        $this->assertEquals(
+            'Bedfordshire',
+            $account->address['countyOrState']
         );
     }
 }

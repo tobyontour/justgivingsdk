@@ -60,7 +60,17 @@ class AccountsService extends Service
     }
 
     /**
-     * @todo RetrieveAccount
+     * Retrieve details of currently logged in account.
+     */
+    public function getAccount()
+    {
+        $data = $this->transport->get('account', true);
+
+        return new Account($data);
+    }
+
+    /**
+     * - RetrieveAccount
      * - AccountRegistration
      * @todo Validate
      * @todo GetFundraisingPagesForUser
