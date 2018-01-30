@@ -81,7 +81,7 @@ class AccountServiceTest extends TestCase
         $this->assertTrue($result, 'Account does exist.');
     }
 
-    public function testAccountValidation()
+    public function testAccountExists()
     {
         $api = new JustGivingApi('API_KEY', null, true);
 
@@ -208,6 +208,76 @@ class AccountServiceTest extends TestCase
         $this->assertEquals(
             'Bedfordshire',
             $account->address['countyOrState']
+        );
+    }
+
+    public function testValidateAccount()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/ValidateAccount.json'))
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $valid = $api->getAccountsService()->validateAccount('email@example.com', 'password', $consumerId);
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/validate',
+            (string)$uri
+        );
+
+        $this->assertEquals(
+            'POST',
+            $container[0]['request']->getMethod()
+        );
+
+        $this->assertEquals(
+            true,
+            $valid
+        );
+
+        $this->assertEquals(
+            1234,
+            $consumerId
+        );
+    }
+
+    public function testGetFundraisingPagesForUser()
+    {
+        $api = new JustGivingApi('API_KEY', null, true);
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetFundraisingPagesForUser.json'))
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $pages = $api->getAccountsService()->getPagesForUser('email@example.com');
+
+        $uri = $container[0]['request']->getUri();
+
+        $this->assertEquals(
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/account/email%40example.com/pages',
+            (string)$uri
+        );
+
+        $this->assertEquals(
+            'GET',
+            $container[0]['request']->getMethod()
+        );
+
+        $this->assertTrue(
+            is_array($pages),
+            'The list of pages returned is an array.'
+        );
+
+        $this->assertEquals(
+            1457423,
+            $pages[0]->pageId
         );
     }
 }

@@ -10,6 +10,8 @@
     * [accountExists](#accountexists)
     * [accountCreate](#accountcreate)
     * [getAccount](#getaccount)
+    * [validateAccount](#validateaccount)
+    * [getPagesForUser](#getpagesforuser)
 * [ApiException](#apiexception)
     * [__construct](#__construct-2)
 * [CountriesService](#countriesservice)
@@ -257,6 +259,56 @@ AccountsService::getAccount(  )
 
 
 
+
+
+
+---
+
+### validateAccount
+
+Validates the credentials for an account.
+
+```php
+AccountsService::validateAccount( string $email, string $password, \JustGivingApi\Services\reference &$consumerId = null ): \JustGivingApi\Services\[type]
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$email` | **string** | User's email address |
+| `$password` | **string** | The user's password |
+| `$consumerId` | **\JustGivingApi\Services\reference** | The consumer ID. Not sure what it is so it's optional. |
+
+
+
+
+---
+
+### getPagesForUser
+
+Gets all the fundraising pages for a user.
+
+```php
+AccountsService::getPagesForUser( string $email ): array
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$email` | **string** | The user's email address. |
+
+
+**Return Value:**
+
+An array of pages.
 
 
 

@@ -4,7 +4,7 @@
 
 ```
 Endpoint        Completed       Finished
-Account             2/14
+Account             5/14
 Campaigns           0/ 5
 Charity             0/12
 Companies           0/ 2
@@ -14,11 +14,11 @@ Currency            1/ 1		*
 default             0/ 9
 Donation            0/ 6
 Event               4/ 4        *
-Fundraising         3/34
+Fundraising         4/34
 Leaderboard.        0/ 4
 Project             0/ 2
-Search              0/ 1
+OneSearch           1/ 1.       *
 Sms                 0/ 3
 Team                4/ 5        *
-                  15 of 108
+                  20 of 108
 ```

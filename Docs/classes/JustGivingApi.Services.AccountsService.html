@@ -144,28 +144,28 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-720837586"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1888964514"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-720837586" class="accordion-body collapse in">
+            <div id="namespace-1888964514" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-966425719"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1084419084"></a>
                                 <a href="../namespaces/JustGivingApi.html" style="margin-left: 30px; padding-left: 0">JustGivingApi</a>
             </div>
-            <div id="namespace-966425719" class="accordion-body collapse ">
+            <div id="namespace-1084419084" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-144739109"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-67932448"></a>
                                 <a href="../namespaces/JustGivingApi.Exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
             </div>
-            <div id="namespace-144739109" class="accordion-body collapse ">
+            <div id="namespace-67932448" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -180,10 +180,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-551825308"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1897545501"></a>
                                 <a href="../namespaces/JustGivingApi.Models.html" style="margin-left: 30px; padding-left: 0">Models</a>
             </div>
-            <div id="namespace-551825308" class="accordion-body collapse ">
+            <div id="namespace-1897545501" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -203,10 +203,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-8449957"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1812493302"></a>
                                 <a href="../namespaces/JustGivingApi.Services.html" style="margin-left: 30px; padding-left: 0">Services</a>
             </div>
-            <div id="namespace-8449957" class="accordion-body collapse ">
+            <div id="namespace-1812493302" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -229,10 +229,10 @@
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-136336833"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-446141389"></a>
                                 <a href="../namespaces/JustGivingApi.Transport.html" style="margin-left: 30px; padding-left: 0">Transport</a>
             </div>
-            <div id="namespace-136336833" class="accordion-body collapse ">
+            <div id="namespace-446141389" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -300,6 +300,8 @@ themselves.</p>
                                                                     <a href="../classes/JustGivingApi.Services.AccountsService.html#method_accountExists" class="">accountExists()</a><br />
                                                                     <a href="../classes/JustGivingApi.Services.AccountsService.html#method_accountCreate" class="">accountCreate()</a><br />
                                                                     <a href="../classes/JustGivingApi.Services.AccountsService.html#method_getAccount" class="">getAccount()</a><br />
+                                                                    <a href="../classes/JustGivingApi.Services.AccountsService.html#method_validateAccount" class="">validateAccount()</a><br />
+                                                                    <a href="../classes/JustGivingApi.Services.AccountsService.html#method_getPagesForUser" class="">getPagesForUser()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -544,6 +546,89 @@ themselves.</p>
         </aside>
     </div>
 
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_validateAccount" name="method_validateAccount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">validateAccount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">validateAccount(string  <span class="argument">$email</span>, string  <span class="argument">$password</span>, \JustGivingApi\Services\reference  <span class="argument">$consumerId = null</span>) : \JustGivingApi\Services\[type]</pre>
+                <p><em>Validates the credentials for an account.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$email </td>
+                                <td><p>User's email address</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$password </td>
+                                <td><p>The user's password</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>\JustGivingApi\Services\reference</td>
+                                <td>$consumerId </td>
+                                <td><p>The consumer ID. Not sure what it is so it's optional.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \JustGivingApi\Services\[type]
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPagesForUser" name="method_getPagesForUser" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPagesForUser()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPagesForUser(string  <span class="argument">$email</span>) : array</pre>
+                <p><em>Gets all the fundraising pages for a user.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$email </td>
+                                <td><p>The user's email address.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>An array of pages.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
                                                                     </div>
     </section>
 
@@ -594,7 +679,7 @@ themselves.</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on January 30th, 2018 at 11:12.
+                    on January 30th, 2018 at 15:00.
                 </section>
             </section>
         </section>

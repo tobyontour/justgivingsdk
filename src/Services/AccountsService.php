@@ -70,10 +70,49 @@ class AccountsService extends Service
     }
 
     /**
+     * Validates the credentials for an account.
+     *
+     * @param  string $email User's email address
+     * @param  string $password The user's password
+     * @param  reference $consumerId The consumer ID. Not sure what it is so it's optional.
+     * @return [type]
+     */
+    public function validateAccount($email, $password, &$consumerId = null)
+    {
+        $data = $this->transport->post(
+            'account/validate',
+            [
+                'email' => $email,
+                'password' => $password
+            ]
+        );
+
+        if ($data->isValid !== true) {
+            return false;
+        } else {
+            $consumerId = $data->consumerId;
+            return true;
+        }
+    }
+
+    /**
+     * Gets all the fundraising pages for a user.
+     *
+     * @param  string $email The user's email address.
+     * @return array An array of pages.
+     */
+    public function getPagesForUser($email)
+    {
+        $data = $this->transport->get('account/' . urlencode($email) . '/pages');
+
+        return $data;
+    }
+
+    /**
      * - RetrieveAccount
      * - AccountRegistration
-     * @todo Validate
-     * @todo GetFundraisingPagesForUser
+     * - Validate
+     * - GetFundraisingPagesForUser
      * @todo GetDonationsForUser
      * - AccountAvailabilityCheck
      * @todo ChangePassword
