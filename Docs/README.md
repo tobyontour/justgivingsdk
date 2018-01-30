@@ -9,6 +9,7 @@
     * [__construct](#__construct-1)
     * [accountExists](#accountexists)
     * [accountCreate](#accountcreate)
+    * [getAccount](#getaccount)
 * [ApiException](#apiexception)
     * [__construct](#__construct-2)
 * [CountriesService](#countriesservice)
@@ -240,6 +241,22 @@ containing the response data:
   "Error.desc": "string",
   "errorMessage": "string"
 }
+
+
+
+---
+
+### getAccount
+
+Retrieve details of currently logged in account.
+
+```php
+AccountsService::getAccount(  )
+```
+
+
+
+
 
 
 
@@ -1940,4 +1957,4 @@ object or array depending on the value of $assoc
 
 
 --------
-> This document was automatically generated from source code comments on 2018-01-29 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-01-30 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)

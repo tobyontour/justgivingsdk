@@ -15,12 +15,7 @@ class Account extends Model
     public $title;
     public $firstName;
     public $lastName;
-    public $Address_Line1;
-    public $Address_Line2;
-    public $Address_TownOrCity;
-    public $Address_CountyOrState;
-    public $Address_Country;
-    public $Address_PostcodeOrZipcode;
+    public $address = [];
     public $email;
     public $password;
     public $acceptTermsAndConditions = false;
@@ -33,5 +28,6 @@ class Account extends Model
     public $totalRaised;
     public $joinDate;
     public $userId;
+    public $accountId;
 }
 
