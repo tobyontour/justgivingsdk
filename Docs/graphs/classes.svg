@@ -20,27 +20,99 @@
 <text text-anchor="middle" x="206.1731" y="-1076.2" font-family="Times,serif" font-size="11.00" fill="#c0c0c0">JustGivingApi</text>
 </g>
 <g id="clust3" class="cluster">
+<title>cluster_\JustGivingApi\Models</title>
+<path fill="none" stroke="#c0c0c0" d="M55.8769,-721C55.8769,-721 353.972,-721 353.972,-721 359.972,-721 365.972,-727 365.972,-733 365.972,-733 365.972,-1050 365.972,-1050 365.972,-1056 359.972,-1062 353.972,-1062 353.972,-1062 55.8769,-1062 55.8769,-1062 49.8769,-1062 43.8769,-1056 43.8769,-1050 43.8769,-1050 43.8769,-733 43.8769,-733 43.8769,-727 49.8769,-721 55.8769,-721"/>
+<text text-anchor="middle" x="204.9244" y="-1049.2" font-family="Times,serif" font-size="11.00" fill="#c0c0c0">Models</text>
+</g>
+<g id="clust4" class="cluster">
 <title>cluster_\JustGivingApi\Exceptions</title>
 <path fill="none" stroke="#c0c0c0" d="M253.5569,-185C253.5569,-185 340.7698,-185 340.7698,-185 346.7698,-185 352.7698,-191 352.7698,-197 352.7698,-197 352.7698,-244 352.7698,-244 352.7698,-250 346.7698,-256 340.7698,-256 340.7698,-256 253.5569,-256 253.5569,-256 247.5569,-256 241.5569,-250 241.5569,-244 241.5569,-244 241.5569,-197 241.5569,-197 241.5569,-191 247.5569,-185 253.5569,-185"/>
 <text text-anchor="middle" x="297.1634" y="-243.2" font-family="Times,serif" font-size="11.00" fill="#c0c0c0">Exceptions</text>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_\JustGivingApi\Services</title>
-<path fill="none" stroke="#c0c0c0" d="M51.7731,-613C51.7731,-613 360.5731,-613 360.5731,-613 366.5731,-613 372.5731,-619 372.5731,-625 372.5731,-625 372.5731,-1050 372.5731,-1050 372.5731,-1056 366.5731,-1062 360.5731,-1062 360.5731,-1062 51.7731,-1062 51.7731,-1062 45.7731,-1062 39.7731,-1056 39.7731,-1050 39.7731,-1050 39.7731,-625 39.7731,-625 39.7731,-619 45.7731,-613 51.7731,-613"/>
-<text text-anchor="middle" x="206.1731" y="-1049.2" font-family="Times,serif" font-size="11.00" fill="#c0c0c0">Services</text>
-</g>
 <g id="clust5" class="cluster">
-<title>cluster_\JustGivingApi\Models</title>
-<path fill="none" stroke="#c0c0c0" d="M55.8769,-264C55.8769,-264 353.972,-264 353.972,-264 359.972,-264 365.972,-270 365.972,-276 365.972,-276 365.972,-593 365.972,-593 365.972,-599 359.972,-605 353.972,-605 353.972,-605 55.8769,-605 55.8769,-605 49.8769,-605 43.8769,-599 43.8769,-593 43.8769,-593 43.8769,-276 43.8769,-276 43.8769,-270 49.8769,-264 55.8769,-264"/>
-<text text-anchor="middle" x="204.9244" y="-592.2" font-family="Times,serif" font-size="11.00" fill="#c0c0c0">Models</text>
+<title>cluster_\JustGivingApi\Services</title>
+<path fill="none" stroke="#c0c0c0" d="M51.7731,-264C51.7731,-264 360.5731,-264 360.5731,-264 366.5731,-264 372.5731,-270 372.5731,-276 372.5731,-276 372.5731,-701 372.5731,-701 372.5731,-707 366.5731,-713 360.5731,-713 360.5731,-713 51.7731,-713 51.7731,-713 45.7731,-713 39.7731,-707 39.7731,-701 39.7731,-701 39.7731,-276 39.7731,-276 39.7731,-270 45.7731,-264 51.7731,-264"/>
+<text text-anchor="middle" x="206.1731" y="-700.2" font-family="Times,serif" font-size="11.00" fill="#c0c0c0">Services</text>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_\JustGivingApi\Transport</title>
 <path fill="none" stroke="#c0c0c0" d="M263.4586,-106C263.4586,-106 330.8682,-106 330.8682,-106 336.8682,-106 342.8682,-112 342.8682,-118 342.8682,-118 342.8682,-165 342.8682,-165 342.8682,-171 336.8682,-177 330.8682,-177 330.8682,-177 263.4586,-177 263.4586,-177 257.4586,-177 251.4586,-171 251.4586,-165 251.4586,-165 251.4586,-118 251.4586,-118 251.4586,-112 257.4586,-106 263.4586,-106"/>
 <text text-anchor="middle" x="297.1634" y="-164.2" font-family="Times,serif" font-size="11.00" fill="#c0c0c0">Transport</text>
 </g>
-<!-- \\JustGivingApi\\Exceptions\\ApiException -->
+<!-- \\JustGivingApi\\Models\\ConsumerDonation -->
 <g id="node1" class="node">
+<title>\\JustGivingApi\\Models\\ConsumerDonation</title>
+<polygon fill="none" stroke="#000000" points="357.7812,-1035 236.5456,-1035 236.5456,-999 357.7812,-999 357.7812,-1035"/>
+<text text-anchor="middle" x="297.1634" y="-1013.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">ConsumerDonation</text>
+</g>
+<!-- \\JustGivingApi\\Models\\Model -->
+<g id="node3" class="node">
+<title>\\JustGivingApi\\Models\\Model</title>
+<polygon fill="none" stroke="#000000" points="105.8769,-873 51.8769,-873 51.8769,-837 105.8769,-837 105.8769,-873"/>
+<text text-anchor="middle" x="78.8769" y="-851.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Model</text>
+</g>
+<!-- \\JustGivingApi\\Models\\ConsumerDonation&#45;&gt;\\JustGivingApi\\Models\\Model -->
+<g id="edge1" class="edge">
+<title>\\JustGivingApi\\Models\\ConsumerDonation&#45;&gt;\\JustGivingApi\\Models\\Model</title>
+<path fill="none" stroke="#000000" d="M246.5125,-998.9783C240.7115,-996.2571 235.0024,-993.2575 229.7537,-990 179.5844,-958.864 130.2896,-910.4596 102.3246,-880.8573"/>
+<polygon fill="none" stroke="#000000" points="104.7383,-878.314 95.3532,-873.3975 99.6239,-883.0935 104.7383,-878.314"/>
+</g>
+<!-- \\JustGivingApi\\Models\\Query -->
+<g id="node2" class="node">
+<title>\\JustGivingApi\\Models\\Query</title>
+<polygon fill="none" stroke="#000000" points="324.1634,-981 270.1634,-981 270.1634,-945 324.1634,-945 324.1634,-981"/>
+<text text-anchor="middle" x="297.1634" y="-959.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Query</text>
+</g>
+<!-- \\JustGivingApi\\Models\\Team -->
+<g id="node4" class="node">
+<title>\\JustGivingApi\\Models\\Team</title>
+<polygon fill="none" stroke="#000000" points="324.1634,-927 270.1634,-927 270.1634,-891 324.1634,-891 324.1634,-927"/>
+<text text-anchor="middle" x="297.1634" y="-905.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Team</text>
+</g>
+<!-- \\JustGivingApi\\Models\\Team&#45;&gt;\\JustGivingApi\\Models\\Model -->
+<g id="edge10" class="edge">
+<title>\\JustGivingApi\\Models\\Team&#45;&gt;\\JustGivingApi\\Models\\Model</title>
+<path fill="none" stroke="#000000" d="M269.9586,-902.27C231.1279,-892.664 159.6881,-874.9912 116.0173,-864.1879"/>
+<polygon fill="none" stroke="#000000" points="116.6287,-860.7337 106.0808,-861.7297 114.9476,-867.5288 116.6287,-860.7337"/>
+</g>
+<!-- \\JustGivingApi\\Models\\Account -->
+<g id="node5" class="node">
+<title>\\JustGivingApi\\Models\\Account</title>
+<polygon fill="none" stroke="#000000" points="328.3713,-873 265.9555,-873 265.9555,-837 328.3713,-837 328.3713,-873"/>
+<text text-anchor="middle" x="297.1634" y="-851.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Account</text>
+</g>
+<!-- \\JustGivingApi\\Models\\Account&#45;&gt;\\JustGivingApi\\Models\\Model -->
+<g id="edge12" class="edge">
+<title>\\JustGivingApi\\Models\\Account&#45;&gt;\\JustGivingApi\\Models\\Model</title>
+<path fill="none" stroke="#000000" d="M265.8883,-855C226.3298,-855 158.2947,-855 116.102,-855"/>
+<polygon fill="none" stroke="#000000" points="115.9649,-851.5001 105.9649,-855 115.9648,-858.5001 115.9649,-851.5001"/>
+</g>
+<!-- \\JustGivingApi\\Models\\FundraisingPage -->
+<g id="node6" class="node">
+<title>\\JustGivingApi\\Models\\FundraisingPage</title>
+<polygon fill="none" stroke="#000000" points="354.6795,-819 239.6473,-819 239.6473,-783 354.6795,-783 354.6795,-819"/>
+<text text-anchor="middle" x="297.1634" y="-797.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">FundraisingPage</text>
+</g>
+<!-- \\JustGivingApi\\Models\\FundraisingPage&#45;&gt;\\JustGivingApi\\Models\\Model -->
+<g id="edge13" class="edge">
+<title>\\JustGivingApi\\Models\\FundraisingPage&#45;&gt;\\JustGivingApi\\Models\\Model</title>
+<path fill="none" stroke="#000000" d="M239.5256,-815.2585C200.3767,-824.9432 149.7563,-837.4658 115.8987,-845.8415"/>
+<polygon fill="none" stroke="#000000" points="114.8274,-842.5009 105.9606,-848.3 116.5085,-849.2961 114.8274,-842.5009"/>
+</g>
+<!-- \\JustGivingApi\\Models\\Event -->
+<g id="node7" class="node">
+<title>\\JustGivingApi\\Models\\Event</title>
+<polygon fill="none" stroke="#000000" points="324.1634,-765 270.1634,-765 270.1634,-729 324.1634,-729 324.1634,-765"/>
+<text text-anchor="middle" x="297.1634" y="-743.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Event</text>
+</g>
+<!-- \\JustGivingApi\\Models\\Event&#45;&gt;\\JustGivingApi\\Models\\Model -->
+<g id="edge14" class="edge">
+<title>\\JustGivingApi\\Models\\Event&#45;&gt;\\JustGivingApi\\Models\\Model</title>
+<path fill="none" stroke="#000000" d="M269.9709,-757.0936C257.5679,-761.9004 242.776,-767.9196 229.7537,-774 189.5947,-792.751 145.0431,-817.1316 114.8334,-834.2264"/>
+<polygon fill="none" stroke="#000000" points="112.9023,-831.2981 105.9391,-839.2835 116.3622,-837.3833 112.9023,-831.2981"/>
+</g>
+<!-- \\JustGivingApi\\Exceptions\\ApiException -->
+<g id="node8" class="node">
 <title>\\JustGivingApi\\Exceptions\\ApiException</title>
 <polygon fill="none" stroke="#000000" points="344.8765,-229 249.4503,-229 249.4503,-193 344.8765,-193 344.8765,-229"/>
 <text text-anchor="middle" x="297.1634" y="-207.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">ApiException</text>
@@ -52,184 +124,112 @@
 <text text-anchor="middle" x="78.8769" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#c0c0c0">\RuntimeException</text>
 </g>
 <!-- \\JustGivingApi\\Exceptions\\ApiException&#45;&gt;\\RuntimeException -->
-<g id="edge1" class="edge">
+<g id="edge2" class="edge">
 <title>\\JustGivingApi\\Exceptions\\ApiException&#45;&gt;\\RuntimeException</title>
 <path fill="none" stroke="#000000" d="M249.7618,-192.8621C242.7919,-189.3649 235.8988,-185.3997 229.7537,-181 174.5476,-141.4742 123.9074,-79.2091 97.6688,-44.1838"/>
 <polygon fill="none" stroke="#000000" points="100.2979,-41.8527 91.5358,-35.8964 94.6711,-46.0168 100.2979,-41.8527"/>
 </g>
 <!-- \\JustGivingApi\\Services\\EventsService -->
-<g id="node2" class="node">
+<g id="node9" class="node">
 <title>\\JustGivingApi\\Services\\EventsService</title>
-<polygon fill="none" stroke="#000000" points="347.9775,-1035 246.3493,-1035 246.3493,-999 347.9775,-999 347.9775,-1035"/>
-<text text-anchor="middle" x="297.1634" y="-1013.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">EventsService</text>
+<polygon fill="none" stroke="#000000" points="347.9775,-686 246.3493,-686 246.3493,-650 347.9775,-650 347.9775,-686"/>
+<text text-anchor="middle" x="297.1634" y="-664.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">EventsService</text>
 </g>
 <!-- \\JustGivingApi\\Services\\Service -->
-<g id="node5" class="node">
+<g id="node12" class="node">
 <title>\\JustGivingApi\\Services\\Service</title>
-<polygon fill="none" stroke="#000000" points="110.0847,-846 47.669,-846 47.669,-810 110.0847,-810 110.0847,-846"/>
-<text text-anchor="middle" x="78.8769" y="-824.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Service</text>
+<polygon fill="none" stroke="#000000" points="110.0847,-497 47.669,-497 47.669,-461 110.0847,-461 110.0847,-497"/>
+<text text-anchor="middle" x="78.8769" y="-475.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Service</text>
 </g>
 <!-- \\JustGivingApi\\Services\\EventsService&#45;&gt;\\JustGivingApi\\Services\\Service -->
-<g id="edge2" class="edge">
+<g id="edge3" class="edge">
 <title>\\JustGivingApi\\Services\\EventsService&#45;&gt;\\JustGivingApi\\Services\\Service</title>
-<path fill="none" stroke="#000000" d="M246.2111,-999.44C240.4631,-996.6378 234.8488,-993.4929 229.7537,-990 173.9371,-951.7358 123.5262,-889.4699 97.4903,-854.3212"/>
-<polygon fill="none" stroke="#000000" points="100.1348,-852.0079 91.4078,-846.0005 94.4837,-856.139 100.1348,-852.0079"/>
+<path fill="none" stroke="#000000" d="M246.2111,-650.44C240.4631,-647.6378 234.8488,-644.4929 229.7537,-641 173.9371,-602.7358 123.5262,-540.4699 97.4903,-505.3212"/>
+<polygon fill="none" stroke="#000000" points="100.1348,-503.0079 91.4078,-497.0005 94.4837,-507.139 100.1348,-503.0079"/>
 </g>
 <!-- \\JustGivingApi\\Services\\FundraisingService -->
-<g id="node3" class="node">
+<g id="node10" class="node">
 <title>\\JustGivingApi\\Services\\FundraisingService</title>
-<polygon fill="none" stroke="#000000" points="364.4828,-981 229.8439,-981 229.8439,-945 364.4828,-945 364.4828,-981"/>
-<text text-anchor="middle" x="297.1634" y="-959.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">FundraisingService</text>
+<polygon fill="none" stroke="#000000" points="364.4828,-632 229.8439,-632 229.8439,-596 364.4828,-596 364.4828,-632"/>
+<text text-anchor="middle" x="297.1634" y="-610.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">FundraisingService</text>
 </g>
 <!-- \\JustGivingApi\\Services\\FundraisingService&#45;&gt;\\JustGivingApi\\Services\\Service -->
-<g id="edge3" class="edge">
+<g id="edge4" class="edge">
 <title>\\JustGivingApi\\Services\\FundraisingService&#45;&gt;\\JustGivingApi\\Services\\Service</title>
-<path fill="none" stroke="#000000" d="M247.9208,-944.889C241.6984,-942.1333 235.5033,-939.1493 229.7537,-936 185.0774,-911.5285 138.026,-876.0808 108.5805,-852.5544"/>
-<polygon fill="none" stroke="#000000" points="110.7422,-849.8014 100.7589,-846.2539 106.351,-855.2528 110.7422,-849.8014"/>
+<path fill="none" stroke="#000000" d="M247.9208,-595.889C241.6984,-593.1333 235.5033,-590.1493 229.7537,-587 185.0774,-562.5285 138.026,-527.0808 108.5805,-503.5544"/>
+<polygon fill="none" stroke="#000000" points="110.7422,-500.8014 100.7589,-497.2539 106.351,-506.2528 110.7422,-500.8014"/>
 </g>
 <!-- \\JustGivingApi\\Services\\TeamService -->
-<g id="node4" class="node">
+<g id="node11" class="node">
 <title>\\JustGivingApi\\Services\\TeamService</title>
-<polygon fill="none" stroke="#000000" points="341.2761,-927 253.0507,-927 253.0507,-891 341.2761,-891 341.2761,-927"/>
-<text text-anchor="middle" x="297.1634" y="-905.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">TeamService</text>
+<polygon fill="none" stroke="#000000" points="341.2761,-578 253.0507,-578 253.0507,-542 341.2761,-542 341.2761,-578"/>
+<text text-anchor="middle" x="297.1634" y="-556.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">TeamService</text>
 </g>
 <!-- \\JustGivingApi\\Services\\TeamService&#45;&gt;\\JustGivingApi\\Services\\Service -->
-<g id="edge4" class="edge">
+<g id="edge5" class="edge">
 <title>\\JustGivingApi\\Services\\TeamService&#45;&gt;\\JustGivingApi\\Services\\Service</title>
-<path fill="none" stroke="#000000" d="M252.9899,-892.6084C214.1079,-878.1804 157.9298,-857.3343 119.9912,-843.2564"/>
-<polygon fill="none" stroke="#000000" points="120.8757,-839.8514 110.2827,-839.6538 118.4404,-846.4142 120.8757,-839.8514"/>
+<path fill="none" stroke="#000000" d="M252.9899,-543.6084C214.1079,-529.1804 157.9298,-508.3343 119.9912,-494.2564"/>
+<polygon fill="none" stroke="#000000" points="120.8757,-490.8514 110.2827,-490.6538 118.4404,-497.4142 120.8757,-490.8514"/>
 </g>
 <!-- \\JustGivingApi\\Services\\AccountsService -->
-<g id="node6" class="node">
+<g id="node13" class="node">
 <title>\\JustGivingApi\\Services\\AccountsService</title>
-<polygon fill="none" stroke="#000000" points="354.6795,-873 239.6473,-873 239.6473,-837 354.6795,-837 354.6795,-873"/>
-<text text-anchor="middle" x="297.1634" y="-851.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">AccountsService</text>
+<polygon fill="none" stroke="#000000" points="354.6795,-524 239.6473,-524 239.6473,-488 354.6795,-488 354.6795,-524"/>
+<text text-anchor="middle" x="297.1634" y="-502.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">AccountsService</text>
 </g>
 <!-- \\JustGivingApi\\Services\\AccountsService&#45;&gt;\\JustGivingApi\\Services\\Service -->
-<g id="edge5" class="edge">
+<g id="edge6" class="edge">
 <title>\\JustGivingApi\\Services\\AccountsService&#45;&gt;\\JustGivingApi\\Services\\Service</title>
-<path fill="none" stroke="#000000" d="M239.5256,-847.8708C201.9793,-843.2266 153.8814,-837.2774 120.139,-833.1037"/>
-<polygon fill="none" stroke="#000000" points="120.5097,-829.623 110.1556,-831.8689 119.6503,-836.5701 120.5097,-829.623"/>
+<path fill="none" stroke="#000000" d="M239.5256,-498.8708C201.9793,-494.2266 153.8814,-488.2774 120.139,-484.1037"/>
+<polygon fill="none" stroke="#000000" points="120.5097,-480.623 110.1556,-482.8689 119.6503,-487.5701 120.5097,-480.623"/>
 </g>
 <!-- \\JustGivingApi\\Services\\OneSearchService -->
-<g id="node7" class="node">
+<g id="node14" class="node">
 <title>\\JustGivingApi\\Services\\OneSearchService</title>
-<polygon fill="none" stroke="#000000" points="357.7812,-819 236.5456,-819 236.5456,-783 357.7812,-783 357.7812,-819"/>
-<text text-anchor="middle" x="297.1634" y="-797.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">OneSearchService</text>
+<polygon fill="none" stroke="#000000" points="357.7812,-470 236.5456,-470 236.5456,-434 357.7812,-434 357.7812,-470"/>
+<text text-anchor="middle" x="297.1634" y="-448.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">OneSearchService</text>
 </g>
 <!-- \\JustGivingApi\\Services\\OneSearchService&#45;&gt;\\JustGivingApi\\Services\\Service -->
-<g id="edge6" class="edge">
+<g id="edge7" class="edge">
 <title>\\JustGivingApi\\Services\\OneSearchService&#45;&gt;\\JustGivingApi\\Services\\Service</title>
-<path fill="none" stroke="#000000" d="M236.3584,-808.521C199.3632,-813.097 153.0825,-818.8215 120.2905,-822.8775"/>
-<polygon fill="none" stroke="#000000" points="119.6413,-819.4311 110.1466,-824.1322 120.5006,-826.3781 119.6413,-819.4311"/>
+<path fill="none" stroke="#000000" d="M236.3584,-459.521C199.3632,-464.097 153.0825,-469.8215 120.2905,-473.8775"/>
+<polygon fill="none" stroke="#000000" points="119.6413,-470.4311 110.1466,-475.1322 120.5006,-477.3781 119.6413,-470.4311"/>
 </g>
 <!-- \\JustGivingApi\\Services\\CurrencyService -->
-<g id="node8" class="node">
+<g id="node15" class="node">
 <title>\\JustGivingApi\\Services\\CurrencyService</title>
-<polygon fill="none" stroke="#000000" points="354.6795,-765 239.6473,-765 239.6473,-729 354.6795,-729 354.6795,-765"/>
-<text text-anchor="middle" x="297.1634" y="-743.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">CurrencyService</text>
+<polygon fill="none" stroke="#000000" points="354.6795,-416 239.6473,-416 239.6473,-380 354.6795,-380 354.6795,-416"/>
+<text text-anchor="middle" x="297.1634" y="-394.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">CurrencyService</text>
 </g>
 <!-- \\JustGivingApi\\Services\\CurrencyService&#45;&gt;\\JustGivingApi\\Services\\Service -->
-<g id="edge7" class="edge">
+<g id="edge8" class="edge">
 <title>\\JustGivingApi\\Services\\CurrencyService&#45;&gt;\\JustGivingApi\\Services\\Service</title>
-<path fill="none" stroke="#000000" d="M248.4473,-765.0772C209.8563,-779.3972 156.5477,-799.1785 120.0642,-812.7165"/>
-<polygon fill="none" stroke="#000000" points="118.4041,-809.5993 110.2464,-816.3597 120.8394,-816.162 118.4041,-809.5993"/>
+<path fill="none" stroke="#000000" d="M248.4473,-416.0772C209.8563,-430.3972 156.5477,-450.1785 120.0642,-463.7165"/>
+<polygon fill="none" stroke="#000000" points="118.4041,-460.5993 110.2464,-467.3597 120.8394,-467.162 118.4041,-460.5993"/>
 </g>
 <!-- \\JustGivingApi\\Services\\CountriesService -->
-<g id="node9" class="node">
+<g id="node16" class="node">
 <title>\\JustGivingApi\\Services\\CountriesService</title>
-<polygon fill="none" stroke="#000000" points="357.7812,-711 236.5456,-711 236.5456,-675 357.7812,-675 357.7812,-711"/>
-<text text-anchor="middle" x="297.1634" y="-689.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">CountriesService</text>
+<polygon fill="none" stroke="#000000" points="357.7812,-362 236.5456,-362 236.5456,-326 357.7812,-326 357.7812,-362"/>
+<text text-anchor="middle" x="297.1634" y="-340.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">CountriesService</text>
 </g>
 <!-- \\JustGivingApi\\Services\\CountriesService&#45;&gt;\\JustGivingApi\\Services\\Service -->
-<g id="edge8" class="edge">
+<g id="edge9" class="edge">
 <title>\\JustGivingApi\\Services\\CountriesService&#45;&gt;\\JustGivingApi\\Services\\Service</title>
-<path fill="none" stroke="#000000" d="M247.9208,-711.111C241.6984,-713.8667 235.5033,-716.8507 229.7537,-720 185.0774,-744.4715 138.026,-779.9192 108.5805,-803.4456"/>
-<polygon fill="none" stroke="#000000" points="106.351,-800.7472 100.7589,-809.7461 110.7422,-806.1986 106.351,-800.7472"/>
+<path fill="none" stroke="#000000" d="M247.9208,-362.111C241.6984,-364.8667 235.5033,-367.8507 229.7537,-371 185.0774,-395.4715 138.026,-430.9192 108.5805,-454.4456"/>
+<polygon fill="none" stroke="#000000" points="106.351,-451.7472 100.7589,-460.7461 110.7422,-457.1986 106.351,-451.7472"/>
 </g>
 <!-- \\JustGivingApi\\Services\\OAuth2Service -->
-<g id="node10" class="node">
+<g id="node17" class="node">
 <title>\\JustGivingApi\\Services\\OAuth2Service</title>
-<polygon fill="none" stroke="#000000" points="347.9775,-657 246.3493,-657 246.3493,-621 347.9775,-621 347.9775,-657"/>
-<text text-anchor="middle" x="297.1634" y="-635.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">OAuth2Service</text>
+<polygon fill="none" stroke="#000000" points="347.9775,-308 246.3493,-308 246.3493,-272 347.9775,-272 347.9775,-308"/>
+<text text-anchor="middle" x="297.1634" y="-286.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">OAuth2Service</text>
 </g>
 <!-- \\JustGivingApi\\Services\\OAuth2Service&#45;&gt;\\JustGivingApi\\Services\\Service -->
-<g id="edge10" class="edge">
-<title>\\JustGivingApi\\Services\\OAuth2Service&#45;&gt;\\JustGivingApi\\Services\\Service</title>
-<path fill="none" stroke="#000000" d="M246.2111,-656.56C240.4631,-659.3622 234.8488,-662.5071 229.7537,-666 173.9371,-704.2642 123.5262,-766.5301 97.4903,-801.6788"/>
-<polygon fill="none" stroke="#000000" points="94.4837,-799.861 91.4078,-809.9995 100.1348,-803.9921 94.4837,-799.861"/>
-</g>
-<!-- \\JustGivingApi\\Models\\Query -->
-<g id="node11" class="node">
-<title>\\JustGivingApi\\Models\\Query</title>
-<polygon fill="none" stroke="#000000" points="324.1634,-578 270.1634,-578 270.1634,-542 324.1634,-542 324.1634,-578"/>
-<text text-anchor="middle" x="297.1634" y="-556.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Query</text>
-</g>
-<!-- \\JustGivingApi\\Models\\Model -->
-<g id="node12" class="node">
-<title>\\JustGivingApi\\Models\\Model</title>
-<polygon fill="none" stroke="#000000" points="105.8769,-416 51.8769,-416 51.8769,-380 105.8769,-380 105.8769,-416"/>
-<text text-anchor="middle" x="78.8769" y="-394.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Model</text>
-</g>
-<!-- \\JustGivingApi\\Models\\Team -->
-<g id="node13" class="node">
-<title>\\JustGivingApi\\Models\\Team</title>
-<polygon fill="none" stroke="#000000" points="324.1634,-524 270.1634,-524 270.1634,-488 324.1634,-488 324.1634,-524"/>
-<text text-anchor="middle" x="297.1634" y="-502.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Team</text>
-</g>
-<!-- \\JustGivingApi\\Models\\Team&#45;&gt;\\JustGivingApi\\Models\\Model -->
-<g id="edge9" class="edge">
-<title>\\JustGivingApi\\Models\\Team&#45;&gt;\\JustGivingApi\\Models\\Model</title>
-<path fill="none" stroke="#000000" d="M269.9709,-495.9064C257.5679,-491.0996 242.776,-485.0804 229.7537,-479 189.5947,-460.249 145.0431,-435.8684 114.8334,-418.7736"/>
-<polygon fill="none" stroke="#000000" points="116.3622,-415.6167 105.9391,-413.7165 112.9023,-421.7019 116.3622,-415.6167"/>
-</g>
-<!-- \\JustGivingApi\\Models\\Account -->
-<g id="node14" class="node">
-<title>\\JustGivingApi\\Models\\Account</title>
-<polygon fill="none" stroke="#000000" points="328.3713,-470 265.9555,-470 265.9555,-434 328.3713,-434 328.3713,-470"/>
-<text text-anchor="middle" x="297.1634" y="-448.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Account</text>
-</g>
-<!-- \\JustGivingApi\\Models\\Account&#45;&gt;\\JustGivingApi\\Models\\Model -->
 <g id="edge11" class="edge">
-<title>\\JustGivingApi\\Models\\Account&#45;&gt;\\JustGivingApi\\Models\\Model</title>
-<path fill="none" stroke="#000000" d="M265.8883,-444.2631C226.246,-434.4564 158.0063,-417.5751 115.8342,-407.1425"/>
-<polygon fill="none" stroke="#000000" points="116.5128,-403.705 105.9649,-404.7011 114.8317,-410.5001 116.5128,-403.705"/>
-</g>
-<!-- \\JustGivingApi\\Models\\FundraisingPage -->
-<g id="node15" class="node">
-<title>\\JustGivingApi\\Models\\FundraisingPage</title>
-<polygon fill="none" stroke="#000000" points="354.6795,-416 239.6473,-416 239.6473,-380 354.6795,-380 354.6795,-416"/>
-<text text-anchor="middle" x="297.1634" y="-394.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">FundraisingPage</text>
-</g>
-<!-- \\JustGivingApi\\Models\\FundraisingPage&#45;&gt;\\JustGivingApi\\Models\\Model -->
-<g id="edge12" class="edge">
-<title>\\JustGivingApi\\Models\\FundraisingPage&#45;&gt;\\JustGivingApi\\Models\\Model</title>
-<path fill="none" stroke="#000000" d="M239.5256,-398C200.5455,-398 150.1924,-398 116.3374,-398"/>
-<polygon fill="none" stroke="#000000" points="115.9606,-394.5001 105.9606,-398 115.9606,-401.5001 115.9606,-394.5001"/>
-</g>
-<!-- \\JustGivingApi\\Models\\Event -->
-<g id="node16" class="node">
-<title>\\JustGivingApi\\Models\\Event</title>
-<polygon fill="none" stroke="#000000" points="324.1634,-362 270.1634,-362 270.1634,-326 324.1634,-326 324.1634,-362"/>
-<text text-anchor="middle" x="297.1634" y="-340.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">Event</text>
-</g>
-<!-- \\JustGivingApi\\Models\\Event&#45;&gt;\\JustGivingApi\\Models\\Model -->
-<g id="edge13" class="edge">
-<title>\\JustGivingApi\\Models\\Event&#45;&gt;\\JustGivingApi\\Models\\Model</title>
-<path fill="none" stroke="#000000" d="M269.9586,-350.73C231.1279,-360.336 159.6881,-378.0088 116.0173,-388.8121"/>
-<polygon fill="none" stroke="#000000" points="114.9476,-385.4712 106.0808,-391.2703 116.6287,-392.2663 114.9476,-385.4712"/>
-</g>
-<!-- \\JustGivingApi\\Models\\ConsumerDonation -->
-<g id="node17" class="node">
-<title>\\JustGivingApi\\Models\\ConsumerDonation</title>
-<polygon fill="none" stroke="#000000" points="357.7812,-308 236.5456,-308 236.5456,-272 357.7812,-272 357.7812,-308"/>
-<text text-anchor="middle" x="297.1634" y="-286.7" font-family="Courier,monospace" font-size="11.00" fill="#000000">ConsumerDonation</text>
-</g>
-<!-- \\JustGivingApi\\Models\\ConsumerDonation&#45;&gt;\\JustGivingApi\\Models\\Model -->
-<g id="edge14" class="edge">
-<title>\\JustGivingApi\\Models\\ConsumerDonation&#45;&gt;\\JustGivingApi\\Models\\Model</title>
-<path fill="none" stroke="#000000" d="M250.0946,-308.0692C243.2184,-310.9349 236.2649,-313.9598 229.7537,-317 189.5947,-335.751 145.0431,-360.1316 114.8334,-377.2264"/>
-<polygon fill="none" stroke="#000000" points="112.9023,-374.2981 105.9391,-382.2835 116.3622,-380.3833 112.9023,-374.2981"/>
+<title>\\JustGivingApi\\Services\\OAuth2Service&#45;&gt;\\JustGivingApi\\Services\\Service</title>
+<path fill="none" stroke="#000000" d="M246.2111,-307.56C240.4631,-310.3622 234.8488,-313.5071 229.7537,-317 173.9371,-355.2642 123.5262,-417.5301 97.4903,-452.6788"/>
+<polygon fill="none" stroke="#000000" points="94.4837,-450.861 91.4078,-460.9995 100.1348,-454.9921 94.4837,-450.861"/>
 </g>
 <!-- \\JustGivingApi\\Transport\\Transport -->
 <g id="node18" class="node">

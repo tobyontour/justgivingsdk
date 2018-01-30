@@ -39,6 +39,8 @@ class Model
                 } else {
                     $this->$key = $value;
                 }
+            } else {
+                // echo "Field missing: $key\n";
             }
         }
     }

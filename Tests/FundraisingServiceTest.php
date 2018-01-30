@@ -106,29 +106,26 @@ class FundraisingServiceTest extends TestCase
             "pageStory" => "string1",
             "pageSummaryWhat" => "string2",
             "pageSummaryWhy" => "string3",
-            "CustomCodes.customCode1" => "string4",
-            "CustomCodes.customCode2" => "string5",
-            "CustomCodes.customCode3" => "string6",
-            "CustomCodes.customCode4" => "string7",
-            "CustomCodes.customCode5" => "string8",
-            "CustomCodes.customCode6" => "string9",
-            "Theme.pageBackground" => "stringA",
-            "Theme.buttonsThermometerFill" => "stringB",
-            "Theme.linesThermometerBackground" => "stringC",
-            "Theme.backgroundColour" => "stringD",
-            "Theme.buttonColour" => "stringE",
-            /*
-            "Theme.titleColour" => "string",
-            "RememberedPersonReference.relationship" => "string",
-            "RememberedPersonReference.RememberedPerson.id" => 0,
-            "RememberedPersonReference.RememberedPerson.firstName" => "string",
-            "RememberedPersonReference.RememberedPerson.lastName" => "string",
-            "RememberedPersonReference.RememberedPerson.town" => "string",
-            "RememberedPersonReference.RememberedPerson.dateOfBirth" => "2018-01-15T14:50:01.543Z",
-            "RememberedPersonReference.RememberedPerson.dateOfDeath" => "2018-01-15T14:50:01.543Z",
-            "RememberedPersonReference.RememberedPerson.errorMessage" => "string",
-            "RememberedPersonReference.errorMessage" => "string",
-            */
+            "theme" => [
+                "pageBackground" => "stringA",
+                "buttonsThermometerFill" => "stringB",
+                "linesThermometerBackground" => "stringC",
+                "backgroundColour" => "stringD",
+                "titleColour" => "string",
+                "buttonColour" => "stringE"
+            ],
+            "rememberedPersonReference" => [
+                "relationship" => "string",
+                "rememberedPerson" => [
+                    "id" => 0,
+                    "firstName" => "string",
+                    "lastName" => "string",
+                    "town" => "string",
+                    "dateOfBirth" => "2018-01-15T14:50:01.543Z",
+                    "dateOfDeath" => "2018-01-15T14:50:01.543Z",
+                    "errorMessage" => "string"
+                ],
+            ],
             "consistentErrorResponses" => true,
             "teamId" => 567,
             "currency" => "GBP"
@@ -147,7 +144,7 @@ class FundraisingServiceTest extends TestCase
 
         $this->assertEquals(
             0,
-            count(array_diff_assoc($body, $pageArray)),
+            count(array_diff_assoc($pageArray, $body)),
             'The array sent to the register fundraising page endpoint is the same one we defined.'
         );
     }
