@@ -226,4 +226,75 @@ class FundraisingServiceTest extends TestCase
             is_array($suggestions)
         );
     }
+
+    public function testFundraisingPageUrlCheckUrlAvailable()
+    {
+        $api = $this->initApi(
+            $container,
+            '',
+            404
+        );
+
+        $isUrlInUse = $api->getFundraisingService()->isUrlInUse('jon');
+
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
+            'HEAD',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages/jon',
+            $body
+        ), 'Method and URL are correct.');
+
+        $this->assertFalse(
+            $isUrlInUse,
+            'Returns false if the Url is not in use (HEAD returns 404)'
+        );
+    }
+
+    public function testFundraisingPageUrlCheckUrlNotAvailable()
+    {
+        $api = $this->initApi(
+            $container,
+            '',
+            200
+        );
+
+        $isUrlInUse = $api->getFundraisingService()->isUrlInUse('jon');
+
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
+            'HEAD',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages/jon',
+            $body
+        ), 'Method and URL are correct.');
+
+        $this->assertTrue(
+            $isUrlInUse,
+            'Returns true if the Url is in use (HEAD returns 200)'
+        );
+    }
+
+    public function testFundraisingPageUrlCheckUrlInvalidUrl()
+    {
+        $api = $this->initApi(
+            $container,
+            '',
+            400
+        );
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $isUrlInUse = $api->getFundraisingService()->isUrlInUse('jon');
+
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
+            'HEAD',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages/jon',
+            $body
+        ), 'Method and URL are correct.');
+
+        $this->assertFalse(
+            $isUrlInUse,
+            'Returns false if the Url is not in use but invalid (HEAD returns 400)'
+        );
+    }
 }

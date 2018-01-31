@@ -82,7 +82,32 @@ class FundraisingService extends Service
     }
 
     /**
-     * @todo FundraisingPageUrlCheck
+     * FundraisingPageUrlCheck - check if a Url is free.
+     *
+     * @param  string $shortName A page short name that would become part of a justgiving Url.
+     * @return boolean True if the Url is already in use. False if it is free.
+     * @throws InvalidArgumentException if shortName is invalid.
+     */
+    public function isUrlInUse($shortName)
+    {
+        $httpStatusCode = $this->transport->head('fundraising/pages/' . urlencode($shortName));
+
+        switch ($httpStatusCode) {
+            case 200:
+                return true;
+                break;
+            case 400:
+                throw new \InvalidArgumentException('URL contains invalid characters');
+                break;
+            case 404:
+                return false;
+                break;
+        }
+        throw new \RuntimeException('Unexpected return from FundraisingPageUrlCheck call');
+    }
+
+    /**
+     *  - FundraisingPageUrlCheck
      *  - SuggestPageShortNames
      *  - RegisterFundraisingPage
      * @todo GetFundraisingPageDetails

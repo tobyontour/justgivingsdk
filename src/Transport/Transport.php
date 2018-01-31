@@ -185,4 +185,38 @@ class Transport
 
         return json_decode($response->getBody(), $assoc);
     }
+
+    /**
+     * HTTP HEAD request.
+     *
+     * @param  string $path The path to get from.
+     * @param  reference $statusMessage Will be filled with the HTTP status message.
+     * @throws ApiException if the HTTP status code > 500.
+     */
+    public function head($path, &$statusMessage = null)
+    {
+        try {
+            $options = array(
+                'headers' => $this->headers
+            );
+
+            $response = $this->client->request('HEAD', $path, $options);
+        } catch (ClientException $e) {
+            if ($e->hasResponse()) {
+                $response = $e->getResponse();
+            } else {
+                throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+            }
+        }
+
+        if ($response->getStatusCode() >= 500) {
+            throw new ApiException($response, $path);
+        }
+
+        if (isset($statusMessage)) {
+            $statusMessage = $response->getReasonPhrase();
+        }
+
+        return $response->getStatusCode();
+    }
 }

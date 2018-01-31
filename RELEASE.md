@@ -14,7 +14,7 @@ Currency            1/ 1		*
 default             0/ 9
 Donation            0/ 6
 Event               4/ 4        *
-Fundraising         4/34
+Fundraising         5/34
 Leaderboard.        0/ 4
 Project             0/ 2
 OneSearch           1/ 1.       *
