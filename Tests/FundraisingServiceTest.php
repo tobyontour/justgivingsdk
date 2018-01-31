@@ -297,4 +297,60 @@ class FundraisingServiceTest extends TestCase
             'Returns false if the Url is not in use but invalid (HEAD returns 400)'
         );
     }
+
+    public function testGetFundraisingPageDetails()
+    {
+        $api = $this->initApi(
+            $container,
+            file_get_contents(__DIR__ . '/Mockdata/GetFundraisingPageDetails.json'),
+            200
+        );
+
+        $page = $api->getFundraisingService()->getPageDetails('test-page');
+
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
+            'GET',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pages/test-page',
+            $body
+        ), 'Method and URL are correct.');
+
+        $this->assertEquals(
+            'JustGivingApi\Models\FundraisingPage',
+            get_class($page)
+        );
+
+        $this->assertEquals(
+            'My page',
+            $page->title
+        );
+    }
+
+    public function testGetFundraisingPageDetailsById()
+    {
+        $api = $this->initApi(
+            $container,
+            file_get_contents(__DIR__ . '/Mockdata/GetFundraisingPageDetails.json'),
+            200
+        );
+
+        $page = $api->getFundraisingService()->getPageDetailsById(2811920);
+
+        $this->assertTrue($this->validateMethodAndUrl(
+            $container[0]['request'],
+            'GET',
+            JustGivingApi::SANDBOX_BASE_URL . '/API_KEY/v1/fundraising/pagebyid/2811920',
+            $body
+        ), 'Method and URL are correct.');
+
+        $this->assertEquals(
+            'JustGivingApi\Models\FundraisingPage',
+            get_class($page)
+        );
+
+        $this->assertEquals(
+            'My page',
+            $page->title
+        );
+    }
 }

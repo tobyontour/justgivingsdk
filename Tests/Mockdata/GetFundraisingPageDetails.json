@@ -1,29 +1,78 @@
 {
-    "activityCharityCreated": false,
-    "ownerProfileImageUrls": null,
-    "branding": {
-        "buttonColour": null,
-        "buttonTextColour": null,
-        "headerTextColour": null,
-        "thermometerBackgroundColour": null,
-        "thermometerFillColour": null,
-        "thermometerTextColour": null
+  "pageId": "2811920",
+  "activityCharityCreated": false,
+  "activityType": "OtherCelebration",
+  "activityId": "12345",
+  "eventName": "Our awesome-a-thon!",
+  "eventId": 12345,
+  "currencySymbol": "£",
+  "image": {
+    "caption": "My Caption",
+    "url": "//images.justgiving.com/image/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg",
+    "absoluteUrl": "https://images.justgiving.com/image/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg"
+  },
+  "status": "Active",
+  "owner": "Bender Bending Rodriguez",
+  "ownerProfileImageUrls": {
+    "OriginalSize": "http:\\/\\/images.dev.justgiving.com\\/image\\/e60e776a-e4f4-4e02-95a6-6107fa7d0400.jpg",
+    "Size150x150Face": "http:\\/\\/images.dev.justgiving.com\\/image\\/e60e776a-e4f4-4e02-95a6-6107fa7d0400.jpg?template=size150x150face"
+  },
+  "title": "My page",
+  "showEventDate": "true",
+  "eventDate": "\/Date(1517835607106+0000)\/",
+  "showExpiryDate": "true",
+  "fundraisingTarget": "20000.00",
+  "totalRaisedPercentageOfFundraisingTarget": "204",
+  "totalRaisedOffline": "155.0000",
+  "totalRaisedOnline": "978.0000",
+  "totalRaisedSms": "202.0000",
+  "totalEstimatedGiftAid": "254.2116",
+  "branding": {
+    "buttonColour": "144971",
+    "buttonTextColour": "FFFFFF",
+    "headerTextColour": "248AC8",
+    "thermometerBackgroundColour": "248AC8",
+    "thermometerFillColour": "144971",
+    "thermometerTextColour": "FFFFFF"
+  },
+  "charity": {
+    "id": 0,
+    "name": "Save The Awesome",
+    "description": "We're an awesome charity",
+    "logoUrl": "https://images.justgiving.com/image/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg",
+    "logoAbsoluteUrl": "https://images.justgiving.com/image/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg",
+    "profilePageUrl": "",
+    "registrationNumber": "1234"
+  },
+  "media": {
+    "images": [
+      {
+        "caption": "My Caption",
+        "url": "//images.justgiving.com/image/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg",
+        "absoluteUrl": "https://images.justgiving.com/image/3fbae219-17bf-4aed-b6bd-679ee5bf6758.jpg"
+      }
+    ],
+    "videos": [
+      {
+        "caption": "My Video Caption",
+        "url": "http://youtube.com/w/someUri"
+      }
+    ]
+  },
+  "story": "I love fundraising for the awesome charity.",
+  "domain": "v3-staging.justgiving.com",
+  "smsCode": "WYSA91",
+  "companyAppealId": 0,
+  "rememberedPersonSummary": null,
+  "pageSummaryWhat": null,
+  "pageSummaryWhy": null,
+  "teams": [
+    {
+      "teamShortName": "stockportraisers"
     },
-    "charity": {
-        "id": 0,
-        "name": null,
-        "description": null,
-        "logoUrl": null,
-        "logoAbsoluteUrl": null,
-        "profilePageUrl": null,
-        "registrationNumber": null
-    },
-    "domain": null,
-    "smsCode": null,
-    "companyAppealId": 0,
-    "rememberedPersonSummary": null,
-    "pageSummaryWhat": null,
-    "pageSummaryWhy": null,
-    "teams": null,
-    "pageSummary": ""
+    {
+      "teamShortName": "short-name-team"
+    }
+  ],
+  "pageSummary": ""
 }

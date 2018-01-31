@@ -34,4 +34,32 @@ class FundraisingPage extends Model
     public $currency;
     public $theme;
     public $rememberedPersonReference;
+
+    // Get only
+    public $pageId;
+    public $activityCharityCreated;
+    public $activityId;
+    public $currencySymbol;
+    public $image;
+    public $status;
+    public $owner;
+    public $ownerProfileImageUrls;
+    public $title;
+    public $showEventDate;
+    public $showExpiryDate;
+    public $fundraisingTarget;
+    public $totalRaisedPercentageOfFundraisingTarget;
+    public $totalRaisedOffline;
+    public $totalRaisedOnline;
+    public $totalRaisedSms;
+    public $totalEstimatedGiftAid;
+    public $branding;
+    public $charity;
+    public $media;
+    public $story;
+    public $domain;
+    public $smsCode;
+    public $rememberedPersonSummary;
+    public $teams;
+    public $pageSummary;
 }

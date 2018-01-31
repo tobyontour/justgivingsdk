@@ -107,6 +107,28 @@ class FundraisingService extends Service
     }
 
     /**
+     * Get details of a fundraising page by its short url name.
+     *
+     * @param  string $pageShortName Would be replaced with the short page url.
+     * @return FundraisingPage The page.
+     */
+    public function getPageDetails($pageShortName)
+    {
+        return new FundraisingPage($this->transport->get('fundraising/pages/' . $pageShortName, true));
+    }
+
+    /**
+     * Get details of a fundraising page by its unique ID.
+     *
+     * @param  integer $pageId Would be replaced with the page's unique ID.
+     * @return FundraisingPage The page.
+     */
+    public function getPageDetailsById($pageId)
+    {
+        return new FundraisingPage($this->transport->get('fundraising/pagebyid/' . $pageId, true));
+    }
+
+    /**
      *  - FundraisingPageUrlCheck
      *  - SuggestPageShortNames
      *  - RegisterFundraisingPage
