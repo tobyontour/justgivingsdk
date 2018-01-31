@@ -44,6 +44,7 @@
     * [getPageUpdateById](#getpageupdatebyid)
     * [getPageUpdates](#getpageupdates)
     * [getShortNameSuggestions](#getshortnamesuggestions)
+    * [isUrlInUse](#isurlinuse)
 * [JustGivingApi](#justgivingapi)
     * [__construct](#__construct-10)
     * [setBaseApiUrl](#setbaseapiurl)
@@ -95,6 +96,7 @@
     * [get](#get)
     * [post](#post)
     * [put](#put)
+    * [head](#head)
 
 ## Account
 
@@ -1038,6 +1040,32 @@ FundraisingService::getShortNameSuggestions( string $preferredName ): array
 **Return Value:**
 
 Strings containing unused suggestions.
+
+
+
+---
+
+### isUrlInUse
+
+FundraisingPageUrlCheck - check if a Url is free.
+
+```php
+FundraisingService::isUrlInUse( string $shortName ): boolean
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$shortName` | **string** | A page short name that would become part of a justgiving Url. |
+
+
+**Return Value:**
+
+True if the Url is already in use. False if it is free.
 
 
 
@@ -2158,7 +2186,30 @@ object or array depending on the value of $assoc
 
 ---
 
+### head
+
+HTTP HEAD request.
+
+```php
+Transport::head( string $path, \JustGivingApi\Transport\reference &$statusMessage = null )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$path` | **string** | The path to get from. |
+| `$statusMessage` | **\JustGivingApi\Transport\reference** | Will be filled with the HTTP status message. |
+
+
+
+
+---
+
 
 
 --------
-> This document was automatically generated from source code comments on 2018-01-30 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-01-31 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
