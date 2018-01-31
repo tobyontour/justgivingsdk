@@ -171,6 +171,32 @@ class AccountServiceTest extends TestCase
         );
     }
 
+    public function testSettingAddress()
+    {
+        $account = new Account();
+
+        $account->setAddress(
+            "22 Acacia Avenue",
+            "Little Village",
+            "Sometown",
+            "Acmetown",
+            "United Kingdom",
+            "AB12 CDE"
+        );
+
+        $this->assertEquals(
+            0,
+            count(array_diff_assoc($account->address, [
+                "line1" => "22 Acacia Avenue",
+                "line2" => "Little Village",
+                "townOrCity" => "Sometown",
+                "countyOrState" => "Acmetown",
+                "country" => "United Kingdom",
+                "postcodeOrZipcode" => "AB12 CDE"
+            ]))
+        );
+    }
+
     /**
      * Tests the retrieval of the currently logged in account. We can't
      * really simulate the logging in so we're 'assuming' that the client

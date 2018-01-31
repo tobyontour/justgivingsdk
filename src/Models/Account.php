@@ -37,4 +37,28 @@ class Account extends Model
     public $raisedTotalsInSupportedCurrencies;
     public $totalDonatedGiftAid;
     public $town;
+
+    /**
+     * Sets the address array field.
+     *
+     * A list of allowable countries is available via the Countries API.
+     *
+     * @param string $line1 The first line of the of the address where the user resides (Required).
+     * @param string $line2 The second line of the of the address where the user resides (Optional).
+     * @param string $townOrCity The town or city where the user resides (Required).
+     * @param string $countryOrState The county or state where the user resides (Optional).
+     * @param string $country The country where the user resides (Required).
+     * @param string $postcodeOrZipcode The postcode or zip of the address where the user resides (Required).
+     */
+    public function setAddress($line1, $line2, $townOrCity, $countyOrState, $country, $postcodeOrZipcode)
+    {
+        $this->address = [
+            'line1' => $line1,
+            'line2' => $line2,
+            'townOrCity' => $townOrCity,
+            'countyOrState' => $countyOrState,
+            'country' => $country,
+            'postcodeOrZipcode' => $postcodeOrZipcode
+        ];
+    }
 }
