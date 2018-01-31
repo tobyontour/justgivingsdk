@@ -191,7 +191,7 @@ class Transport
      *
      * @param  string $path The path to get from.
      * @param  reference $statusMessage Will be filled with the HTTP status message.
-     * @throws ApiException if the HTTP status code > 500.
+     * @throws \JustGivingApi\Exceptions\ApiException if the HTTP status code > 500.
      */
     public function head($path, &$statusMessage = null)
     {

@@ -86,7 +86,7 @@ class FundraisingService extends Service
      *
      * @param  string $shortName A page short name that would become part of a justgiving Url.
      * @return boolean True if the Url is already in use. False if it is free.
-     * @throws InvalidArgumentException if shortName is invalid.
+     * @throws \InvalidArgumentException if shortName is invalid.
      */
     public function isUrlInUse($shortName)
     {
