@@ -14,11 +14,11 @@ Currency            1/ 1		*
 default             0/ 9
 Donation            0/ 6
 Event               4/ 4        *
-Fundraising         5/34
+Fundraising         7/27
 Leaderboard.        0/ 4
 Project             0/ 2
-OneSearch           1/ 1.       *
+OneSearch           1/ 1        *
 Sms                 0/ 3
 Team                4/ 5        *
-                  23 of 102
+                  26 of 95
 ```
