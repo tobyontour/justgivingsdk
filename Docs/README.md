@@ -45,6 +45,8 @@
     * [getPageUpdates](#getpageupdates)
     * [getShortNameSuggestions](#getshortnamesuggestions)
     * [isUrlInUse](#isurlinuse)
+    * [getPageDetails](#getpagedetails)
+    * [getPageDetailsById](#getpagedetailsbyid)
 * [JustGivingApi](#justgivingapi)
     * [__construct](#__construct-10)
     * [setBaseApiUrl](#setbaseapiurl)
@@ -1066,6 +1068,58 @@ FundraisingService::isUrlInUse( string $shortName ): boolean
 **Return Value:**
 
 True if the Url is already in use. False if it is free.
+
+
+
+---
+
+### getPageDetails
+
+Get details of a fundraising page by its short url name.
+
+```php
+FundraisingService::getPageDetails( string $pageShortName ): \JustGivingApi\Models\FundraisingPage
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$pageShortName` | **string** | Would be replaced with the short page url. |
+
+
+**Return Value:**
+
+The page.
+
+
+
+---
+
+### getPageDetailsById
+
+Get details of a fundraising page by its unique ID.
+
+```php
+FundraisingService::getPageDetailsById( integer $pageId ): \JustGivingApi\Models\FundraisingPage
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$pageId` | **integer** | Would be replaced with the page's unique ID. |
+
+
+**Return Value:**
+
+The page.
 
 
 
