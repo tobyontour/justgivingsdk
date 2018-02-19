@@ -73,6 +73,12 @@ class JustGivingApi
     private $transport;
 
     /**
+     * Instance of the Transport class that makes authentication calls.
+     * @var Transport
+     */
+    private $authTransport;
+
+    /**
      * The array of instantiated services.
      * @var array
      */
@@ -308,17 +314,20 @@ class JustGivingApi
      */
 
     /**
-     * Sets up the client for performing API calls.
+     * Sets up the client for performing authentication API calls.
      *
-     * @return JustGivingApi\Transport\Transport The client for making REST calls.
+     * @return JustGivingApi\Transport\Transport The client for making authentication calls.
      */
-    private function getAuthTransport()
+    public function getAuthTransport()
     {
-        return new Transport(new Client([
-            'base_uri' => $this->authBaseUrl . '/',
-            'timeout' => self::TIMEOUT,
-            'handler' => $this->stack
-        ]));
+        if (is_null($this->authTransport)) {
+            $this->authTransport = new Transport(new Client([
+                'base_uri' => $this->authBaseUrl . '/',
+                'timeout' => self::TIMEOUT,
+                'handler' => $this->stack
+            ]));
+        }
+        return $this->authTransport;
     }
 
     /**

@@ -63,6 +63,7 @@
     * [getCurrencyService](#getcurrencyservice)
     * [getOneSearchService](#getonesearchservice)
     * [search](#search)
+    * [getAuthTransport](#getauthtransport)
     * [getLoginFormUrl](#getloginformurl)
     * [getAuthenticationToken](#getauthenticationtoken)
     * [refreshAuthenticationToken](#refreshauthenticationtoken)
@@ -1460,6 +1461,26 @@ JustGivingApi::search( \JustGivingApi\Models\Query $query ): object
 **Return Value:**
 
 The result object.
+
+
+
+---
+
+### getAuthTransport
+
+Sets up the client for performing authentication API calls.
+
+```php
+JustGivingApi::getAuthTransport(  ): \JustGivingApi\JustGivingApi\Transport\Transport
+```
+
+
+
+
+
+**Return Value:**
+
+The client for making authentication calls.
 
 
 
