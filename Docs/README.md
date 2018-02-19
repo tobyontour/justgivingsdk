@@ -1167,7 +1167,7 @@ Main class for making requests to the JustGiving API.
 Creates an instance of the API.
 
 ```php
-JustGivingApi::__construct( string $apiKey, string $secret = null, boolean $testMode = false, integer $version = 1 )
+JustGivingApi::__construct( string $apiKey, string $secret = null, boolean $liveMode = true, integer $version = 1 )
 ```
 
 
@@ -1179,7 +1179,7 @@ JustGivingApi::__construct( string $apiKey, string $secret = null, boolean $test
 |-----------|------|-------------|
 | `$apiKey` | **string** | The JustGiving API key. Register as a developer on the website to get this. |
 | `$secret` | **string** | The API secret. Needed for authenticated requests on behalf of the user. |
-| `$testMode` | **boolean** | If true it uses the sandbox environment. Defaults to false (production). |
+| `$liveMode` | **boolean** | If true it uses the live environment. Defaults to true (production). |
 | `$version` | **integer** | API version. |
 
 
