@@ -62,6 +62,12 @@ class OAuth2Service extends Service
      *  Array of scopes. These include openid, profile, fundraise, account, social, crowdfunding.
      *  The first two are manditory (so the function ensures this). The last two are labelled as
      *  'coming soon' in the API docs.
+     *
+     *  From the list on the test server, the scopes are:
+     *  "openid","profile","email","address","roles","offline_access","all_claims","fundraise",
+     *  "account","donations","giving","rate","getDonationsForUser","campaigns","charity",
+     *  "companies","crowdfunding","event","sms","team"
+     *
      * @param string $redirectUrl
      *  This is the full URL that the user will be redirected to after authenticating with JustGiving.
      *  It must match the “Home page for your application” property in 3scale app details exactly, as this is used
@@ -80,7 +86,6 @@ class OAuth2Service extends Service
         if (!$this->validateRedirectUrl($redirectUrl)) {
             throw new \InvalidArgumentException('Redirect URL needs to have a scheme, host, and path.');
         }
-
 
         // Ensure the scope contains manditory elements.
         $scope = array_unique(array_merge($scope, ['openid', 'profile']));

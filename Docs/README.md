@@ -5,6 +5,7 @@
 * [Account](#account)
     * [__construct](#__construct)
     * [toArray](#toarray)
+    * [setAddress](#setaddress)
 * [AccountsService](#accountsservice)
     * [__construct](#__construct-1)
     * [accountExists](#accountexists)
@@ -158,6 +159,33 @@ Account::toArray( array $omitList = array() ): array
 **Return Value:**
 
 The array to send as part of a REST request.
+
+
+
+---
+
+### setAddress
+
+Sets the address array field.
+
+```php
+Account::setAddress( string $line1, string $line2, string $townOrCity,  $countyOrState, string $country, string $postcodeOrZipcode )
+```
+
+A list of allowable countries is available via the Countries API.
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$line1` | **string** | The first line of the of the address where the user resides (Required). |
+| `$line2` | **string** | The second line of the of the address where the user resides (Optional). |
+| `$townOrCity` | **string** | The town or city where the user resides (Required). |
+| `$countyOrState` | **** |  |
+| `$country` | **string** | The country where the user resides (Required). |
+| `$postcodeOrZipcode` | **string** | The postcode or zip of the address where the user resides (Required). |
+
 
 
 
@@ -1646,7 +1674,12 @@ OAuth2Service::getLoginFormUrl( array $scope, string $redirectUrl, string $guid,
 |-----------|------|-------------|
 | `$scope` | **array** | Array of scopes. These include openid, profile, fundraise, account, social, crowdfunding.
  The first two are manditory (so the function ensures this). The last two are labelled as
- 'coming soon' in the API docs. |
+ 'coming soon' in the API docs.
+
+ From the list on the test server, the scopes are:
+ "openid","profile","email","address","roles","offline_access","all_claims","fundraise",
+ "account","donations","giving","rate","getDonationsForUser","campaigns","charity",
+ "companies","crowdfunding","event","sms","team" |
 | `$redirectUrl` | **string** | This is the full URL that the user will be redirected to after authenticating with JustGiving.
  It must match the “Home page for your application” property in 3scale app details exactly, as this is used
  for authentication. The URL will be called with a URL parameter of 'code' which must be used in the next
@@ -2266,4 +2299,4 @@ Transport::head( string $path, \JustGivingApi\Transport\reference &$statusMessag
 
 
 --------
-> This document was automatically generated from source code comments on 2018-01-31 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-02-19 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)

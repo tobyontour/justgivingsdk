@@ -132,8 +132,8 @@ class FundraisingService extends Service
      *  - FundraisingPageUrlCheck
      *  - SuggestPageShortNames
      *  - RegisterFundraisingPage
-     * @todo GetFundraisingPageDetails
-     * @todo GetFundraisingPageDetailsById
+     *  - GetFundraisingPageDetails
+     *  - GetFundraisingPageDetailsById
      * @todo GetFundraisingPages
      * @todo GetFundraisingPageDonations
      * @todo GetFundraisingPageDonationsByReference
