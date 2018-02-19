@@ -110,7 +110,7 @@ __EOD__;
         $headers = $request->getHeaders();
 
         $this->assertEquals(
-            'Basic Ok9BVVRIX1NFQ1JFVA==',
+            'Basic ' . base64_encode('API_KEY:OAUTH_SECRET'),
             $headers['Authorization'][0]
         );
         $this->assertEquals(
@@ -162,7 +162,7 @@ __EOD__;
         $headers = $request->getHeaders();
 
         $this->assertEquals(
-            'Basic Ok9BVVRIX1NFQ1JFVA==',
+            'Basic ' . base64_encode('API_KEY:OAUTH_SECRET'),
             $headers['Authorization'][0]
         );
         $this->assertEquals(

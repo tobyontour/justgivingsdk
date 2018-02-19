@@ -68,7 +68,7 @@ class Transport
     public function setBasicAuth($username, $password)
     {
         $this->basicAuth = [
-            'username' => $user,
+            'username' => $username,
             'password' => $password
         ];
     }
