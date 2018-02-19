@@ -40,6 +40,13 @@ class Transport
     ];
 
     /**
+     * An array containing the path, options, and method of the last call.
+     *
+     * @var array
+     */
+    public $lastCall = null;
+
+    /**
      * Constructor.
      *
      * @param Client The Guzzle client to use.
@@ -99,6 +106,12 @@ class Transport
                 $options['auth'] = array($this->basicAuth['username'], $this->basicAuth['password']);
             }
 
+            $this->lastCall = array(
+                'method' => 'GET',
+                'path' => $path,
+                'options' => $options
+            );
+
             $response = $this->client->request('GET', $path, $options);
         } catch (ClientException $e) {
             if ($e->hasResponse()) {
@@ -142,6 +155,12 @@ class Transport
                 $options['body'] = json_encode($body);
             }
 
+            $this->lastCall = array(
+                'method' => 'POST',
+                'path' => $path,
+                'options' => $options
+            );
+
             $response = $this->client->request('POST', $path, $options);
         } catch (ClientException $e) {
             if ($e->hasResponse()) {
@@ -178,6 +197,12 @@ class Transport
                 $options['auth'] = array($this->basicAuth['username'], $this->basicAuth['password']);
             }
 
+            $this->lastCall = array(
+                'method' => 'PUT',
+                'path' => $path,
+                'options' => $options
+            );
+
             $response = $this->client->request('PUT', $path, $options);
         } catch (ClientException $e) {
             if ($e->hasResponse()) {
@@ -211,6 +236,12 @@ class Transport
             if (!is_null($this->basicAuth)) {
                 $options['auth'] = array($this->basicAuth['username'], $this->basicAuth['password']);
             }
+
+            $this->lastCall = array(
+                'method' => 'HEAD',
+                'path' => $path,
+                'options' => $options
+            );
 
             $response = $this->client->request('HEAD', $path, $options);
         } catch (ClientException $e) {
