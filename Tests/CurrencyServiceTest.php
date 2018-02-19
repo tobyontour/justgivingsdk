@@ -24,7 +24,7 @@ class CurrencyServiceTest extends TestCase
 
     public function testGetCurrencies()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetValidCurrencyCodes.json'))

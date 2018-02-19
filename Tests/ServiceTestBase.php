@@ -66,7 +66,7 @@ class ServiceTestBase extends TestCase
      */
     protected function initApi(&$container, $body = '', $statusCode = 200)
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response($statusCode, [], $body)

@@ -25,7 +25,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetEventTypes()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"eventTypes":[{"description":"From the Flora London Marathon to a \'fun run\' round your local park, running for charity is a great way to get in shape and raise money for your favourite causes. \u000a\u000a","eventType":"Running_Marathons","id":1,"name":"Running \/ marathons"}]}')
@@ -59,7 +59,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetEventTypesForbiddenError()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(403, [], '[{"id":"appIdNotFound","desc":"Supplied Application ID not found access is forbidden."}]')
@@ -76,7 +76,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetEventById()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"name": "string", "description": "string", "id": 0, "completionDate": "2017-12-18T15:20:08.036Z", "expiryDate": "2017-12-18T15:20:08.036Z", "startDate": "2017-12-18T15:20:08.036Z", "eventType": "string", "location": "string", "errorMessage": "string"}')
@@ -110,7 +110,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetEventByIdInvalidId()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"name": "string", "description": "string", "id": 0, "completionDate": "2017-12-18T15:20:08.036Z", "expiryDate": "2017-12-18T15:20:08.036Z", "startDate": "2017-12-18T15:20:08.036Z", "eventType": "string", "location": "string", "errorMessage": "string"}')
@@ -126,7 +126,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEvent()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetPagesForEvent.json'))
@@ -160,7 +160,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEventInvalidId()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '')
@@ -176,7 +176,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEventInvalidPageNumber()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '')
@@ -192,7 +192,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEventInvalidNegativePageNumber()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '')
@@ -209,7 +209,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEventInvalidPageSize()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '')
@@ -225,7 +225,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEventInvalidNegativePageSize()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '')
@@ -241,7 +241,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEventPageSizeOverLimit()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '')
@@ -263,7 +263,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEventPageSizeOnly()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [new Response(200, [], '')]);
         $api->setHandlerStack($handlerStack);
@@ -280,7 +280,7 @@ class EventsServiceTest extends TestCase
 
     public function testGetPagesForEventPageNumberOnly()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [new Response(200, [], '')]);
         $api->setHandlerStack($handlerStack);
@@ -297,7 +297,7 @@ class EventsServiceTest extends TestCase
 
     public function testRegisterEvent()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [new Response(201, [], file_get_contents(__DIR__ . '/mockdata/RegisterEvent.json'))]);
         $api->setHandlerStack($handlerStack);

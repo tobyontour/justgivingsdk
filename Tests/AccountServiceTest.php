@@ -25,7 +25,7 @@ class AccountServiceTest extends TestCase
 
     public function testAccountExistsReturnsFalseIfAccountDoesNotExist()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(404, [], '{"accountType":"None"}')
@@ -54,7 +54,7 @@ class AccountServiceTest extends TestCase
 
     public function testAccountExistsResturnsTrueIfAccountExists()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"accountType":"None"}') // Need actual content from a call.
@@ -83,7 +83,7 @@ class AccountServiceTest extends TestCase
 
     public function testAccountExists()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"accountType":"None"}') // Need actual content from a call.
@@ -112,7 +112,7 @@ class AccountServiceTest extends TestCase
 
     public function testAccountRegistration()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"accountType":"None"}') // Need actual content from a call.
@@ -204,7 +204,7 @@ class AccountServiceTest extends TestCase
      */
     public function testRetrieveAccount()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/RetrieveAccount.json'))
@@ -239,7 +239,7 @@ class AccountServiceTest extends TestCase
 
     public function testValidateAccount()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/ValidateAccount.json'))
@@ -274,7 +274,7 @@ class AccountServiceTest extends TestCase
 
     public function testGetFundraisingPagesForUser()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetFundraisingPagesForUser.json'))
@@ -309,7 +309,7 @@ class AccountServiceTest extends TestCase
 
     public function testGetDonationsForUser()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetDonationsForUser.json'))
@@ -348,7 +348,7 @@ class AccountServiceTest extends TestCase
 
     public function testGetDonationsForUserWithArgs()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetDonationsForUser.json'))
@@ -387,7 +387,7 @@ class AccountServiceTest extends TestCase
 
     public function testChangePassword()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"success": true}')
@@ -423,7 +423,7 @@ class AccountServiceTest extends TestCase
 
     public function testChangePasswordTooShort()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $this->expectException(\InvalidArgumentException::class);
 
@@ -436,7 +436,7 @@ class AccountServiceTest extends TestCase
 
     public function testRequestPasswordReminder()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"success": true}')

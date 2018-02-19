@@ -89,15 +89,15 @@ class JustGivingApi
      *
      * @param string $apiKey The JustGiving API key. Register as a developer on the website to get this.
      * @param string $secret The API secret. Needed for authenticated requests on behalf of the user.
-     * @param bool $testMode If true it uses the sandbox environment. Defaults to false (production).
+     * @param bool $liveMode If true it uses the live environment. Defaults to true (production).
      * @param integer $version API version.
      */
-    public function __construct($apiKey, $secret = null, $testMode = false, $version = 1)
+    public function __construct($apiKey, $secret = null, $liveMode = true, $version = 1)
     {
-        if ($testMode) {
-            $this->testMode();
-        } else {
+        if ($liveMode) {
             $this->liveMode();
+        } else {
+            $this->testMode();
         }
 
         $this->apiKey = $apiKey;

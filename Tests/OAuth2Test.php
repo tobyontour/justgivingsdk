@@ -25,7 +25,7 @@ class OAuth2Test extends TestCase
 
     public function testGetLoginUrl()
     {
-        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', true);
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', false);
 
         $url = $api->getLoginFormUrl(
             array('openid', 'profile', 'fundraise', 'account'),
@@ -42,7 +42,7 @@ class OAuth2Test extends TestCase
 
     public function testGetLoginUrlWithState()
     {
-        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', true);
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', false);
 
         $url = $api->getLoginFormUrl(
             array('openid', 'profile', 'fundraise', 'account'),
@@ -59,7 +59,7 @@ class OAuth2Test extends TestCase
 
     public function testGetLoginUrlWithBadUrl()
     {
-        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', true);
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', false);
 
         $this->expectException(\InvalidArgumentException::class);
 
@@ -73,7 +73,7 @@ class OAuth2Test extends TestCase
 
     public function testGetToken()
     {
-        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', true);
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', false);
 
         $data = <<<__EOD__
 {"id_token":"eyJ0eXAiOiJKV1QiLclippedPC2R1s035w", "access_token":"a8dfad6cfe559ae0d6e37426b3e0d078", "expires_in":3600,"token_type":"Bearer"}
@@ -121,7 +121,7 @@ __EOD__;
 
     public function testRefreshToken()
     {
-        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', true);
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', false);
 
         $data = <<<__EOD__
 {"id_token":"eyJ0eXAxxxgAfm_2w", "access_token":"f110416c611f55befb7fcc9d113484ec", "expires_in":3600,"token_type":"Bearer", "refresh_token":"4ef125dedc4728b2cac194b4648ccbd0"}
@@ -173,7 +173,7 @@ __EOD__;
 
     public function testCallMadeWithAuthCredentials()
     {
-        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', true);
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', false);
 
         $handlerStack = $this->getMockHandlerStack($container, [new Response(201, [], file_get_contents(__DIR__ . '/mockdata/RegisterEvent.json'))]);
         $api->setHandlerStack($handlerStack);

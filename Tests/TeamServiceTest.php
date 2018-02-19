@@ -25,7 +25,7 @@ class TeamServiceTest extends TestCase
 
     public function testTeamCreation()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{"accountType":"None"}') // Need actual content from a call.
@@ -86,7 +86,7 @@ class TeamServiceTest extends TestCase
 
     public function testGetTeam()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], file_get_contents(__DIR__ . '/Mockdata/GetTeam.json'))
@@ -139,7 +139,7 @@ class TeamServiceTest extends TestCase
 
     public function testBadUpdateTeam()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $teamService = $api->getTeamService();
 
@@ -164,7 +164,7 @@ class TeamServiceTest extends TestCase
 
     public function testUpdateTeam()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{
@@ -231,7 +231,7 @@ class TeamServiceTest extends TestCase
 
     public function testJoinTeam()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '') // Need actual content from a call.

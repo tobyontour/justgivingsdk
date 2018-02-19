@@ -48,7 +48,7 @@ class FundraisingServiceTest extends TestCase
 
     protected function initApi(&$container, $body = '', $statusCode = 200)
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response($statusCode, [], $body)
@@ -61,7 +61,7 @@ class FundraisingServiceTest extends TestCase
 
     public function testRegisterFundraisingPage()
     {
-        $api = new JustGivingApi('API_KEY', null, true);
+        $api = new JustGivingApi('API_KEY', null, false);
 
         $handlerStack = $this->getMockHandlerStack($container, [
             new Response(200, [], '{
