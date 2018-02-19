@@ -95,6 +95,10 @@ class Transport
                 'headers' => $this->headers
             );
 
+            if (!is_null($this->basicAuth)) {
+                $options['auth'] = array($this->basicAuth['username'], $this->basicAuth['password']);
+            }
+
             $response = $this->client->request('GET', $path, $options);
         } catch (ClientException $e) {
             if ($e->hasResponse()) {
@@ -170,6 +174,10 @@ class Transport
                'body' => json_encode($body)
             ];
 
+            if (!is_null($this->basicAuth)) {
+                $options['auth'] = array($this->basicAuth['username'], $this->basicAuth['password']);
+            }
+
             $response = $this->client->request('PUT', $path, $options);
         } catch (ClientException $e) {
             if ($e->hasResponse()) {
@@ -199,6 +207,10 @@ class Transport
             $options = array(
                 'headers' => $this->headers
             );
+
+            if (!is_null($this->basicAuth)) {
+                $options['auth'] = array($this->basicAuth['username'], $this->basicAuth['password']);
+            }
 
             $response = $this->client->request('HEAD', $path, $options);
         } catch (ClientException $e) {

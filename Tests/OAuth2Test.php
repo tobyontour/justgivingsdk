@@ -208,4 +208,45 @@ __EOD__;
             $headers['x-application-key'][0]
         );
     }
+
+    public function testHeaders()
+    {
+        /*
+        This duplicates a previous test but only uses it to verify the
+        headers.
+         */
+        $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', false);
+
+        $data = <<<__EOD__
+{"id_token":"eyJ0eXAiOiJKV1QiLclippedPC2R1s035w", "access_token":"a8dfad6cfe559ae0d6e37426b3e0d078", "expires_in":3600,"token_type":"Bearer"}
+__EOD__;
+
+        $handlerStack = $this->getMockHandlerStack($container, [
+            new Response(200, [], $data)
+        ]);
+
+        $api->setHandlerStack($handlerStack);
+
+        $authTransport = $api->getAuthTransport();
+        $authTransport->headers['JG-ACCESS-TOKEN'] = 'ABCDEFGHIJKL';
+
+        $token = $api->getAuthenticationToken('A1B2C3D4', 'https://www.example.com/auth');
+
+        $request = $container[0]['request'];
+
+        $headers = $request->getHeaders();
+
+        $this->assertEquals(
+            'Basic ' . base64_encode('API_KEY:OAUTH_SECRET'),
+            $headers['Authorization'][0]
+        );
+        $this->assertEquals(
+            'application/x-www-form-urlencoded',
+            $headers['Content-Type'][0]
+        );
+        $this->assertEquals(
+            'ABCDEFGHIJKL',
+            $headers['JG-ACCESS-TOKEN'][0]
+        );
+    }
 }
