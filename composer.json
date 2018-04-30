@@ -1,5 +1,5 @@
 {
-    "name": "gosh/justgivingi-api",
+    "name": "gosh/justgiving-api",
     "description": "A JustGiving API client in PHP",
     "type": "library",
     "require-dev": {
