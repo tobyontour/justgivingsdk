@@ -10,6 +10,7 @@ use JustGivingApi\Services\EventsService;
 use JustGivingApi\Services\AccountsService;
 use JustGivingApi\Services\FundraisingService;
 use JustGivingApi\Services\TeamService;
+use JustGivingApi\Services\CampaignsService;
 use JustGivingApi\Services\CountriesService;
 use JustGivingApi\Services\CurrencyService;
 use JustGivingApi\Services\OAuth2Service;
@@ -257,6 +258,19 @@ class JustGivingApi
             $this->services['team'] = new TeamService($this->getTransport());
         }
         return $this->services['team'];
+    }
+
+    /**
+     * Gets the campaigns service.
+     *
+     * @return JustGivingApi\Services\CampaignsService The service.
+     */
+    public function getCampaignsService()
+    {
+        if (!in_array('campaigns', $this->services)) {
+            $this->services['campaigns'] = new CampaignsService($this->getTransport());
+        }
+        return $this->services['campaigns'];
     }
 
     /**

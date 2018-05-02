@@ -18,29 +18,35 @@
     * [requestPasswordReminder](#requestpasswordreminder)
 * [ApiException](#apiexception)
     * [__construct](#__construct-2)
-* [ConsumerDonation](#consumerdonation)
+* [Campaign](#campaign)
     * [__construct](#__construct-3)
     * [toArray](#toarray-1)
-* [CountriesService](#countriesservice)
+* [CampaignsService](#campaignsservice)
     * [__construct](#__construct-4)
+    * [getCampaignsByCharityId](#getcampaignsbycharityid)
+* [ConsumerDonation](#consumerdonation)
+    * [__construct](#__construct-5)
+    * [toArray](#toarray-2)
+* [CountriesService](#countriesservice)
+    * [__construct](#__construct-6)
     * [listCountries](#listcountries)
 * [CurrencyService](#currencyservice)
-    * [__construct](#__construct-5)
+    * [__construct](#__construct-7)
     * [getCurrencies](#getcurrencies)
 * [Event](#event)
-    * [__construct](#__construct-6)
-    * [toArray](#toarray-2)
+    * [__construct](#__construct-8)
+    * [toArray](#toarray-3)
 * [EventsService](#eventsservice)
-    * [__construct](#__construct-7)
+    * [__construct](#__construct-9)
     * [getTypes](#gettypes)
     * [getEventById](#geteventbyid)
     * [getPagesForEvent](#getpagesforevent)
     * [createEvent](#createevent)
 * [FundraisingPage](#fundraisingpage)
-    * [__construct](#__construct-8)
-    * [toArray](#toarray-3)
+    * [__construct](#__construct-10)
+    * [toArray](#toarray-4)
 * [FundraisingService](#fundraisingservice)
-    * [__construct](#__construct-9)
+    * [__construct](#__construct-11)
     * [createPage](#createpage)
     * [getPageUpdateById](#getpageupdatebyid)
     * [getPageUpdates](#getpageupdates)
@@ -49,7 +55,7 @@
     * [getPageDetails](#getpagedetails)
     * [getPageDetailsById](#getpagedetailsbyid)
 * [JustGivingApi](#justgivingapi)
-    * [__construct](#__construct-10)
+    * [__construct](#__construct-12)
     * [setBaseApiUrl](#setbaseapiurl)
     * [setAuthenticationBaseApiUrl](#setauthenticationbaseapiurl)
     * [setHandlerStack](#sethandlerstack)
@@ -59,6 +65,7 @@
     * [getAccountsService](#getaccountsservice)
     * [getFundraisingService](#getfundraisingservice)
     * [getTeamService](#getteamservice)
+    * [getCampaignsService](#getcampaignsservice)
     * [getCountriesService](#getcountriesservice)
     * [getCurrencyService](#getcurrencyservice)
     * [getOneSearchService](#getonesearchservice)
@@ -68,32 +75,32 @@
     * [getAuthenticationToken](#getauthenticationtoken)
     * [refreshAuthenticationToken](#refreshauthenticationtoken)
 * [Model](#model)
-    * [__construct](#__construct-11)
-    * [toArray](#toarray-4)
+    * [__construct](#__construct-13)
+    * [toArray](#toarray-5)
 * [OAuth2Service](#oauth2service)
-    * [__construct](#__construct-12)
+    * [__construct](#__construct-14)
     * [getLoginFormUrl](#getloginformurl-1)
     * [getAuthenticationToken](#getauthenticationtoken-1)
     * [refreshAuthenticationToken](#refreshauthenticationtoken-1)
 * [OneSearchService](#onesearchservice)
-    * [__construct](#__construct-13)
+    * [__construct](#__construct-15)
     * [search](#search-1)
 * [Query](#query)
-    * [__construct](#__construct-14)
+    * [__construct](#__construct-16)
     * [__toString](#__tostring)
 * [Service](#service)
-    * [__construct](#__construct-15)
-* [Team](#team)
-    * [__construct](#__construct-16)
-    * [toArray](#toarray-5)
-* [TeamService](#teamservice)
     * [__construct](#__construct-17)
+* [Team](#team)
+    * [__construct](#__construct-18)
+    * [toArray](#toarray-6)
+* [TeamService](#teamservice)
+    * [__construct](#__construct-19)
     * [createTeam](#createteam)
     * [getTeam](#getteam)
     * [updateTeam](#updateteam)
     * [joinTeam](#jointeam)
 * [Transport](#transport)
-    * [__construct](#__construct-18)
+    * [__construct](#__construct-20)
     * [getBaseUrl](#getbaseurl)
     * [setBasicAuth](#setbasicauth)
     * [disableBasicAuth](#disablebasicauth)
@@ -471,6 +478,131 @@ ApiException::__construct( \GuzzleHttp\Psr7\Response $response, string $url )
 | `$response` | **\GuzzleHttp\Psr7\Response** | The response from the Guzzle call. |
 | `$url` | **string** | The URL that was called. |
 
+
+
+
+---
+
+## Campaign
+
+Class representing a JustGiving campaign
+
+The Model class contains methods for loading an array into a class's properties and
+exporting the properties to an array. This just makes it easier to program with the
+different structures the REST API needs whilst making it easy for the Services to convert
+the arrays from REST calls to objects easily.
+
+Each child class is basically just a data structure
+
+* Full name: \JustGivingApi\Models\Campaign
+* Parent class: \JustGivingApi\Models\Model
+
+
+### __construct
+
+Constructor.
+
+```php
+Campaign::__construct( array $data = array() )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$data` | **array** |  |
+
+
+
+
+---
+
+### toArray
+
+Convert the object to an array.
+
+```php
+Campaign::toArray( array $omitList = array() ): array
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$omitList` | **array** | List of properties to omit. |
+
+
+**Return Value:**
+
+The array to send as part of a REST request.
+
+
+
+---
+
+## CampaignsService
+
+Deals with calls to the /campaigns endpoint and child endpoints.
+
+The Service class simply takes in a Transport instance which it uses to perform the REST calls.
+The Transport class is a thin wrapper around a Guzzle Client class (Guzzle being a PHP HTTP
+client). The idea is that the Transport class can be set up with timeouts and any network
+configuration or authentication methods so that the instances of Services don't have to do that
+themselves.
+
+* Full name: \JustGivingApi\Services\CampaignsService
+* Parent class: \JustGivingApi\Services\Service
+
+
+### __construct
+
+Constructor.
+
+```php
+CampaignsService::__construct( \JustGivingApi\Transport\Transport $transport )
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$transport` | **\JustGivingApi\Transport\Transport** | The transport that performs HTTP requests. |
+
+
+
+
+---
+
+### getCampaignsByCharityId
+
+Get campaigns for a charity.
+
+```php
+CampaignsService::getCampaignsByCharityId(  $charityId ): array
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$charityId` | **** |  |
+
+
+**Return Value:**
+
+List of Campaigns
 
 
 
@@ -1375,6 +1507,26 @@ JustGivingApi::getTeamService(  ): \JustGivingApi\JustGivingApi\Services\TeamSer
 **Return Value:**
 
 The team service.
+
+
+
+---
+
+### getCampaignsService
+
+Gets the campaigns service.
+
+```php
+JustGivingApi::getCampaignsService(  ): \JustGivingApi\JustGivingApi\Services\CampaignsService
+```
+
+
+
+
+
+**Return Value:**
+
+The service.
 
 
 
@@ -2320,4 +2472,4 @@ Transport::head( string $path, \JustGivingApi\Transport\reference &$statusMessag
 
 
 --------
-> This document was automatically generated from source code comments on 2018-02-19 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-05-02 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
