@@ -1,0 +1,69 @@
+{
+    "campaignsDetails": [
+        {
+            "campaignPageName": "Give it up for GOSH, with the Evening Standard, the Independent, i, and London Live",
+            "campaignUrl": "http:\/\/campaign.staging.justgiving.com\/charity\/greatormondstreet\/giveitupforgosh",
+            "causeId": 3533113,
+            "charityId": 254,
+            "charityLogoUrl": "https:\/\/images.staging.justgiving.com\/image\/b2a10351-5b96-4bf8-bca5-e8a5bad970f2.JPG",
+            "currency": "GBP",
+            "description": "Could you go without something you love for January? Give it Up for GOSH and fundraise to support the children and families at Great Ormond Street Hospital. (GOSH)",
+            "fundraisingEnabled": true,
+            "id": 6750,
+            "images": [
+                {
+                    "alt": "Ralph with his dog, Woody. Photo credit: Joe Plimmer",
+                    "caption": "Ralph with his dog, Woody. Photo credit: Joe Plimmer",
+                    "filename": "https:\/\/images.staging.justgiving.com\/image\/40e515cd-e5e6-4daf-a016-28b30287db36.jpg",
+                    "isHeroImage": true,
+                    "title": null
+                }
+            ],
+            "numberOfDirectDonations": 12,
+            "numberOfFundraisersConnected": 17,
+            "story": "<p><p>Children at GOSH often have to give up the things they love: from not being able to eat treats such as chocolate or chips, to playing outside or being able to spend time at home with mum and dad.<\/p><p>We\u2019re asking you to show your strength and join our brave patients by giving up something you love during January whilst raising much needed funds for the Give to GOSH appeal. <\/p><p>Whether you\u2019re crazy about chocolate, got a serious shopping habit, are hooked on TV, or have a passion for puddings, by giving it up in January you\u2019re helping GOSH continue to be an extraordinary place for the children and families who so desperately need it. <\/p><p>How your money helps<\/p><ul><li>\u00a310 could help pay for spacious new bedrooms on the specialist cardiac unit<\/li><li>\u00a350 could pay for a parent to stay overnight in our family accommodation unit while their child is at GOSH<\/li><li>\u00a380 could\u00a0cover the costs of one flow meter in our new cardiac unit, a gadget that helps ensure children are getting just the right amount of oxygen while they recover<\/li><\/ul>",
+            "target": 0,
+            "targetPercentage": 0,
+            "totalDonated": "360",
+            "totalFundraised": "6251.82",
+            "totalOffline": 0,
+            "totalRaised": "6611.82"
+        },
+        {
+            "campaignPageName": "Gordon and Tana Ramsay Foundation",
+            "campaignUrl": "http:\/\/campaign.staging.justgiving.com\/charity\/greatormondstreet\/gtrf",
+            "causeId": 3555415,
+            "charityId": 254,
+            "charityLogoUrl": "https:\/\/images.staging.justgiving.com\/image\/b2a10351-5b96-4bf8-bca5-e8a5bad970f2.JPG",
+            "currency": "GBP",
+            "description": "The Gordon and Tana Ramsay Foundation is raising funds to help Great Ormond Street Hospital provide world-class care for young patients and their families.",
+            "fundraisingEnabled": true,
+            "id": 6833,
+            "images": [
+                {
+                    "alt": null,
+                    "caption": null,
+                    "filename": "https:\/\/images.staging.justgiving.com\/image\/2127949f-9b5c-4477-95f4-8f764593c468.jpg",
+                    "isHeroImage": true,
+                    "title": null
+                },
+                {
+                    "alt": null,
+                    "caption": null,
+                    "filename": "https:\/\/images.staging.justgiving.com\/image\/c880bd64-c5fc-489e-8123-02f64483fee7.jpg",
+                    "isHeroImage": false,
+                    "title": null
+                }
+            ],
+            "numberOfDirectDonations": 11,
+            "numberOfFundraisersConnected": 32,
+            "story": "<p><span>The Gordon and Tana Ramsay Foundation, in support of Great Ormond Street Hospital, will raise funds to help seriously ill children receive the specialist care that they deserve. Their generous support will help the thousands of children and their families who come to Great Ormond Street Hospital each year have access to pioneering new treatments and cutting edge medical equipment. Together, we are also investing in the redevelopment of the hospital to provide state-of-the-art facilities to match the hospital\u2019s world-class care.<\/span><\/p>",
+            "target": 0,
+            "targetPercentage": 0,
+            "totalDonated": "299.09",
+            "totalFundraised": "20423.96",
+            "totalOffline": 0,
+            "totalRaised": "20723.05"
+        }
+    ]
+}
