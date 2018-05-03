@@ -8,6 +8,7 @@ namespace JustGivingApi\Transport;
 
 use JustGivingApi\Exceptions\ApiException;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Client;
 
 /**
@@ -119,6 +120,12 @@ class Transport
             } else {
                 throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
             }
+        } catch (ServerException $e) {
+            if ($e->hasResponse()) {
+                $response = $e->getResponse();
+            } else {
+                throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+            }
         }
 
         if ($response->getStatusCode() >= 300) {
@@ -168,6 +175,12 @@ class Transport
             } else {
                 throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
             }
+        } catch (ServerException $e) {
+            if ($e->hasResponse()) {
+                $response = $e->getResponse();
+            } else {
+                throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+            }
         }
 
         if ($response->getStatusCode() >= 300) {
@@ -210,6 +223,12 @@ class Transport
             } else {
                 throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
             }
+        } catch (ServerException $e) {
+            if ($e->hasResponse()) {
+                $response = $e->getResponse();
+            } else {
+                throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+            }
         }
 
         if ($response->getStatusCode() >= 300) {
@@ -245,6 +264,12 @@ class Transport
 
             $response = $this->client->request('HEAD', $path, $options);
         } catch (ClientException $e) {
+            if ($e->hasResponse()) {
+                $response = $e->getResponse();
+            } else {
+                throw new \RuntimeException('Call to ' . $path . ' failed with ' . $e->getMessage());
+            }
+        } catch (ServerException $e) {
             if ($e->hasResponse()) {
                 $response = $e->getResponse();
             } else {
