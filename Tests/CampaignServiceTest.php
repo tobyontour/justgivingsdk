@@ -95,7 +95,7 @@ class CampaignServiceTest extends TestCase
             'campaignDeadline' => '2019-05-03T10:06:58.000Z',
             'campaignThankYouMessage' => 'Thank you for the music',
             'campaignPageName' => 'Race For The Santa 2018',
-            'campaignUrl' => 'http://campaign.staging.justgiving.com/charity/greatormondstreet/rfts',
+            'campaignUrl' => 'rfts',
             'currency' => 'GBP',
             'target' => '1000000',
             'fundraisingEnabled' => true,
@@ -113,7 +113,7 @@ class CampaignServiceTest extends TestCase
         );
 
         $this->assertEquals(
-            'PUT',
+            'POST',
             $container[0]['request']->getMethod()
         );
 
@@ -123,7 +123,7 @@ class CampaignServiceTest extends TestCase
           'campaignDeadline' => '2019-05-03T10:06:58.000Z',
           'campaignThankYouMessage' => 'Thank you for the music',
           'campaignName' => 'Race For The Santa 2018',
-          'campaignUrl' => 'http://campaign.staging.justgiving.com/charity/greatormondstreet/rfts',
+          'campaignUrl' => 'rfts',
           'currencyCode' => 'GBP',
           'campaignTarget' => '1000000',
           'campaignStory' => 'This is the story all about how my life got flipped turned upside down.',
