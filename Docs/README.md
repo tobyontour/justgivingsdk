@@ -24,6 +24,7 @@
 * [CampaignsService](#campaignsservice)
     * [__construct](#__construct-4)
     * [getCampaignsByCharityId](#getcampaignsbycharityid)
+    * [createCampaign](#createcampaign)
 * [ConsumerDonation](#consumerdonation)
     * [__construct](#__construct-5)
     * [toArray](#toarray-2)
@@ -522,7 +523,7 @@ Campaign::__construct( array $data = array() )
 
 ### toArray
 
-Convert the object to an array.
+Convert the object to an array for set actions.
 
 ```php
 Campaign::toArray( array $omitList = array() ): array
@@ -603,6 +604,38 @@ CampaignsService::getCampaignsByCharityId(  $charityId ): array
 **Return Value:**
 
 List of Campaigns
+
+
+
+---
+
+### createCampaign
+
+Create a user account.
+
+```php
+CampaignsService::createCampaign( \JustGivingApi\Models\Campaign $campaign ): Object
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$campaign` | **\JustGivingApi\Models\Campaign** | The campaign object to create. |
+
+
+**Return Value:**
+
+containing the response data:
+ {
+   "charityShortName": "string",
+   "campaignShortUrl": "string",
+   "campaignFullUrl": "string",
+   "errorMessage": "string"
+. }
 
 
 
@@ -2472,4 +2505,4 @@ Transport::head( string $path, \JustGivingApi\Transport\reference &$statusMessag
 
 
 --------
-> This document was automatically generated from source code comments on 2018-05-02 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-05-03 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)

@@ -27,5 +27,30 @@ class CampaignsService extends Service
         }
         return $ret;
     }
+
+    /**
+     * Create a user account.
+     *
+     * @param Campaign $campaign The campaign object to create.
+     * @return Object containing the response data:
+     *  {
+     *    "charityShortName": "string",
+     *    "campaignShortUrl": "string",
+     *    "campaignFullUrl": "string",
+     *    "errorMessage": "string"
+     *. }
+     */
+    public function createCampaign(Campaign $campaign)
+    {
+        try {
+            $data = $this->transport->put('campaigns', $campaign->toArray());
+        } catch (ApiException $e) {
+            if ($e->getCode() == 404) {
+                return false;
+            }
+            throw $e;
+        }
+        return $data;
+    }
 }
 
