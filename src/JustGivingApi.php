@@ -89,7 +89,7 @@ class JustGivingApi
     const PRODUCTION_BASE_URL = 'https://api.justgiving.com';
     const SANDBOX_AUTH_BASE_URL = 'https://identity.sandbox.justgiving.com';
     const PRODUCTION_AUTH_BASE_URL = 'https://identity.justgiving.com';
-    const TIMEOUT = 4.0;
+    const TIMEOUT = 10.0;
 
     /**
      * Creates an instance of the API.
