@@ -5,7 +5,8 @@
     "require-dev": {
         "phpunit/phpunit": "*",
         "squizlabs/php_codesniffer": "*",
-        "cvuorinen/phpdoc-markdown-public": "*"
+        "cvuorinen/phpdoc-markdown-public": "*",
+        "namshi/cuzzle": "^2.0"
     },
     "require": {
         "guzzlehttp/guzzle": "~6.0"

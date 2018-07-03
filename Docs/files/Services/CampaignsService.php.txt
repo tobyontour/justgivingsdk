@@ -43,7 +43,7 @@ class CampaignsService extends Service
     public function createCampaign(Campaign $campaign)
     {
         try {
-            $data = $this->transport->put('campaigns', $campaign->toArray());
+            $data = $this->transport->post('campaigns', $campaign->toArray());
         } catch (ApiException $e) {
             if ($e->getCode() == 404) {
                 return false;

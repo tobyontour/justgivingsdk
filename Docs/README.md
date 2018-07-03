@@ -2505,4 +2505,4 @@ Transport::head( string $path, \JustGivingApi\Transport\reference &$statusMessag
 
 
 --------
-> This document was automatically generated from source code comments on 2018-05-03 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2018-05-17 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
