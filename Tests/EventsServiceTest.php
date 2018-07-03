@@ -299,7 +299,7 @@ class EventsServiceTest extends TestCase
     {
         $api = new JustGivingApi('API_KEY', null, false);
 
-        $handlerStack = $this->getMockHandlerStack($container, [new Response(201, [], file_get_contents(__DIR__ . '/mockdata/RegisterEvent.json'))]);
+        $handlerStack = $this->getMockHandlerStack($container, [new Response(201, [], file_get_contents(__DIR__ . '/Mockdata/RegisterEvent.json'))]);
         $api->setHandlerStack($handlerStack);
 
         $newEvent = new Event(

@@ -175,7 +175,7 @@ __EOD__;
     {
         $api = new JustGivingApi('API_KEY', 'OAUTH_SECRET', false);
 
-        $handlerStack = $this->getMockHandlerStack($container, [new Response(201, [], file_get_contents(__DIR__ . '/mockdata/RegisterEvent.json'))]);
+        $handlerStack = $this->getMockHandlerStack($container, [new Response(201, [], file_get_contents(__DIR__ . '/Mockdata/RegisterEvent.json'))]);
         $api->setHandlerStack($handlerStack);
 
         $api->setAccessToken('ACCESS_TOKEN');
