@@ -85,9 +85,9 @@ class JustGivingApi
      */
     private $services = [];
 
-    const SANDBOX_BASE_URL = 'https://api.sandbox.justgiving.com';
+    const SANDBOX_BASE_URL = 'https://api.staging.justgiving.com';
     const PRODUCTION_BASE_URL = 'https://api.justgiving.com';
-    const SANDBOX_AUTH_BASE_URL = 'https://identity.sandbox.justgiving.com';
+    const SANDBOX_AUTH_BASE_URL = 'https://identity.staging.justgiving.com';
     const PRODUCTION_AUTH_BASE_URL = 'https://identity.justgiving.com';
     const TIMEOUT = 40.0;
 

@@ -25,6 +25,7 @@ class Campaign extends Model
     public $target;
     public $fundraisingEnabled;
     public $story;
+    public $summary;
 
     // Get.
     public $causeId;
@@ -54,7 +55,6 @@ class Campaign extends Model
             'charityId',
             'charityLogoUrl',
             'description',
-            'fundraisingEnabled',
             'id',
             'images',
             'numberOfDirectDonations',
@@ -69,12 +69,14 @@ class Campaign extends Model
         $ret = parent::toArray($omitList);
         $ret['campaignName'] = $this->campaignPageName;
         $ret['campaignStory'] = $this->story;
+        $ret['campaignSummary'] = $this->summary;
         $ret['currencyCode'] = $this->currency;
         $ret['campaignTarget'] = $this->target;
 
         unset(
             $ret['campaignPageName'],
             $ret['story'],
+            $ret['summary'],
             $ret['currency'],
             $ret['target']
         );

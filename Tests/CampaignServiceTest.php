@@ -95,6 +95,7 @@ class CampaignServiceTest extends TestCase
             'campaignDeadline' => '2019-05-03T10:06:58.000Z',
             'campaignThankYouMessage' => 'Thank you for the music',
             'campaignPageName' => 'Race For The Santa 2018',
+            'summary' => 'Race For The Santa 2018 Summary',
             'campaignUrl' => 'rfts',
             'currency' => 'GBP',
             'target' => '1000000',
@@ -123,19 +124,17 @@ class CampaignServiceTest extends TestCase
           'campaignDeadline' => '2019-05-03T10:06:58.000Z',
           'campaignThankYouMessage' => 'Thank you for the music',
           'campaignName' => 'Race For The Santa 2018',
+          'campaignSummary' => 'Race For The Santa 2018 Summary',
           'campaignUrl' => 'rfts',
           'currencyCode' => 'GBP',
           'campaignTarget' => '1000000',
           'campaignStory' => 'This is the story all about how my life got flipped turned upside down.',
           'fundraisingEnabled' => true,
-          'campaignSummary' => 'Summary'
         );
-
         $this->assertEquals(
-            0,
-            count(array_diff_assoc($body, $expectedBody)),
-            'The array sent to the register user endpoint is the same one we defined. ' .
-              print_r(array_diff_assoc($expectedBody, $body), true)
+            $body,
+            $expectedBody,
+            'The array sent to the register user endpoint is the same one we defined.'
         );
 
         $this->assertTrue(isset($result->charityShortName), 'Return contains charityShortName');
