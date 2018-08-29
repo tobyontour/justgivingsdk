@@ -106,6 +106,11 @@ class FundraisingServiceTest extends TestCase
             "pageStory" => "string1",
             "pageSummaryWhat" => "string2",
             "pageSummaryWhy" => "string3",
+            "customCodes" => [
+                "customCode2" => "Contract",
+                "customCode3" => "Fund code",
+                "customCode6" => "Department code"
+            ],
             "theme" => [
                 "pageBackground" => "stringA",
                 "buttonsThermometerFill" => "stringB",
@@ -143,8 +148,8 @@ class FundraisingServiceTest extends TestCase
         ), 'Method and URL are correct.');
 
         $this->assertEquals(
-            0,
-            count(array_diff_assoc($pageArray, $body)),
+            $pageArray,
+            $body,
             'The array sent to the register fundraising page endpoint is the same one we defined.'
         );
     }

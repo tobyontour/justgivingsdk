@@ -29,6 +29,7 @@ class FundraisingPage extends Model
     public $pageStory;
     public $pageSummaryWhat;
     public $pageSummaryWhy;
+    public $customCodes;
     public $consistentErrorResponses;
     public $teamId;
     public $currency;
